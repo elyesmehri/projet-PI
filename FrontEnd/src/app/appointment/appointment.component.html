@@ -1,0 +1,102 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100 bg-transparent">
+  <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">📅 Book an Appointment</h2>
+
+    <form (ngSubmit)="submitAppointment()" #appointmentForm="ngForm" novalidate>
+
+      <!-- Family Name -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Family Name *</label>
+        <input
+          type="text"
+          [(ngModel)]="appointmentFill.familyname"
+          name="familyname"
+          required
+          class="form-input w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          #familyname="ngModel"
+        />
+        <p *ngIf="familyname.invalid && familyname.touched" class="text-red-500 text-sm">Family name is required.</p>
+      </div>
+
+      <!-- Grid: Doctor Name & Speciality (non-editable) -->
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-bold mb-1 text-gray-700">Doctor Name</label>
+          <input
+            type="text"
+            [value]="appointmentFill.doctorname"
+            class="form-input w-full px-4 py-2 border rounded bg-gray-100 cursor-not-allowed"
+            readonly
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-1 text-gray-700">Speciality</label>
+          <input
+            type="text"
+            [value]="appointmentFill.speciality"
+            class="form-input w-full px-4 py-2 border rounded bg-gray-100 cursor-not-allowed"
+            readonly
+          />
+        </div>
+      </div>
+
+      <!-- Desired Time -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Desired Time *</label>
+        <input
+          type="datetime-local"
+          [(ngModel)]="appointmentFill.date"
+          name="date"
+          required
+          class="form-input w-full px-4 py-2 border rounded"
+          #date="ngModel"
+        />
+      </div>
+
+      <!-- Description -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Description</label>
+        <textarea
+          [(ngModel)]="appointmentFill.description"
+          name="description"
+          rows="4"
+          class="form-textarea w-full px-4 py-2 border rounded"
+        ></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1 text-gray-700">Emergency Level</label>
+        <input
+          type="range"
+          [(ngModel)]="emergencyValue"
+          (ngModelChange)="updateEmergencyText()"
+          name="emergencySlider"
+          class="w-full"
+          min="0"
+          max="100"
+          step="5"
+        />
+        <div class="mt-2 text-gray-600">
+          Emergency Level:
+          <span class="emergency-level-text" [ngClass]="emergencyClass">
+      {{ emergencyText }}
+    </span>
+          <span class="text-sm italic ml-2">({{ emergencyValue }}%)</span>
+        </div>
+      </div>
+      <!-- Submit -->
+      <div class="text-center mt-6">
+        <button
+          type="submit"
+          [disabled]="appointmentForm.invalid"
+          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+        >
+          Book Appointment
+        </button>
+      </div>
+      <div *ngIf="submissionError" class="text-red-500 mt-2 text-center">
+        {{ submissionError }}
+      </div>
+    </form>
+  </div>
+</div>

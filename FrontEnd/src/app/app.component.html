@@ -1,0 +1,7 @@
+<app-loading *ngIf="showLoading"></app-loading>
+
+<div *ngIf="!showLoading">
+  <dashboard-layout>
+    <router-outlet></router-outlet>
+  </dashboard-layout>
+</div>

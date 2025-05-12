@@ -1,0 +1,52 @@
+<!---------- Title ----------->
+<div class="min-h-screen bg-gray-100 bg-transparent flex flex-col">
+  <div class="bg-transparent w-full py-4">
+    <h1 class="text-6xl font-semibold text-center text-yellow-300 bg-transparent">Medical Assistance Questionnaire</h1>
+  </div>
+
+<!---------- Texte ----------->
+<div class="w-full text-white bg-transparent text-left pt-4 pb-0">
+  <p class="max-w-screen-xl mx-auto px-4 text-xl">
+    This carefully crafted questionnaire is designed to provide you with preliminary guidance regarding potential medical specialties that might be relevant to your current concerns. Organized with the expertise of seasoned healthcare professionals, each question aims to identify key indicators related to various medical fields. Please answer each question honestly and thoughtfully by selecting either "Yes" or "No." Your responses will help us suggest the most appropriate area of medical expertise for you to consider for further consultation. Remember, this is an initial assessment and should not replace a thorough evaluation by a qualified medical doctor.
+  </p>
+</div>
+
+<!---------- Form ----------->
+<div class="flex justify-center items-center bg-transparent mt-24">
+    <div class="w-2/4 max-lg bg-white p-4 rounded-lg shadow-md">
+        <div *ngIf="!showResults">
+          <p class="text-lg text-gray-800 mb-4">{{ currentQuestion.text }}</p>
+          <div class="mb-4">
+            <label class="inline-flex items-center mr-4">
+              <input type="radio" class="form-radio text-green-500" name="answer-{{ currentQuestionIndex }}" [value]="true" (change)="answerQuestion(true)">
+              <span class="ml-2 text-gray-700">Yes</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="radio" class="form-radio text-red-500" name="answer-{{ currentQuestionIndex }}" [value]="false" (change)="answerQuestion(false)">
+              <span class="ml-2 text-gray-700">No</span>
+            </label>
+          </div>
+          <div class="pagination-controls mt-6 flex justify-between items-center">
+            <button (click)="prevQuestion()" [disabled]="isFirstQuestion" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Previous</button>
+            <span class="text-gray-600">{{ currentQuestionIndex + 1 }} / {{ questions.length }}</span>
+            <button (click)="nextQuestion()" *ngIf="!isLastQuestion" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Next</button>
+            <button (click)="answerQuestion(true)" *ngIf="isLastQuestion" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+          </div>
+        </div>
+
+        <div *ngIf="showResults">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Based on your answers, you might want to consult a:</h3>
+          <p *ngIf="suggestedFields.length > 0" class="text-gray-700">{{ suggestedFields.join(', ') }}</p>
+          <p *ngIf="suggestedFields.length === 0" class="text-gray-700">It's unclear based on your answers. Please consult your primary care physician.</p>
+        </div>
+        <!-- The Go Back button inside the form container -->
+        <button (click)="goBack()"
+          *ngIf="isLastQuestion"
+          class="absolute bottom-8 right-8 bg-white text-black px-8 py-4 rounded-lg shadow-lg font-bold text-lg hover:bg-gray-500 transition duration-200">
+          Go Back 🏠
+        </button>
+    </div>
+   </div>
+ </div>
+
+

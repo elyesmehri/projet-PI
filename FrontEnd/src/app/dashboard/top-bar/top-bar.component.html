@@ -1,0 +1,41 @@
+<header class="relative z-10 h-20 bg-gray-800 text-white">
+  <div class="mx-auto flex h-full items-center justify-between px-4">
+
+    <!-- Left Section: Sidebar Toggle -->
+    <div class="flex items-center space-x-4">
+      <button
+        type="button"
+        aria-expanded="false"
+        aria-label="Toggle sidebar"
+        class="text-4xl hover:bg-gray-700 p-2 rounded transition-colors"
+        (click)="openSidebar()"
+      >
+        &#8801;
+      </button>
+    </div>
+
+    <!-- Center Section: Navigation Links -->
+    <div class="flex space-x-6 text-lg">
+      <a routerLink="/doctor" routerLinkActive="active-link"
+         class="hover:bg-gray-600 px-4 py-2 rounded transition-colors">
+        🩺 Espace Doctor
+      </a>
+
+      <a routerLink="/patient" routerLinkActive="active-link"
+         class="hover:bg-gray-600 px-4 py-2 rounded transition-colors">
+        👤 Espace Patient
+      </a>
+      <a routerLink="/family" routerLinkActive="active-link"
+         class="hover:bg-gray-600 px-4 py-2 rounded transition-colors">
+        👨‍👩‍👧‍👦 Espace Famille
+      </a>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <a href="/" class="flex items-center space-x-2 p-2 hover:bg-gray-700 rounded transition-colors">
+        <!-- Share icon -->
+        <span class="text-sm">🏠 Go Home</span>
+      </a>
+    </div>
+  </div>
+</header>

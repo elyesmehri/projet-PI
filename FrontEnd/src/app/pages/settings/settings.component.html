@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Available Doctors</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen text-white">
+
+<div class="text-center py-10">
+  <h1 class="text-4xl font-bold mb-4">Meet Our Doctors</h1>
+  <p class="text-lg text-gray-300">Qualified and available to help you with your health concerns</p>
+</div>
+
+<!--
+
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Sarah Thompson</h2>
+    <p class="text-sm text-gray-300">Cardiologist</p>
+    <p class="mt-2 text-sm">Specialist in heart diseases with over 15 years of experience in cardiovascular care.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Michael Rodriguez</h2>
+    <p class="text-sm text-gray-300">Pediatrician</p>
+    <p class="mt-2 text-sm">Expert in child health and development, providing gentle care for kids of all ages.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Emily Chen</h2>
+    <p class="text-sm text-gray-300">Dermatologist</p>
+    <p class="mt-2 text-sm">Caring for your skin, hair, and nails with modern techniques and natural care.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Ahmed El-Sayed</h2>
+    <p class="text-sm text-gray-300">General Practitioner</p>
+    <p class="mt-2 text-sm">Your go-to doctor for everyday health concerns and preventive care advice.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Lisa Romero</h2>
+    <p class="text-sm text-gray-300">Endocrinologist</p>
+    <p class="mt-2 text-sm">Managing diabetes, thyroid issues, and hormonal imbalances with expertise.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. John Smith</h2>
+    <p class="text-sm text-gray-300">Neurologist</p>
+    <p class="mt-2 text-sm">Focused on brain, spine, and nerve care using cutting-edge technology.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Priya Kapoor</h2>
+    <p class="text-sm text-gray-300">Gynecologist</p>
+    <p class="mt-2 text-sm">Compassionate care for women’s health from adolescence through menopause.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Thomas Muller</h2>
+    <p class="text-sm text-gray-300">Orthopedic Surgeon</p>
+    <p class="mt-2 text-sm">Treating bones, joints, and muscles to keep you moving and pain-free.</p>
+  </div>
+
+  <div class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg hover:bg-opacity-20 transition">
+    <h2 class="text-2xl font-semibold">Dr. Amina Benali</h2>
+    <p class="text-sm text-gray-300">Psychiatrist</p>
+    <p class="mt-2 text-sm">Here to support your mental well-being with therapy and care strategies.</p>
+  </div>
+</div>
+-->
+
+<div class="grid grid-cols-3 gap-6">
+  <a
+    *ngFor="let doctor of doctors"
+    [routerLink]="doctor.id ? ['/rdv', doctor.id] : ['/rdv']"
+    class="bg-white bg-opacity-10 backdrop-blur rounded-lg p-6 shadow-lg flex hover:bg-opacity-20 transition cursor-pointer no-underline text-yellow-400"
+  >
+    <!-- Partie gauche : Infos texte -->
+    <div class="flex-1 pr-4">
+      <h2 class="text-xl font-bold mb-2 flex items-center">
+        <i class="fas fa-user-md mr-2 text-blue-400"></i>{{ doctor.doctorname }}
+      </h2>
+
+      <p class="text-sm flex items-center text-gray-300">
+        <i class="fas fa-stethoscope mr-2 text-pink-400"></i>{{ doctor.speciality }}
+      </p>
+
+      <p class="text-sm flex items-center text-gray-300">
+        <i class="fas fa-hospital mr-2 text-green-400"></i>{{ doctor.hospital }}
+      </p>
+
+      <p class="text-sm flex items-center text-gray-300">
+        <i class="fas fa-map-marker-alt mr-2 text-yellow-400"></i>{{ doctor.address }}
+      </p>
+
+      <!-- Score en étoiles -->
+      <div class="mt-2 flex">
+        <ng-container *ngFor="let star of getStars(doctor.score)">
+          <span [class.text-yellow-400]="star" [class.text-gray-400]="!star">★</span>
+        </ng-container>
+      </div>
+
+      <p class="mt-2 text-sm italic text-white">{{ doctor.description }}</p>
+    </div>
+
+    <div class="w-[200px] h-[200px] rounded-full overflow-hidden">
+      <img
+        *ngIf="doctor.gender"
+        ngSrc="/assets/images/male.png"
+        alt="Photo du docteur masculin"
+        class="w-full h-full object-cover"
+        height="512" width="512"/>
+      <img
+        *ngIf="!doctor.gender"
+        ngSrc="/assets/images/female.png"
+        alt="Photo du docteur féminin"
+        class="w-full h-full object-cover"
+        height="512" width="512"/>
+    </div>
+  </a>
+</div>
+</body>
+</html>

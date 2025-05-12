@@ -1,0 +1,174 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100 bg-transparent">
+  <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">🩺 Register New family</h2>
+
+    <form (ngSubmit)="onSubmit()" #familyForm="ngForm" novalidate>
+
+      <!-- family Name -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">family Name *</label>
+        <input type="text" [(ngModel)]="family.familyname" name="familyname"
+               required minlength="3" class="form-input w-full"
+               #name="ngModel" />
+        <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
+          Name is required (min 3 characters).
+        </p>
+      </div>
+
+      <!-- Patient Name -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Patient Name *</label>
+        <input type="text" [(ngModel)]="family.patientname" name="patientname"
+               required minlength="3" class="form-input w-full"
+               #name="ngModel" />
+        <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
+          Your Patient Name is required (min 3 characters).
+        </p>
+      </div>
+
+      <!-- Relative Name -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Name of Relative *</label>
+        <input type="text" [(ngModel)]="family.relative" name="relative"
+               required minlength="3" class="form-input w-full"
+               #name="ngModel" />
+        <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
+          Name is required (min 3 characters).
+        </p>
+      </div>
+
+      <!-- Family Relative -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Relative *</label>
+        <select [(ngModel)]="family.relationship" name="relationship"
+                required class="form-select w-full border rounded px-3 py-2"
+                #relationship="ngModel">
+          <option value="" disabled selected>Family Relative</option>
+          <option value="Son">Son</option>
+          <option value="Daughter">Daughter</option>
+          <option value="Spouse">Spouse</option>
+          <option value="Grandson ">Grandson </option>
+          <option value="Granddaughter ">Granddaughter</option>
+          <option value="Friend">Friend</option>
+          <option value="Vital assitant">Vital assitant</option>
+          <option value="Nurse">Nurse</option>
+        </select>
+        <p *ngIf="relationship.invalid && relationship.touched" class="text-red-500 text-sm">
+          Family relative is required.
+        </p>
+      </div>
+
+      <!-- Address -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Address</label>
+        <input type="text" [(ngModel)]="family.address" name="address"
+               class="form-input w-full" />
+      </div>
+
+      <!-- Phone Number -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Phone Number *</label>
+        <input type="number" [(ngModel)]="family.phonenumber" name="phonenumber"
+               pattern="^[0-9]{8,15}$" required class="form-input w-full"
+               #phone="ngModel" />
+        <p *ngIf="phone.invalid && phone.touched" class="text-red-500 text-sm">
+          Enter a valid phone number (8–15 digits).
+        </p>
+      </div>
+
+      <!-- Insurance -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Medical Coverage Insurance</label>
+        <select [(ngModel)]="family.insurance" name="insurance"
+                required class="form-select w-full border rounded px-3 py-2"
+                #insurance="ngModel">
+          <option value="" disabled selected>Medical Coverage Insurance</option>
+          <option value="Medicare Plan A">Medicare Plan A</option>
+          <option value="Medicare Plan B">Medicare Plan B</option>
+          <option value="MediCare +">MediCare +</option>
+          <option value="All Major Plans">All Major Plans</option>
+          <option value="Medical Private">Medical Private</option>
+          <option value="Private Insurance">Private Insurance</option>
+          <option value="No Insurance">No Insurance</option>
+        </select>
+        <p *ngIf="insurance.invalid && insurance.touched" class="text-red-500 text-sm">
+          Please consider having a social or medical Coverage is better to avoid some adminstration issue.
+        </p>
+      </div>
+
+
+      <div class="mb-6">
+        <label for="invest" class="block text-sm font-bold mb-1">Montant à investir *</label>
+        <input
+          type="number"
+          id="invest"
+          name="invest"
+          [(ngModel)]="family.invest"
+          min="0"
+          step="0.01"
+          required
+          class="form-input w-full"
+          #investControl="ngModel"
+        />
+        <p *ngIf="investControl.invalid && investControl.touched && investControl.errors?.['required']" class="text-red-500 text-sm">
+          Le montant à investir est requis.
+        </p>
+        <p *ngIf="investControl.invalid && investControl.touched && investControl.errors?.['min']" class="text-red-500 text-sm">
+          Le montant doit être supérieur ou égal à 0.
+        </p>
+      </div>
+
+
+      <!-- Password -->
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-1">Password *</label>
+        <input
+          type="password"
+          [(ngModel)]="family.password"
+          name="password"
+          required
+          minlength="6"
+          class="form-input w-full"
+          #password="ngModel"
+        />
+        <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm">
+          Password must be at least 6 characters.
+        </p>
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-1">Repeat Password *</label>
+        <input
+          type="password"
+          [(ngModel)]="family.confirmPassword"
+          name="confirmPassword"
+          required
+          class="form-input w-full"
+          #confirmPassword="ngModel"
+        />
+        <p *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.['required']" class="text-red-500 text-sm">
+          Please confirm your password.
+        </p>
+        <p *ngIf="family.password !== family.confirmPassword && confirmPassword.touched" class="text-red-500 text-sm">
+          Passwords do not match.
+        </p>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+              [disabled]="!familyForm.valid"
+              [ngClass]="familyForm.valid ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'"
+              class="w-full text-white py-2 rounded transition">
+        Register
+      </button>
+
+      <!-- Hint message -->
+      <div *ngIf="familyForm.valid" class="mt-2 text-green-700 text-sm text-center">
+        ✅ All fields are valid. You can submit the form.
+      </div>
+
+    </form>
+  </div>
+</div>
+
+

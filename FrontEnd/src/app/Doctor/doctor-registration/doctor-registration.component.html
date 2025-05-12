@@ -1,0 +1,167 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100 bg-transparent">
+  <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">🩺 Register New Doctor</h2>
+
+    <form (ngSubmit)="onSubmit()" #doctorForm="ngForm" novalidate>
+
+      <!-- Doctor Name -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Doctor Name *</label>
+        <input type="text" [(ngModel)]="doctor.doctorname" name="doctorname"
+               required minlength="3" class="form-input w-full"
+               #name="ngModel" />
+        <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
+          Name is required (min 3 characters).
+        </p>
+      </div>
+
+      <!-- Gender Switch -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Gender</label>
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-medium">👩 Female</span>
+
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" [(ngModel)]="doctor.gender" name="gender" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-blue-600 transition-all duration-200"></div>
+            <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-all duration-200 peer-checked:translate-x-full"></div>
+          </label>
+
+          <span class="text-sm font-medium">👨 Male</span>
+        </div>
+      </div>
+
+
+
+      <!-- Speciality -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Speciality *</label>
+        <select [(ngModel)]="doctor.speciality" name="speciality"
+                required class="form-select w-full border rounded px-3 py-2"
+                #speciality="ngModel">
+          <option value="" disabled selected>Select a speciality</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Psychiatry">Psychiatry</option>
+          <option value="Endocrinology">Endocrinology</option>
+          <option value="Rheumatology">Rheumatology</option>
+          <option value="Osteopathy">Osteopathy</option>
+          <option value="Kinesitherapy">Kinesitherapy</option>Pulmonology
+          <option value="Otolaryngology (ORL)">Otolaryngology (ORL)</option>
+          <option value="Urology">Urology</option>
+          <option value="Radiology">Radiology</option>
+
+        </select>
+        <p *ngIf="speciality.invalid && speciality.touched" class="text-red-500 text-sm">
+          Speciality is required.
+        </p>
+      </div>
+
+      <!-- Address -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Address</label>
+        <input type="text" [(ngModel)]="doctor.address" name="address"
+               class="form-input w-full" />
+      </div>
+
+      <!-- Score -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Score (0-100)</label>
+        <input type="number" [(ngModel)]="doctor.score" name="score"
+               min="0" max="100" class="form-input w-full"
+               #score="ngModel" />
+        <p *ngIf="score.invalid && score.touched" class="text-red-500 text-sm">
+          Score must be between 0 and 100.
+        </p>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Phone Number *</label>
+        <input type="text" [(ngModel)]="doctor.phonenumber" name="phonenumber"
+               pattern="^[0-9]{8,15}$" required class="form-input w-full"
+               #phone="ngModel" />
+        <p *ngIf="phone.invalid && phone.touched" class="text-red-500 text-sm">
+          Enter a valid phone number (8–15 digits).
+        </p>
+      </div>
+
+      <!-- Insurance -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Medical Coverage Insurance</label>
+        <select [(ngModel)]="doctor.insurance" name="insurance"
+                required class="form-select w-full border rounded px-3 py-2"
+                #insurance="ngModel">
+          <option value="" disabled selected>Medical Coverage Insurance</option>
+          <option value="Medicare Plan A">Medicare Plan A</option>
+          <option value="Medicare Plan B">Medicare Plan B</option>
+          <option value="MediCare +">MediCare +</option>
+          <option value="All Major Plans">All Major Plans</option>
+          <option value="Medical Private">Medical Private</option>
+          <option value="Private Insurance">Private Insurance</option>
+          <option value="No Insurance">No Insurance</option>
+        </select>
+        <p *ngIf="insurance.invalid && insurance.touched" class="text-red-500 text-sm">
+          Please consider having a social or medical Coverage is better to avoid some adminstration issue.
+        </p>
+      </div>
+
+
+      <!-- Hospital -->
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-1">Hospital *</label>
+        <input type="text" [(ngModel)]="doctor.hospital" name="hospital"
+               required class="form-input w-full"
+               #hospital="ngModel" />
+        <p *ngIf="hospital.invalid && hospital.touched" class="text-red-500 text-sm">
+          Hospital is required.
+        </p>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-1">Password *</label>
+        <input type="password" [(ngModel)]="doctor.password" name="password"
+               required minlength="6" class="form-input w-full"
+               #password="ngModel" />
+        <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm">
+          Password must be at least 6 characters.
+        </p>
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-1">Repeat Password *</label>
+        <input
+          type="password"
+          [(ngModel)]="doctor.confirmPassword"
+          name="confirmPassword"
+          required
+          class="form-input w-full"
+          #confirmPassword="ngModel"
+        />
+        <p *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.['required']" class="text-red-500 text-sm">
+          Please confirm your password.
+        </p>
+        <p *ngIf="doctor.password !== doctor.confirmPassword && confirmPassword.touched" class="text-red-500 text-sm">
+          Passwords do not match.
+        </p>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+              [disabled]="!doctorForm.valid"
+              [ngClass]="doctorForm.valid ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'"
+              class="w-full text-white py-2 rounded transition">
+        Register
+      </button>
+
+      <!-- Hint message -->
+      <div *ngIf="doctorForm.valid" class="mt-2 text-green-700 text-sm text-center">
+        ✅ All fields are valid. You can submit the form.
+      </div>
+
+    </form>
+  </div>
+</div>
+
+

@@ -1,0 +1,23 @@
+.emergency-level-text {
+  font-weight: bold;
+}
+
+.emergency-level-text.good {
+  color: green;
+}
+
+.emergency-level-text.medium {
+  color: yellow;
+}
+
+.emergency-level-text.moderate {
+  color: orange;
+}
+
+.emergency-level-text.bad {
+  color: orangered; /* A slightly darker orange */
+}
+
+.emergency-level-text.urgent {
+  color: red;
+}

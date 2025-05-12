@@ -1,0 +1,155 @@
+<ng-container *ngIf="familyName && familyName.trim() !== ''">
+
+  <div class="bg-transparent text-white">
+
+    <div class="container mx-auto p-4 flex items-center">
+        <p class="text-4xl font-bold mb-2">Welcome, Member of Family {{ familyName }}!&ensp;</p>
+    </div>
+
+    <div class="flex justify-around mt-4">
+
+      <div class="p-4 bg-transparent bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
+        <img src="assets/icons/clock-icon.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+        <span class="font-semibold text-white">Current Time</span>
+        <span class="font-semibold text-white">{{ currentTime }}</span>
+      </div>
+
+      <div class="p-4 bg-transparent bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
+        <img src="assets/icons/door_icon.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">     <span class="font-semibold">Logins</span>
+        <span class="font-semibold text-white">{{ Our_family?.login }} Time(s)</span>
+      </div>
+
+      <div class="p-4 border-x-green-600 bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
+        <img src="assets/icons/Insurance.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+        <span class="font-semibold">Insurance</span>
+        <span class="font-semibold text-white">{{ Our_family?.insurance }}</span>
+      </div>
+
+      <div class="p-4 border-gray-600 bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
+        <img src="assets/icons/funds.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+        <span class="font-semibold">Current Funds</span>
+        <span class="font-semibold text-white">{{ Our_family?.invest }} $</span>
+      </div>
+    </div>
+
+
+    <div *ngIf="Our_family?.login === 0" class="mt-8 p-6 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-md text-white">
+      <h2 class="text-2xl font-semibold mb-4">We Care for Your Loved Ones</h2>
+      <p class="text-lg leading-relaxed">
+        In our application, your elder family member is treated with the utmost respect and care.
+        We understand how precious they are to you, and we are here to support you every step of the way.
+        Whether you're nearby or far away, our system keeps you informed, reassured, and connected.
+      </p>
+      <p class="text-lg leading-relaxed mt-4">
+        From daily medication tracking to personalized advice and remote updates, we ensure that
+        your beloved one's health and well-being are always our priority. Trust us to be the bridge
+        between you and your elder when you can't be there physically.
+      </p>
+    </div>
+
+    <div class="mt-8 space-y-10">
+
+      <!-- Feature 1 -->
+      <div class="flex flex-row-reverse items-start gap-6 mt-8 p-6 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-md text-white" style="min-height: 300px;">
+        <img src="assets/Welcoming/doctor.png" alt="Best Doctors" style="width: 300px; height: 300px;" class="mb-2">
+          <div class="flex flex-col justify-start h-full">
+            <h3 class="text-3xl font-bold text-yellow-200 mb-4">Top-tier Doctors at Your Service</h3>
+            <br>
+            <p class="text-xl leading-relaxed text-justify">We collaborate with a network of highly qualified, compassionate doctors who specialize in geriatric care.
+              Their expertise ensures your elderly loved ones receive personalized medical attention, accurate diagnoses, and ongoing treatment tailored to their unique health conditions.
+              With a focus on dignity, respect, and proactive care, we make sure every patient is in trusted, capable hands.</p>
+            <div class="mt-6">
+              <a
+                routerLink="/menu_doctors"
+                class="bg-blue-600 text-white text-xl py-2 px-4 rounded hover:bg-red-600 transition"
+                style="display: inline-block;"> Find a good doctor from our recommendation list
+              </a>
+            </div>
+        </div>
+      </div>
+
+        <!-- Feature 2 -->
+      <div class="flex flex-row-reverse items-start gap-6 mt-8 p-6 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-md text-white" style="min-height: 300px;">
+        <img src="assets/Welcoming/insurance.png" alt="Insurance Accepted" style="width: 300px; height: 300px;" class="mb-2">
+        <div class="flex flex-col justify-start h-full">
+          <h3 class="text-3xl font-bold text-yellow-200 mb-4">All Insurances Accepted</h3>
+          <br>
+          <p class="text-xl leading-relaxed text-justify">Our platform works seamlessly with all major insurance providers, removing the hassle of paperwork and coverage issues.
+            We believe quality care should be accessible and stress-free, which is why we handle the administrative side—so you can focus on your loved one’s well-being.
+            With full insurance integration, you gain peace of mind knowing that financial and medical needs are both covered.</p>
+          <div class="mt-6">
+            <a
+              routerLink="/menu_insurances"
+              class="bg-blue-600 text-white text-xl py-2 px-4 rounded hover:bg-red-600 transition"
+              style="display: inline-block;"
+            >
+              Check here our supported insurances.
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="flex flex-row-reverse items-start gap-6 mt-8 p-6 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-md text-white" style="min-height: 300px;">
+        <img src="assets/Welcoming/nursing.png" alt="Nursing Care" style="width: 300px; height: 300px;" class="mb-2">
+        <div class="flex flex-col justify-start h-full">
+          <h3 class="text-3xl font-bold text-yellow-200 mb-4">Comprehensive Home and Hospital Care</h3>
+          <br>
+          <p class="text-xl leading-relaxed text-justify">Whether your loved one is at home or in a hospital,
+            our dedicated team offers professional nursing and caregiving services tailored to their daily needs.
+            We prioritize safety, comfort, and emotional well-being, ensuring that every patient receives compassionate care.
+            From medical assistance to personal support, our services are designed to provide families with confidence and peace of mind.</p>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="flex flex-row-reverse items-start gap-6 mt-8 p-6 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-md text-white" style="min-height: 300px;">
+        <img src="assets/Welcoming/appointement.png" alt="Remote Appointments" style="width: 300px; height: 300px;" class="mb-2 object-cover rounded-lg shadow-lg">
+        <div class="flex flex-col justify-start h-full">
+          <h3 class="text-3xl font-bold text-yellow-200 mb-4">Remote Appointment Scheduling</h3>
+          <br>
+          <p class="text-xl leading-relaxed text-justify">
+            With our platform, scheduling appointments for your elderly family members has never been easier. Whether you're traveling, living abroad, or simply at work,
+            you can remotely coordinate healthcare visits and follow-ups. Our system sends real-time confirmations, reminders, and even enables video consultation requests
+            — so you’re always connected and in control. Take the stress out of caregiving with intelligent tools designed for long-distance support and family collaboration.
+          </p>
+          <div class="mt-6">
+            <a
+              routerLink="...."
+              class="bg-blue-600 text-white text-xl py-2 px-4 rounded hover:bg-red-600 transition"
+              style="display: inline-block;"> Have an appointment now !
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="flex flex-row-reverse items-start gap-6 mt-8 p-6 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-md text-white" style="min-height: 300px;">
+        <img src="assets/Welcoming/assistant.png" alt="Medication Assistant" style="width: 300px; height: 300px;" class="mb-2 object-cover rounded-lg shadow-lg">
+        <div class="flex flex-col justify-start h-full">
+          <h3 class="text-3xl font-bold text-yellow-200 mb-4">Smart Medication Assistant</h3>
+          <br>
+          <p class="text-xl leading-relaxed text-justify">Interact with our AI-powered medication assistant and experience a new level of care.
+            Designed for remote consultations, daily medication tracking, and instant health alerts, our system ensures your loved ones receive timely support—no matter where you are.
+            From reminders to emergency notifications, our intelligent assistant offers peace of mind and continuous monitoring. Ideal for families managing care from a distance.</p>
+          <div class="mt-6">
+            <a
+              routerLink="/medicalassitantq"
+              class="bg-blue-600 text-white text-xl py-2 px-4 rounded hover:bg-red-600 transition"
+              style="display: inline-block;"> Pass the medical diagnostic now !
+            </a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</ng-container>
+
+<ng-container *ngIf="!familyName || familyName.trim() === ''">
+  <div class="bg-transparent text-red-500">
+    <div class="container mx-auto p-4 flex items-center">
+      <p class="text-6xl font-bold mb-2">Please proceed to fill data in registration section to check your space... </p>
+      <img src="assets/icons/error-404.png" alt="Login" style="width: 500px; height: 500px;" class="mb-2">
+    </div>
+  </div>
+</ng-container>
