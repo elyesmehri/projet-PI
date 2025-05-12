@@ -1,0 +1,1424 @@
+[
+  {
+    "id" : 0,
+    "medicationName": "Escitalopram",
+    "category": "Psychiatry",
+    "description": "SSRI antidepressant",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 1,
+    "medicationName": "Aspirin",
+    "category": "Cardiology",
+    "description": "Antiplatelet, reduces blood clotting",
+    "dosage": "81mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 2,
+    "medicationName": "Atorvastatin",
+    "category": "Cardiology",
+    "description": "Statin, lowers cholesterol",
+    "dosage": "20mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 3,
+    "medicationName": "Lisinopril",
+    "category": "Cardiology",
+    "description": "ACE inhibitor, lowers blood pressure",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 4,
+    "medicationName": "Metoprolol",
+    "category": "Cardiology",
+    "description": "Beta-blocker, lowers heart rate",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 5,
+    "medicationName": "Furosemide",
+    "category": "Cardiology",
+    "description": "Diuretic, reduces fluid retention",
+    "dosage": "40mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 6,
+    "medicationName": "Levothyroxine",
+    "category": "Endocrinology",
+    "description": "Thyroid hormone replacement",
+    "dosage": "100mcg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 7,
+    "medicationName": "Metformin",
+    "category": "Endocrinology",
+    "description": "Biguanide, lowers blood sugar",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 8,
+    "medicationName": "Insulin Glargine",
+    "category": "Endocrinology",
+    "description": "Long-acting insulin",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 9,
+    "medicationName": "Sertraline",
+    "category": "Psychiatry",
+    "description": "SSRI antidepressant",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 10,
+    "medicationName": "Fluoxetine",
+    "category": "Psychiatry",
+    "description": "SSRI antidepressant",
+    "dosage": "20mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 11,
+    "medicationName": "Olanzapine",
+    "category": "Psychiatry",
+    "description": "Antipsychotic",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 12,
+    "medicationName": "Quetiapine",
+    "category": "Psychiatry",
+    "description": "Antipsychotic",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 13,
+    "medicationName": "Ibuprofen",
+    "category": "Analgesic",
+    "description": "NSAID, pain reliever",
+    "dosage": "200mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 14,
+    "medicationName": "Paracetamol",
+    "category": "Analgesic",
+    "description": "Pain reliever, fever reducer",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 15,
+    "medicationName": "Naproxen",
+    "category": "Analgesic",
+    "description": "NSAID, anti-inflammatory",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 16,
+    "medicationName": "Codeine",
+    "category": "Analgesic",
+    "description": "Opioid pain reliever",
+    "dosage": "30mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 17,
+    "medicationName": "Amoxicillin",
+    "category": "Antibiotic",
+    "description": "Penicillin antibiotic",
+    "dosage": "500mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 18,
+    "medicationName": "Azithromycin",
+    "category": "Antibiotic",
+    "description": "Macrolide antibiotic",
+    "dosage": "250mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 19,
+    "medicationName": "Ciprofloxacin",
+    "category": "Antibiotic",
+    "description": "Fluoroquinolone antibiotic",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 20,
+    "medicationName": "Omeprazole",
+    "category": "Gastrointestinal",
+    "description": "Proton pump inhibitor, reduces stomach acid",
+    "dosage": "20mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 21,
+    "medicationName": "Cetirizine",
+    "category": "Allergy",
+    "description": "Antihistamine, relieves allergy symptoms",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 22,
+    "medicationName": "Loratadine",
+    "category": "Allergy",
+    "description": "Antihistamine, relieves allergy symptoms",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 23,
+    "medicationName": "Montelukast",
+    "category": "Respiratory",
+    "description": "Leukotriene receptor antagonist, for asthma",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 24,
+    "medicationName": "Salbutamol",
+    "category": "Respiratory",
+    "description": "Bronchodilator, for asthma",
+    "dosage": "100mcg",
+    "form": "Inhaler",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 25,
+    "medicationName": "Tiotropium",
+    "category": "Respiratory",
+    "description": "Anticholinergic bronchodilator, for COPD",
+    "dosage": "18mcg",
+    "form": "Inhaler",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 26,
+    "medicationName": "Prednisone",
+    "category": "Endocrinology",
+    "description": "Corticosteroid, anti-inflammatory",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 27,
+    "medicationName": "Hydroxychloroquine",
+    "category": "Rheumatology",
+    "description": "DMARD, for lupus and RA",
+    "dosage": "200mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 28,
+    "medicationName": "Methotrexate",
+    "category": "Rheumatology",
+    "description": "DMARD, for rheumatoid arthritis",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 29,
+    "medicationName": "Allopurinol",
+    "category": "Rheumatology",
+    "description": "Xanthine oxidase inhibitor, for gout",
+    "dosage": "300mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 30,
+    "medicationName": "Tramadol",
+    "category": "Analgesic",
+    "description": "Opioid analgesic",
+    "dosage": "50mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 31,
+    "medicationName": "Gabapentin",
+    "category": "Neurology",
+    "description": "Anticonvulsant, for neuropathic pain",
+    "dosage": "300mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 32,
+    "medicationName": "Amitriptyline",
+    "category": "Psychiatry",
+    "description": "Tricyclic antidepressant",
+    "dosage": "25mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 33,
+    "medicationName": "Citalopram",
+    "category": "Psychiatry",
+    "description": "SSRI antidepressant",
+    "dosage": "20mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 34,
+    "medicationName": "Risperidone",
+    "category": "Psychiatry",
+    "description": "Antipsychotic",
+    "dosage": "2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {  
+    "id" : 35,
+    "medicationName": "Diazepam",
+    "category": "Neurology",
+    "description": "Benzodiazepine, for anxiety/seizures",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 36,
+    "medicationName": "Simvastatin",
+    "category": "Cardiology",
+    "description": "Statin, lowers cholesterol",
+    "dosage": "20mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 37,
+    "medicationName": "Ramipril",
+    "category": "Cardiology",
+    "description": "ACE inhibitor, lowers blood pressure",
+    "dosage": "2.5mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 38,
+    "medicationName": "Amlodipine",
+    "category": "Cardiology",
+    "description": "Calcium channel blocker, lowers blood pressure",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 39,
+    "medicationName": "Warfarin",
+    "category": "Cardiology",
+    "description": "Anticoagulant, prevents blood clots",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 40,
+    "medicationName": "Digoxin",
+    "category": "Cardiology",
+    "description": "Cardiac glycoside, for heart failure",
+    "dosage": "0.125mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 41,
+    "medicationName": "Levetiracetam",
+    "category": "Neurology",
+    "description": "Anticonvulsant, for epilepsy",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 42,
+    "medicationName": "Phenytoin",
+    "category": "Neurology",
+    "description": "Anticonvulsant, for epilepsy",
+    "dosage": "100mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 43,
+    "medicationName": "Topiramate",
+    "category": "Neurology",
+    "description": "Anticonvulsant, for epilepsy/migraine",
+    "dosage": "25mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 44,
+    "medicationName": "Ropinirole",
+    "category": "Neurology",
+    "description": "Dopamine agonist, for Parkinson's",
+    "dosage": "0.25mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 45,
+    "medicationName": "Donepezil",
+    "category": "Neurology",
+    "description": "Cholinesterase inhibitor, for Alzheimer's",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 46,
+    "medicationName": "Memantine",
+    "category": "Neurology",
+    "description": "NMDA antagonist, for Alzheimer's",
+    "dosage": "10mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 47,
+    "medicationName": "Carbamazepine",
+    "category": "Neurology",
+    "description": "Anticonvulsant, for epilepsy",
+    "dosage": "200mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 48,
+    "medicationName": "Clonazepam",
+    "category": "Neurology",
+    "description": "Benzodiazepine, for seizures/anxiety",
+    "dosage": "1mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 49,
+    "medicationName": "Riluzole",
+    "category": "Neurology",
+    "description": "Neuroprotective agent, for ALS",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 50,
+    "medicationName": "Lithium",
+    "category": "Psychiatry",
+    "description": "Mood stabilizer, for bipolar disorder",
+    "dosage": "300mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 51,
+    "medicationName": "Venlafaxine",
+    "category": "Psychiatry",
+    "description": "SNRI antidepressant",
+    "dosage": "75mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 52,
+    "medicationName": "Aripiprazole",
+    "category": "Psychiatry",
+    "description": "Antipsychotic",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 53,
+    "medicationName": "Sitagliptin",
+    "category": "Endocrinology",
+    "description": "DPP-4 inhibitor, for type 2 diabetes",
+    "dosage": "100mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 54,
+    "medicationName": "Empagliflozin",
+    "category": "Endocrinology",
+    "description": "SGLT2 inhibitor, for diabetes",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 56,
+    "medicationName": "Liraglutide",
+    "category": "Endocrinology",
+    "description": "GLP-1 agonist, for diabetes",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 57,
+    "medicationName": "Hydrocortisone",
+    "category": "Endocrinology",
+    "description": "Corticosteroid, for adrenal insufficiency",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 58,
+    "medicationName": "Methimazole",
+    "category": "Endocrinology",
+    "description": "Antithyroid agent, for hyperthyroidism",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 59,
+    "medicationName": "Testosterone",
+    "category": "Endocrinology",
+    "description": "Hormone replacement",
+    "dosage": "Varies",
+    "form": "Injection/Gel",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 60,
+    "medicationName": "Sulfasalazine",
+    "category": "Rheumatology",
+    "description": "DMARD, for inflammatory arthritis",
+    "dosage": "500mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 61,
+    "medicationName": "Etanercept",
+    "category": "Rheumatology",
+    "description": "TNF inhibitor, for autoimmune disease",
+    "dosage": "50mg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 62,
+    "medicationName": "Adalimumab",
+    "category": "Rheumatology",
+    "description": "Biologic DMARD, for autoimmune disease",
+    "dosage": "40mg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 63,
+    "medicationName": "Colchicine",
+    "category": "Rheumatology",
+    "description": "Anti-inflammatory, for gout",
+    "dosage": "0.6mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 64,
+    "medicationName": "Azathioprine",
+    "category": "Rheumatology",
+    "description": "Immunosuppressant",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 65,
+    "medicationName": "Leflunomide",
+    "category": "Rheumatology",
+    "description": "DMARD, for rheumatoid arthritis",
+    "dosage": "20mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" :66,
+    "medicationName": "Tocilizumab",
+    "category": "Rheumatology",
+    "description": "IL-6 inhibitor, for rheumatoid arthritis",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 67,
+    "medicationName": "Diclofenac",
+    "category": "Analgesic",
+    "description": "NSAID, pain reliever",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 68,
+    "medicationName": "Celecoxib",
+    "category": "Analgesic",
+    "description": "COX-2 inhibitor, NSAID",
+    "dosage": "200mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 69,
+    "medicationName": "Ketorolac",
+    "category": "Analgesic",
+    "description": "NSAID, pain reliever",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 70,
+    "medicationName": "Morphine",
+    "category": "Analgesic",
+    "description": "Opioid analgesic",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 71,
+    "medicationName": "Tizanidine",
+    "category": "Neurology",
+    "description": "Muscle relaxant",
+    "dosage": "2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 72,
+    "medicationName": "Cyclobenzaprine",
+    "category": "Neurology",
+    "description": "Muscle relaxant",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 73,
+    "medicationName": "Baclofen",
+    "category": "Neurology",
+    "description": "Muscle relaxant",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 74,
+    "medicationName": "Dantrolene",
+    "category": "Neurology",
+    "description": "Muscle relaxant",
+    "dosage": "25mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 75,
+    "medicationName": "Capsaicin",
+    "category": "Analgesic",
+    "description": "Topical pain reliever",
+    "dosage": "Various",
+    "form": "Cream",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 76,
+    "medicationName": "Lidocaine",
+    "category": "Analgesic",
+    "description": "Local anesthetic",
+    "dosage": "Various",
+    "form": "Patch",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 77,
+    "medicationName": "Methylprednisolone",
+    "category": "Endocrinology",
+    "description": "Corticosteroid, anti-inflammatory",
+    "dosage": "4mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 78,
+    "medicationName": "Magnesium Sulfate",
+    "category": "Neurology",
+    "description": "Mineral supplement, muscle relaxant",
+    "dosage": "Various",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 79,
+    "medicationName": "Formoterol",
+    "category": "Respiratory",
+    "description": "Long-acting bronchodilator",
+    "dosage": "12mcg",
+    "form": "Inhaler",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 80,
+    "medicationName": "Theophylline",
+    "category": "Respiratory",
+    "description": "Bronchodilator",
+    "dosage": "200mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 81,
+    "medicationName": "Omalizumab",
+    "category": "Respiratory",
+    "description": "Monoclonal antibody, for asthma",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 82,
+    "medicationName": "Ipratropium",
+    "category": "Respiratory",
+    "description": "Anticholinergic bronchodilator",
+    "dosage": "17mcg",
+    "form": "Inhaler",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 83,
+    "medicationName": "Fluticasone Propionate",
+    "category": "Respiratory",
+    "description": "Inhaled corticosteroid",
+    "dosage": "50mcg",
+    "form": "Inhaler",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 84,
+    "medicationName": "Amoxicillin-Clavulanate",
+    "category": "Otolaryngology",
+    "description": "Antibiotic, for ENT infections",
+    "dosage": "500/125mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 85,
+    "medicationName": "Fluticasone Nasal Spray",
+    "category": "Otolaryngology",
+    "description": "Corticosteroid nasal spray",
+    "dosage": "50mcg/spray",
+    "form": "Nasal Spray",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 86,
+    "medicationName": "Mometasone Furoate",
+    "category": "Otolaryngology",
+    "description": "Corticosteroid nasal spray",
+    "dosage": "50mcg/spray",
+    "form": "Nasal Spray",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 87,
+    "medicationName": "Erythromycin",
+    "category": "Otolaryngology",
+    "description": "Macrolide antibiotic",
+    "dosage": "250mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 88,
+    "medicationName": "N-Acetylcysteine",
+    "category": "Otolaryngology",
+    "description": "Mucolytic",
+    "dosage": "600mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 89,
+    "medicationName": "Xylometazoline",
+    "category": "Otolaryngology",
+    "description": "Nasal decongestant",
+    "dosage": "0.1%",
+    "form": "Nasal Spray",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 90,
+    "medicationName": "Hydrocortisone Ear Drops",
+    "category": "Otolaryngology",
+    "description": "Corticosteroid ear drops",
+    "dosage": "Various",
+    "form": "Ear Drops",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 91,
+    "medicationName": "Tamsulosin",
+    "category": "Urology",
+    "description": "Alpha-blocker, for BPH",
+    "dosage": "0.4mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 92,
+    "medicationName": "Finasteride",
+    "category": "Urology",
+    "description": "5-alpha reductase inhibitor, for BPH",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 93,
+    "medicationName": "Oxybutynin",
+    "category": "Urology",
+    "description": "Anticholinergic, for overactive bladder",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 94,
+    "medicationName": "Dutasteride",
+    "category": "Urology",
+    "description": "5-alpha reductase inhibitor, for BPH",
+    "dosage": "0.5mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 95,
+    "medicationName": "Tolterodine",
+    "category": "Urology",
+    "description": "Antimuscarinic, for bladder control",
+    "dosage": "2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 96,
+    "medicationName": "Sildenafil",
+    "category": "Urology",
+    "description": "PDE5 inhibitor, for erectile dysfunction",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 97,
+    "medicationName": "Alfuzosin",
+    "category": "Urology",
+    "description": "Alpha-blocker, for urinary symptoms",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 98,
+    "medicationName": "Desmopressin",
+    "category": "Urology",
+    "description": "Antidiuretic hormone, for nocturia",
+    "dosage": "0.2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 99,
+    "medicationName": "Leuprolide",
+    "category": "Urology",
+    "description": "GnRH agonist, for prostate cancer",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 100,
+    "medicationName": "Nitrofurantoin",
+    "category": "Urology",
+    "description": "Antibacterial, for UTI",
+    "dosage": "100mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 101,
+    "medicationName": "Nebivolol",
+    "category": "Cardiology",
+    "description": "Beta-blocker for hypertension",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 102,
+    "medicationName": "Ivabradine",
+    "category": "Cardiology",
+    "description": "Heart rate lowering agent for angina",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 103,
+    "medicationName": "Eplerenone",
+    "category": "Cardiology",
+    "description": "Aldosterone antagonist for heart failure",
+    "dosage": "25mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 104,
+    "medicationName": "Diltiazem",
+    "category": "Cardiology",
+    "description": "Calcium channel blocker for hypertension/angina",
+    "dosage": "30mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 105,
+    "medicationName": "Verapamil",
+    "category": "Cardiology",
+    "description": "Calcium channel blocker for hypertension/angina",
+    "dosage": "40mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id": 106,
+    "medicationName": "Sumatriptan",
+    "category": "Neurology",
+    "description": "Antimigraine agent",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 107,
+    "medicationName": "Candesartan",
+    "category": "Cardiology",
+    "description": "Angiotensin II receptor blocker for hypertension/heart failure",
+    "dosage": "8mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 108,
+    "medicationName": "Valsartan",
+    "category": "Cardiology",
+    "description": "Angiotensin II receptor blocker for hypertension/heart failure",
+    "dosage": "80mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 109,
+    "medicationName": "Indapamide",
+    "category": "Cardiology",
+    "description": "Diuretic for hypertension",
+    "dosage": "1.5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 110,
+    "medicationName": "Nicardipine",
+    "category": "Cardiology",
+    "description": "Calcium channel blocker for hypertension/angina",
+    "dosage": "20mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 111,
+    "medicationName": "Lamotrigine",
+    "category": "Neurology",
+    "description": "Anticonvulsant for epilepsy/bipolar disorder",
+    "dosage": "25mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 112,
+    "medicationName": "Valproate",
+    "category": "Neurology",
+    "description": "Anticonvulsant/mood stabilizer for epilepsy/bipolar disorder",
+    "dosage": "250mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 113,
+    "medicationName": "Zonisamide",
+    "category": "Neurology",
+    "description": "Anticonvulsant for epilepsy",
+    "dosage": "100mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 114,
+    "medicationName": "Oxcarbazepine",
+    "category": "Neurology",
+    "description": "Anticonvulsant for epilepsy",
+    "dosage": "300mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 115,
+    "medicationName": "Primidone",
+    "category": "Neurology",
+    "description": "Anticonvulsant for epilepsy",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 116,
+    "medicationName": "Perampanel",
+    "category": "Neurology",
+    "description": "Anticonvulsant for epilepsy",
+    "dosage": "2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 117,
+    "medicationName": "Tiagabine",
+    "category": "Neurology",
+    "description": "Anticonvulsant for epilepsy",
+    "dosage": "4mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 118,
+    "medicationName": "Ethosuximide",
+    "category": "Neurology",
+    "description": "Anticonvulsant for absence seizures",
+    "dosage": "250mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 119,
+    "medicationName": "Tetrabenazine",
+    "category": "Neurology",
+    "description": "Dopamine depleting agent for Huntington's disease",
+    "dosage": "12.5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 120,
+    "medicationName": "Fingolimod",
+    "category": "Neurology",
+    "description": "Immunomodulator for multiple sclerosis",
+    "dosage": "0.5mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 121,
+    "medicationName": "Mirtazapine",
+    "category": "Psychiatry",
+    "description": "Tetracyclic antidepressant",
+    "dosage": "15mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+     "id": 122,
+     "medicationName": "Pregabalin",
+     "category": "Neurology",
+     "description" : "Anticonvulsant, for neuropathic pain",
+     "dosage": "75mg",
+     "form": "Capsule",
+     "laboratory": "Various"
+ },
+ {
+    "id" : 123,
+    "medicationName": "Nortriptyline",
+    "category": "Psychiatry",
+    "description": "Tricyclic antidepressant",
+    "dosage": "25mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 124,
+    "medicationName": "Desvenlafaxine",
+    "category": "Psychiatry",
+    "description": "SNRI antidepressant",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 125,
+    "medicationName": "Ziprasidone",
+    "category": "Psychiatry",
+    "description": "Atypical antipsychotic",
+    "dosage": "40mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 126,
+    "medicationName": "Paliperidone",
+    "category": "Psychiatry",
+    "description": "Atypical antipsychotic",
+    "dosage": "3mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 127,
+    "medicationName": "Buspirone",
+    "category": "Psychiatry",
+    "description": "Anxiolytic",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 128,
+    "medicationName": "Lurasidone",
+    "category": "Psychiatry",
+    "description": "Atypical antipsychotic",
+    "dosage": "40mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 129,
+    "medicationName": "Tranylcypromine",
+    "category": "Psychiatry",
+    "description": "MAOI antidepressant",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 130,
+    "medicationName": "Bupropion",
+    "category": "Psychiatry",
+    "description": "Antidepressant",
+    "dosage": "150mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 131,
+    "medicationName": "Canagliflozin",
+    "category": "Endocrinology",
+    "description": "SGLT2 inhibitor for type 2 diabetes",
+    "dosage": "100mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 132,
+    "medicationName": "Dapagliflozin",
+    "category": "Endocrinology",
+    "description": "SGLT2 inhibitor for type 2 diabetes",
+    "dosage": "10mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 133,
+    "medicationName": "Exenatide",
+    "category": "Endocrinology",
+    "description": "GLP-1 receptor agonist for type 2 diabetes",
+    "dosage": "5mcg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 134,
+    "medicationName": "Nateglinide",
+    "category": "Endocrinology",
+    "description": "Meglitinide for type 2 diabetes",
+    "dosage": "60mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 135,
+    "medicationName": "Repaglinide",
+    "category": "Endocrinology",
+    "description": "Meglitinide for type 2 diabetes",
+    "dosage": "2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 136,
+    "medicationName": "Pioglitazone",
+    "category": "Endocrinology",
+    "description": "Thiazolidinedione for type 2 diabetes",
+    "dosage": "15mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 137,
+    "medicationName": "Rosiglitazone",
+    "category": "Endocrinology",
+    "description": "Thiazolidinedione for type 2 diabetes",
+    "dosage": "4mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 138,
+    "medicationName": "Liothyronine",
+    "category": "Endocrinology",
+    "description": "Thyroid hormone replacement for hypothyroidism",
+    "dosage": "25mcg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 139,
+    "medicationName": "Fludrocortisone",
+    "category": "Endocrinology",
+    "description": "Mineralocorticoid for adrenal insufficiency",
+    "dosage": "0.1mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+        "id" : 159,
+        "medicationName": "Mirtazapine",
+        "category": "Psychiatry",
+        "description": "Tetracyclic antidepressant",
+        "dosage": "15mg",
+        "form": "Tablet",
+        "laboratory": "Various"
+  },
+  {
+    "id" : 141,
+    "medicationName": "Baricitinib",
+    "category": "Rheumatology",
+    "description": "JAK inhibitor for rheumatoid arthritis",
+    "dosage": "2mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 142,
+    "medicationName": "Tofacitinib",
+    "category": "Rheumatology",
+    "description": "JAK inhibitor for rheumatoid arthritis",
+    "dosage": "5mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 143,
+    "medicationName": "Anakinra",
+    "category": "Rheumatology",
+    "description": "IL-1 receptor antagonist for rheumatoid arthritis",
+    "dosage": "100mg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 144,
+    "medicationName": "Canakinumab",
+    "category": "Rheumatology",
+    "description": "IL-1 beta inhibitor for periodic fever syndromes",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 145,
+    "medicationName": "Belimumab",
+    "category": "Rheumatology",
+    "description": "BLyS inhibitor for lupus",
+    "dosage": "10mg/kg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 146,
+    "medicationName": "Abatacept",
+    "category": "Rheumatology",
+    "description": "T-cell costimulation modulator for rheumatoid arthritis",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 147,
+    "medicationName": "Certolizumab",
+    "category": "Rheumatology",
+    "description": "TNF inhibitor for Crohn's disease/RA",
+    "dosage": "400mg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 148,
+    "medicationName": "Golimumab",
+    "category": "Rheumatology",
+    "description": "TNF inhibitor for ulcerative colitis/RA",
+    "dosage": "50mg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 149,
+    "medicationName": "Ustekinumab",
+    "category": "Rheumatology",
+    "description": "IL-12/23 inhibitor for psoriasis/Crohn's disease",
+    "dosage": "Varies",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 150,
+    "medicationName": "Secukinumab",
+    "category": "Rheumatology",
+    "description": "IL-17A inhibitor for ankylosing spondylitis/psoriasis",
+    "dosage": "150mg",
+    "form": "Injection",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 151,
+    "medicationName": "Etoricoxib",
+    "category": "Osteopathy",
+    "description": "COX-2 selective NSAID for pain/inflammation",
+    "dosage": "60mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 152,
+    "medicationName": "Piroxicam",
+    "category": "Osteopathy",
+    "description": "NSAID for pain/inflammation",
+    "dosage": "20mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 153,
+    "medicationName": "Meloxicam",
+    "category": "Osteopathy",
+    "description": "NSAID for pain/inflammation",
+    "dosage": "15mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 154,
+    "medicationName": "Nabumetone",
+    "category": "Osteopathy",
+    "description": "NSAID for pain/inflammation",
+    "dosage": "1000mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 155,
+    "medicationName": "Indomethacin",
+    "category": "Osteopathy",
+    "description": "NSAID for pain/inflammation",
+    "dosage": "25mg",
+    "form": "Capsule",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 156,
+    "medicationName": "Tenoxicam",
+    "category": "Osteopathy",
+    "description": "NSAID for pain/inflammation",
+    "dosage": "20mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 157,
+    "medicationName": "Aceclofenac",
+    "category": "Osteopathy",
+    "description": "NSAID for pain/inflammation",
+    "dosage": "100mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  },
+  {
+    "id" : 158,
+    "medicationName": "Tapentadol",
+    "category": "Osteopathy",
+    "description": "Opioid analgesic for moderate to severe pain",
+    "dosage": "50mg",
+    "form": "Tablet",
+    "laboratory": "Various"
+  }
+]
