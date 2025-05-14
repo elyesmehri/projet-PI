@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FamilyService } from "../../../services/family.service";
 import {Router} from "@angular/router";
-import {DoctorService} from "../../../services/doctor.service";
 
 @Component({
   selector: 'app-espace-famille',

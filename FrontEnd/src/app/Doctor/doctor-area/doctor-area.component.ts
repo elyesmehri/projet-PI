@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DoctorService } from '../../../services/doctor.service'; // Import DoctorService
 import { Subscription } from 'rxjs';
-import {Medication, Patient} from '../../Patient/patient.model'
+import {Patient} from '../../Patient/patient.model'
 
 @Component({
   selector: 'app-doctor-area',
@@ -79,5 +79,7 @@ getPatientsForDoctor(): void {
       this.currentPage--;
     }
   }
+
+
 }
 

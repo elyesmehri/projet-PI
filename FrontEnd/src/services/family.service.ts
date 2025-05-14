@@ -24,6 +24,15 @@ export class FamilyService {
 
   constructor(private http: HttpClient) {}
 
+
+  setFamilyName(familyName: string): void {
+    this.currentFamilyNameSubject.next(familyName);
+  }
+
+  getFamilyName(): Observable<string> {
+    return this.currentFamilyName$;
+  }
+
   updateInvest(familyname: string, invest: number): Observable<Family> {
     const params = new HttpParams()
       .set('familyname', familyname)
@@ -43,7 +52,7 @@ export class FamilyService {
       tap(response => console.log('Auth Response (boolean):', response)),
       map(response => {
         if (response === true) {
-          this.currentFamilyNameSubject.next(familyname);
+          this.setFamilyName(familyname);
           return true;
         } else {
           return false;

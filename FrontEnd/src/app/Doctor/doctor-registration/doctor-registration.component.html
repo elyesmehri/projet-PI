@@ -1,13 +1,16 @@
 <div class="flex justify-center items-center min-h-screen bg-gray-100 bg-transparent">
   <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
-    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">🩺 Register New Doctor</h2>
+    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">🩺 Register New doctor
+    </h2>
 
-    <form (ngSubmit)="onSubmit()" #doctorForm="ngForm" novalidate>
+    <form (ngSubmit)="onSubmit()" #doctor
+          Form="ngForm" novalidate>
 
-      <!-- Doctor Name -->
+      <!-- doctorName -->
       <div class="mb-4">
-        <label class="block text-sm font-bold mb-1">Doctor Name *</label>
-        <input type="text" [(ngModel)]="doctor.doctorname" name="doctorname"
+        <label class="block text-sm font-bold mb-1">doctor
+          Name *</label>
+        <input type="text" [(ngModel)]="doctorFill.doctorname" name="doctorname"
                required minlength="3" class="form-input w-full"
                #name="ngModel" />
         <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
@@ -15,28 +18,38 @@
         </p>
       </div>
 
-      <!-- Gender Switch -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Gender</label>
-        <div class="flex items-center gap-3">
-          <span class="text-sm font-medium">👩 Female</span>
-
-          <label class="relative inline-flex items-center cursor-pointer">
-            <input type="checkbox" [(ngModel)]="doctor.gender" name="gender" class="sr-only peer">
-            <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-blue-600 transition-all duration-200"></div>
-            <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-all duration-200 peer-checked:translate-x-full"></div>
+        <div class="flex items-center gap-6">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              [(ngModel)]="doctorFill.gender"
+              name="gender"
+              [value]="'female'"
+              class="accent-pink-500"
+            />
+            <span class="text-sm font-medium">👩 Female</span>
           </label>
 
-          <span class="text-sm font-medium">👨 Male</span>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              [(ngModel)]="doctorFill.gender"
+              name="gender"
+              [value]="'male'"
+              class="accent-blue-500"
+            />
+            <span class="text-sm font-medium">👨 Male</span>
+          </label>
         </div>
       </div>
-
 
 
       <!-- Speciality -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Speciality *</label>
-        <select [(ngModel)]="doctor.speciality" name="speciality"
+        <select [(ngModel)]="doctorFill.speciality" name="speciality"
                 required class="form-select w-full border rounded px-3 py-2"
                 #speciality="ngModel">
           <option value="" disabled selected>Select a speciality</option>
@@ -60,25 +73,13 @@
       <!-- Address -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Address</label>
-        <input type="text" [(ngModel)]="doctor.address" name="address"
+        <input type="text" [(ngModel)]="doctorFill.address" name="address"
                class="form-input w-full" />
       </div>
 
-      <!-- Score -->
-      <div class="mb-4">
-        <label class="block text-sm font-bold mb-1">Score (0-100)</label>
-        <input type="number" [(ngModel)]="doctor.score" name="score"
-               min="0" max="100" class="form-input w-full"
-               #score="ngModel" />
-        <p *ngIf="score.invalid && score.touched" class="text-red-500 text-sm">
-          Score must be between 0 and 100.
-        </p>
-      </div>
-
-      <!-- Phone Number -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Phone Number *</label>
-        <input type="text" [(ngModel)]="doctor.phonenumber" name="phonenumber"
+        <input type="number" [(ngModel)]="doctorFill.phonenumber" name="phonenumber"
                pattern="^[0-9]{8,15}$" required class="form-input w-full"
                #phone="ngModel" />
         <p *ngIf="phone.invalid && phone.touched" class="text-red-500 text-sm">
@@ -89,7 +90,7 @@
       <!-- Insurance -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Medical Coverage Insurance</label>
-        <select [(ngModel)]="doctor.insurance" name="insurance"
+        <select [(ngModel)]="doctorFill.insurance" name="insurance"
                 required class="form-select w-full border rounded px-3 py-2"
                 #insurance="ngModel">
           <option value="" disabled selected>Medical Coverage Insurance</option>
@@ -110,7 +111,7 @@
       <!-- Hospital -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Hospital *</label>
-        <input type="text" [(ngModel)]="doctor.hospital" name="hospital"
+        <input type="text" [(ngModel)]="doctorFill.hospital" name="hospital"
                required class="form-input w-full"
                #hospital="ngModel" />
         <p *ngIf="hospital.invalid && hospital.touched" class="text-red-500 text-sm">
@@ -121,11 +122,24 @@
       <!-- Password -->
       <div class="mb-6">
         <label class="block text-sm font-bold mb-1">Password *</label>
-        <input type="password" [(ngModel)]="doctor.password" name="password"
-               required minlength="6" class="form-input w-full"
-               #password="ngModel" />
-        <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm">
+        <input
+          type="password"
+          [(ngModel)]="doctorFill.password"
+          (input)="checkPasswordStrength()"
+          name="password"
+          required
+          minlength="6"
+          class="form-input w-full"
+          #password="ngModel"
+        />
+        <p *ngIf="password.invalid && password.touched && password.errors?.['required']" class="text-red-500 text-sm">
+          Password is required.
+        </p>
+        <p *ngIf="password.invalid && password.touched && password.errors?.['minlength']" class="text-red-500 text-sm">
           Password must be at least 6 characters.
+        </p>
+        <p *ngIf="passwordStrength" class="text-sm mt-1">
+          Strength: <span [ngClass]="getPasswordStrengthClass()">{{ passwordStrength }}</span>
         </p>
       </div>
 
@@ -133,7 +147,7 @@
         <label class="block text-sm font-bold mb-1">Repeat Password *</label>
         <input
           type="password"
-          [(ngModel)]="doctor.confirmPassword"
+          [(ngModel)]="doctorFill.confirmPassword"
           name="confirmPassword"
           required
           class="form-input w-full"
@@ -142,7 +156,7 @@
         <p *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.['required']" class="text-red-500 text-sm">
           Please confirm your password.
         </p>
-        <p *ngIf="doctor.password !== doctor.confirmPassword && confirmPassword.touched" class="text-red-500 text-sm">
+        <p *ngIf="doctorFill.password !== doctorFill.confirmPassword && confirmPassword.touched" class="text-red-500 text-sm">
           Passwords do not match.
         </p>
       </div>

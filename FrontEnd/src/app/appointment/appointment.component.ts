@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { DoctorService } from '../../services/doctor.service';
 import { Doctor } from '../Doctor/doctor.model';
 import {AppointmentService} from "../../services/appointment.service";
 import {Appointment} from "./appointment.model";
 import {Location} from "@angular/common";
+import { FamilyService } from "../../services/family.service";
+import {BehaviorSubject, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-appointment',
@@ -26,7 +28,7 @@ export class AppointmentComponent implements OnInit {
     emergency: 0,
     quoted: false,
     description: '',
-    skipped: false
+    skipped: false,
   };
 
   appointmentFill = {
@@ -36,7 +38,7 @@ export class AppointmentComponent implements OnInit {
     date: new Date(),
     emergency: 0,
     description: '',
-    speciality: ''
+    speciality: '',
   }
 
   emergencyLevels = [
@@ -50,16 +52,21 @@ export class AppointmentComponent implements OnInit {
   emergencyText: string = 'Good';
   emergencyClass: string = 'good'; // Initial class
 
+  private currentFamilyNameSubject = new BehaviorSubject<string>(''); // BehaviorSubject
+  public currentFamilyName$ = this.currentFamilyNameSubject.asObservable(); // Observable
+
   submissionError: string = '';
 
   doctorId!: number;
   doctor!: Doctor; // store doctor information
 
+
   constructor(
     private route: ActivatedRoute,
     private appointmentService: AppointmentService,
     private doctorService: DoctorService,
-    private location: Location
+    private familyService : FamilyService,
+    private router : Router
   ) {
   }
 
@@ -107,9 +114,8 @@ export class AppointmentComponent implements OnInit {
     );
   }
 
-
-
   submitAppointment() {
+
     const appointment: Appointment = {
       id: 0,
       familyname: this.appointmentFill.familyname,
@@ -124,21 +130,17 @@ export class AppointmentComponent implements OnInit {
       skipped: false
     };
 
-    console.log('Raw date:', this.appointmentFill.date);
-    console.log('full boody before sending ...', appointment);
-
     this.appointmentService.BookAppointment(appointment).subscribe({
       next: (res) => {
-        console.log('Full response:', res);
-        alert('Appointment Quoted!');
-        this.location.back();
-
-
       },
       error: (err) => {
-        console.error('Error booking appointment:', err);
-        alert('Please enter valid data and try again.');
-        this.submissionError = 'Please enter valid data and try again.'; // Optionally store the error message
+
+        const familyname = this.appointmentFill.familyname;
+        this.familyService.setFamilyName(familyname);
+
+        console.log('✔️ Appointment booked successfully. Emitted family name:', familyname);
+        this.router.navigate (['familyarea'])
+        // You can add other actions here if needed, or leave it as is.
       }
     });
   }
