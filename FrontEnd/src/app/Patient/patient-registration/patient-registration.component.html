@@ -1,16 +1,15 @@
-<div class="mt-8 bg-transparent text-white">
-  <div class="container mx-auto p-4 flex items-center justify-center">
-  </div>
-</div>
+<div class="min-h-screen bg-gray-100 bg-transparent">
+  <div class="container mx-auto py-8">
+    <h1 class="text-4xl font-bold text-center text-white mb-8">Welcome Member of Family <span style="color: yellow;">{{ familyname }}</span> </h1>
+    <h1 class="text-4xl font-bold text-center text-white mb-8"> To Patient Resigstration Menu ! </h1>
+    <br>
 
-<div class="flex justify-center items-center min-h-screen bg-gray-100 bg-transparent">
-  <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
-<!--    <p class="text-4xl font-bold mb-2">Welcome, Member of Family {{ familyName }}!&ensp;</p>--->
-
-    <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800"> Register New patient</h2>
-
+    <div class="flex justify-center items-start">
+      <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800"> Register New Patient </h2>
 
     <form (ngSubmit)="onSubmit()" #patientForm="ngForm" novalidate>
+
       <!-- patient Name -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">patient Name *</label>
@@ -27,49 +26,48 @@
         <label class="block text-sm font-bold mb-1">Gender *</label>
         <div class="flex gap-4 items-center">
           <label class="flex items-center gap-2">
-            <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="'female'" required />
+            <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="false" required />
             <span>👩 Female</span>
           </label>
           <label class="flex items-center gap-2">
-            <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="'male'" required />
+            <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="true" required />
             <span>👨 Male</span>
           </label>
         </div>
       </div>
 
-      <input type="number" [(ngModel)]="patient_Fill.age" name="age"
-             required min="1" max="120" class="form-input w-full text-center"
-             #age="ngModel" />
-      <p *ngIf="age.invalid && age.touched" class="text-red-500 text-sm">
-        Age must be between 1 and 120.
+      <input type="number" [(ngModel)]="patient_Fill.age" name="Age"
+             required min="60" max="100" class="form-input w-full text-center"
+             #Age="ngModel" />
+      <p *ngIf="Age.invalid && Age.touched" class="text-red-500 text-sm">
+        Age must be between 60 and 100.
       </p>
-
 
       <!-- Address -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Address</label>
-        <input type="text" [(ngModel)]="patient_Fill.address" name="address"
+        <input type="text" [(ngModel)]="patient_Fill.address" name="Address"
                class="form-input w-full" />
       </div>
 
-      <!-- Phone Number -->
       <div class="mb-4">
         <label class="block text-sm font-bold mb-1">Phone Number *</label>
         <input
-          type="number"
+          type="text"
           [(ngModel)]="patient_Fill.phoneNumber"
           name="phoneNumber"
           required
-          min="10000000"
-          max="99999999"
+          pattern="^[0-9]{8}$"
           class="form-input w-full"
           #phone="ngModel"
         />
-        <p *ngIf="phone.invalid && phone.touched" class="text-red-500 text-sm">
+        <p *ngIf="phone.invalid && phone.touched && phone.errors?.['required']" class="text-red-500 text-sm">
+          Phone number is required.
+        </p>
+        <p *ngIf="phone.invalid && phone.touched && phone.errors?.['pattern']" class="text-red-500 text-sm">
           Phone number must be exactly 8 digits.
         </p>
       </div>
-
 
       <!-- Medical State -->
       <div class="mb-4">
@@ -89,15 +87,35 @@
       <!-- Password -->
       <div class="mb-6">
         <label class="block text-sm font-bold mb-1">Password *</label>
-        <input type="password" [(ngModel)]="patient_Fill.password" name="password"
-               required minlength="6" class="form-input w-full"
-               #password="ngModel" />
-        <p class = "text-sm text-blue"> Please inform your patient about his password and copy it somewhere else</p>
-        <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm">
-          Password must be at least 6 characters.
+        <input
+          type="password"
+          [(ngModel)]="patient_Fill.password"
+          (input)="checkPasswordStrength()"
+          name="password"
+          required
+          minlength="8"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+          class="form-input w-full"
+          #password="ngModel"
+        />
+        <p class="text-sm text-blue-500 font-semibold">
+          Please inform your patient about their password and copy it somewhere else  !
+        </p>
+        <p *ngIf="password.invalid && password.touched && password.errors?.['required']" class="text-red-500 text-sm">
+          Password is required.
+        </p>
+        <p *ngIf="password.invalid && password.touched && password.errors?.['minlength']" class="text-red-500 text-sm">
+          Password must be at least 8 characters.
+        </p>
+        <p *ngIf="password.invalid && password.touched && password.errors?.['pattern']" class="text-red-500 text-sm">
+          Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+        </p>
+        <p *ngIf="passwordStrength" class="text-sm mt-1">
+          Strength: <span [ngClass]="getPasswordStrengthClass()">{{ passwordStrength }}</span>
         </p>
       </div>
 
+      <!--- Confirm Password --->
       <div class="mb-6">
         <label class="block text-sm font-bold mb-1">Repeat Password *</label>
         <input
@@ -115,12 +133,6 @@
           Passwords do not match.
         </p>
       </div>
-
-      <!-- Submit -->
-      <button type="submit" (click)="onSubmit()" class="bg-red-500 text-white px-4 py-2">
-        Test Submit
-      </button>
-
       <button type="submit"
               [disabled]="!patientForm.valid"
               [ngClass]="patientForm.valid ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'"
@@ -131,6 +143,13 @@
       <!-- Hint message -->
       <div *ngIf="patientForm.valid" class="mt-2 text-green-700 text-sm text-center">
         ✅ All fields are valid. You can submit the form.
+      </div>
+
+      <div *ngIf="registrationSuccess" class="mt-4 text-green-600 font-semibold">
+        ✅ Patient added successfully!
+      </div>
+      <div *ngIf="registrationError" class="mt-4 text-red-600 font-semibold">
+        ❌ Registration failed. Please try again.
       </div>
 
     </form>

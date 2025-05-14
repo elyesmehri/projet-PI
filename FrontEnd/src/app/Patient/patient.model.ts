@@ -4,6 +4,7 @@ export interface Patient {
   age: number;
   gender: boolean;
   address: string;
-  phoneNumber: number;
+  phoneNumber: string;
   medical_state : number;
+  password : string;
 }

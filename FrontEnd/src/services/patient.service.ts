@@ -31,16 +31,17 @@ export class PatientService {
     return this.http.get<Patient[]>(`${this.baseUrl}/all`);
   }
 
-  addOne(doctor: {
+  addOne(patient: {
+    id : number;
     patientName: string;
     age: number;
     gender: boolean;
     address: string;
-    phoneNumber: number;
+    phoneNumber: string;
     password: string;
     medical_state: string
   }): Observable<Patient> {
-    return this.http.post<Patient>(`${this.baseUrl}/add`, doctor);
+    return this.http.post<Patient>(`${this.baseUrl}/add`, patient);
   }
 
   Login(patientName: string, password: string): Observable<boolean> {

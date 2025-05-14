@@ -49,6 +49,7 @@ import { UpdatedoctorpasswordComponent } from './Doctor/updatedoctorpassword/upd
 import { DoctorAreaComponent } from './Doctor/doctor-area/doctor-area.component';
 import { NgOptimizedImage } from "@angular/common";
 
+
 import { PatientAreaComponent } from './Patient/patient-area/patient-area.component';
 import { PatientRegistrationComponent } from './Patient/patient-registration/patient-registration.component';
 import { UpdatepatientpasswordComponent } from './Patient/updatepatientpassword/updatepatientpassword.component';
