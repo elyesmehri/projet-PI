@@ -32,13 +32,12 @@ export class DoctorService {
 
   addOne(doctor: {
     doctorname: string;
+    gender: boolean;
     speciality: string;
     address: string;
-    score: number;
-    phonenumber: string;
+    phonenumber: number;
     insurance: string;
     hospital: string;
-    numberofpatients: number;
     password: string
   }): Observable<Doctor> {
     return this.http.post<Doctor>(`${this.baseUrl}/add`, doctor);

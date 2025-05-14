@@ -1,0 +1,28 @@
+.hover-bubble {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 182, 0, 0.8); /* Tailwind's gray-700 with opacity */
+  border-radius: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: -1;
+}
+
+.hover-bubble:hover {
+  transform: translateY(-2px);
+}
+
+.hover-bubble:hover::before {
+  opacity: 1;
+}

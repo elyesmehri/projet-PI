@@ -119,20 +119,26 @@
       </div>
 
 
-      <!-- Password -->
       <div class="mb-6">
         <label class="block text-sm font-bold mb-1">Password *</label>
         <input
           type="password"
           [(ngModel)]="family.password"
+          (input)="checkPasswordStrength()"
           name="password"
           required
           minlength="6"
           class="form-input w-full"
           #password="ngModel"
         />
-        <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm">
+        <p *ngIf="password.invalid && password.touched && password.errors?.['required']" class="text-red-500 text-sm">
+          Password is required.
+        </p>
+        <p *ngIf="password.invalid && password.touched && password.errors?.['minlength']" class="text-red-500 text-sm">
           Password must be at least 6 characters.
+        </p>
+        <p *ngIf="passwordStrength" class="text-sm mt-1">
+          Strength: <span [ngClass]="getPasswordStrengthClass()">{{ passwordStrength }}</span>
         </p>
       </div>
 

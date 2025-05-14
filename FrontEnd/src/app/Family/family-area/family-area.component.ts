@@ -2,7 +2,6 @@ import {Component, OnInit, OnDestroy, Input, TemplateRef} from '@angular/core';
 import { FamilyService } from '../../../services/family.service'; // Import DoctorService
 import { Subscription } from 'rxjs';
 import {Family} from "../family.model";
-import {NgIfContext} from "@angular/common";
 
 @Component({
   selector: 'app-family-area',
@@ -27,6 +26,7 @@ export class FamilyAreaComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+
     this.familyNameSubscription = this.familyService.currentFamilyName$.subscribe(
       (name) => {
         this.familyName = name;

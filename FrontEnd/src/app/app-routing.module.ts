@@ -46,7 +46,6 @@ const routes: Routes = [
   { path: 'family', component: EspaceFamilleComponent },
   { path: 'regiterfamily', component: FamilyRegistrationComponent },
   { path: 'medicalassitantq', component: MedicalAssitantQComponent },
-  { path: 'familyarea', component: MedicalAssitantQComponent },
 
   { path: 'rdv/:id', component: AppointmentComponent },
 

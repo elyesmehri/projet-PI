@@ -35,8 +35,10 @@ import { ContentComponent } from './components/content/content.component';
 import { SnippetComponent } from './components/docs/snippet/snippet.component';
 import { FolderIconComponent } from './components/docs/icons/folder-icon/folder-icon.component';
 import { EspaceDoctorComponent } from './Doctor/espace-doctor/espace-doctor.component';
-import {FormsModule} from "@angular/forms";
-import {DoctorService} from "../services/doctor.service";
+import { FormsModule } from "@angular/forms";
+import { DoctorService } from "../services/doctor.service";
+import { FamilyService } from "../services/family.service";
+
 //import {PatientService} from "../services/patient.service";
 import {EspacePatientComponent} from './Patient/espace-patient/espace-patient.component';
 
@@ -45,7 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DoctorRegistrationComponent } from './Doctor/doctor-registration/doctor-registration.component';
 import { UpdatedoctorpasswordComponent } from './Doctor/updatedoctorpassword/updatedoctorpassword.component';
 import { DoctorAreaComponent } from './Doctor/doctor-area/doctor-area.component';
-import {NgOptimizedImage} from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
 
 import { PatientAreaComponent } from './Patient/patient-area/patient-area.component';
 import { PatientRegistrationComponent } from './Patient/patient-registration/patient-registration.component';
@@ -109,7 +111,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
     AppointmentComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgOptimizedImage],
-  providers: [DoctorService],
+  providers: [DoctorService,FamilyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
