@@ -31,13 +31,21 @@ export class PatientService {
     return this.http.get<Patient[]>(`${this.baseUrl}/all`);
   }
 
+<<<<<<< HEAD
   addOne(patient: {
     id : number;
+=======
+  addOne(doctor: {
+>>>>>>> 2254f2f9aaa23548609a463cd46d74596f3847d0
     patientName: string;
     age: number;
     gender: boolean;
     address: string;
+<<<<<<< HEAD
     phoneNumber: string;
+=======
+    phoneNumber: number;
+>>>>>>> 2254f2f9aaa23548609a463cd46d74596f3847d0
     password: string;
     medical_state: string
   }): Observable<Patient> {

@@ -48,7 +48,10 @@ import { DoctorRegistrationComponent } from './Doctor/doctor-registration/doctor
 import { UpdatedoctorpasswordComponent } from './Doctor/updatedoctorpassword/updatedoctorpassword.component';
 import { DoctorAreaComponent } from './Doctor/doctor-area/doctor-area.component';
 import { NgOptimizedImage } from "@angular/common";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2254f2f9aaa23548609a463cd46d74596f3847d0
 
 import { PatientAreaComponent } from './Patient/patient-area/patient-area.component';
 import { PatientRegistrationComponent } from './Patient/patient-registration/patient-registration.component';
