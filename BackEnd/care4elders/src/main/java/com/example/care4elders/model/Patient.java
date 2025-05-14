@@ -19,7 +19,7 @@ public class Patient {
     private String medicalCondition;
     private String doctor;
     private String address;
-    private int phoneNumber;
+    private String phoneNumber;
     private String insurance;
     private String password;
     private String medical_state;
@@ -30,7 +30,7 @@ public class Patient {
 
     // Constructor
     public Patient(String patientName, int age, boolean gender, String medicalCondition, String doctor,
-                   String address, int phoneNumber, String insurance, String password,
+                   String address, String phoneNumber, String insurance, String password,
                    String medical_state, String about_me) {
 
         this.patientName = patientName;
@@ -104,11 +104,11 @@ public class Patient {
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
