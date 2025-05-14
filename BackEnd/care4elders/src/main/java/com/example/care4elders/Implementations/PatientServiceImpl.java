@@ -1,7 +1,5 @@
 package com.example.care4elders.Implementations;
 
-import com.example.care4elders.model.Doctor;
-import com.example.care4elders.model.Family;
 import com.example.care4elders.model.Patient;
 
 import com.example.care4elders.repository.PatientRepository;
@@ -99,13 +97,6 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findByDoctor(doctorName);
     }
 
-/*
-    @Override
-    public Optional<Patient> getPatientByName(String name) {
-        return patientRepository.FindByPatientName(name);
-    }
-*/
-
     @Override
     public void deleteAllPatients() {
         patientRepository.deleteAll();
@@ -139,7 +130,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public boolean updateMedicalStateByName(String patientName, int medical_state) {
+    public boolean updateMedicalStateByName(String patientName, String medical_state) {
         List<Patient> patients = patientRepository.findByPatientName(patientName);
         if (!patients.isEmpty()) {
             for (Patient patient : patients) {

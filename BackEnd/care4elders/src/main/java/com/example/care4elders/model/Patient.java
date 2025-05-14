@@ -19,10 +19,10 @@ public class Patient {
     private String medicalCondition;
     private String doctor;
     private String address;
-    private String phoneNumber;
+    private int phoneNumber;
     private String insurance;
     private String password;
-    private int medical_state;
+    private String medical_state;
     private String about_me;
 
     // Default Constructor
@@ -30,8 +30,8 @@ public class Patient {
 
     // Constructor
     public Patient(String patientName, int age, boolean gender, String medicalCondition, String doctor,
-                   String address, String phoneNumber, String insurance, String password,
-                   int medical_state, String about_me) {
+                   String address, int phoneNumber, String insurance, String password,
+                   String medical_state, String about_me) {
 
         this.patientName = patientName;
         this.age = age;
@@ -104,11 +104,11 @@ public class Patient {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -132,11 +132,11 @@ public class Patient {
         this.password = password;
     }
 
-    public int getMedical_state() {
+    public String getMedical_state() {
         return medical_state;
     }
 
-    public void setMedical_state(int medical_state) {
+    public void setMedical_state(String medical_state) {
         this.medical_state = medical_state;
     }
 

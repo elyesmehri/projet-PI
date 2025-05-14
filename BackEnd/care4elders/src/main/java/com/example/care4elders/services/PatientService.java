@@ -33,7 +33,7 @@ public interface PatientService {
 
     boolean updatePatientPassword(String patientName, String newPassword);
 
-    boolean updateMedicalStateByName(String patientName, int medical_state);
-
     Patient getPatientByName(String name);
+
+    boolean updateMedicalStateByName(String patientName, String medical_state);
 }

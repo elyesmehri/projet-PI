@@ -20,6 +20,7 @@ public class AppointmentController {
     private final AppointmentService appointmentService;
     private final DoctorService doctorService;
     private final FamilyService familyService;
+    private final PatientService patientService;
 
     @PostMapping("/create")
     public ResponseEntity<String> create(@RequestBody AppointmentRequest request) {
@@ -28,6 +29,7 @@ public class AppointmentController {
 
         Family family = familyService.getFamilyByName(request.familyname);
         if (family == null) return ResponseEntity.badRequest().body("Family not found");
+
 
         Appointment appointment = new Appointment();
         appointment.setDoctor(doctor);
@@ -76,6 +78,17 @@ public class AppointmentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Appointment not found.");
         }
     }
+
+    @DeleteMapping("/delete/all")
+    public ResponseEntity<Void> deleteAllAppointments() {
+        try {
+            appointmentService.deleteAllAppointments();
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 
 }

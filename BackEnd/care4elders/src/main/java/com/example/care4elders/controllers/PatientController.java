@@ -124,7 +124,7 @@ public class PatientController {
     @PatchMapping("/medicalstate")
     public ResponseEntity<String> updatePatientMedicalStateByName(
             @RequestParam("patientName") String patientName,
-            @RequestParam("medical_state") int medical_state) {
+            @RequestParam("medical_state") String medical_state) {
 
         try {
             boolean updated = patientService.updateMedicalStateByName(patientName, medical_state);

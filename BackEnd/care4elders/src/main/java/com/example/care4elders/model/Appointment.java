@@ -37,7 +37,8 @@ public class Appointment {
     private boolean skipped;
 
     public Appointment(Long id, Doctor doctor,
-                       Family family, LocalDateTime date,
+                       Family family,
+                       LocalDateTime date,
                        Double tariff,
                        int nature,
                        Integer period,
@@ -57,7 +58,6 @@ public class Appointment {
         this.quoted = quoted;
         this.description = description;
         this.skipped = skipped;
-
     }
 
     public Appointment() {}
@@ -129,4 +129,5 @@ public class Appointment {
     public void setSkipped(boolean skipped) {
         this.skipped = skipped;
     }
+
 }

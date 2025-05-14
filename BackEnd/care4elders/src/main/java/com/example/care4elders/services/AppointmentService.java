@@ -10,4 +10,6 @@ public interface AppointmentService {
     boolean updateAppointment(Long id, Appointment updated);
 
     Appointment findById(Long id);
+
+    void deleteAllAppointments();
 }

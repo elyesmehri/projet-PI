@@ -7,7 +7,6 @@ public class AppointmentRequest {
 
         public String doctorname;
         public String familyname;
-        public String relative;
         public LocalDateTime date;
         public Double tariff;
         public int nature;
