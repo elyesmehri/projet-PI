@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
 import { PatientService } from "../../../services/patient.service";
 import { FamilyService } from "../../../services/family.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
+import { Component } from '@angular/core';
+
 
 @Component({
-  selector: 'app-patient-registration',
-  templateUrl: './patient-registration.component.html',
-  styleUrls: ['./patient-registration.component.css']
+  selector: 'app-update-patient-data',
+  templateUrl: './update-patient-data.component.html',
+  styleUrls: ['./update-patient-data.component.css']
 })
 
-export class PatientRegistrationComponent {
+export class UpdatePatientDataComponent {
 
   registrationSuccess: boolean = false;
   registrationError: boolean = false;
@@ -151,6 +152,5 @@ export class PatientRegistrationComponent {
       }
     });
   }
+
 }
-
-

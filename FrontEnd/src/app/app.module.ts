@@ -48,14 +48,12 @@ import { DoctorRegistrationComponent } from './Doctor/doctor-registration/doctor
 import { UpdatedoctorpasswordComponent } from './Doctor/updatedoctorpassword/updatedoctorpassword.component';
 import { DoctorAreaComponent } from './Doctor/doctor-area/doctor-area.component';
 import { NgOptimizedImage } from "@angular/common";
-<<<<<<< HEAD
-
-=======
->>>>>>> 2254f2f9aaa23548609a463cd46d74596f3847d0
 
 import { PatientAreaComponent } from './Patient/patient-area/patient-area.component';
 import { PatientRegistrationComponent } from './Patient/patient-registration/patient-registration.component';
 import { UpdatepatientpasswordComponent } from './Patient/updatepatientpassword/updatepatientpassword.component';
+import { UpdatePatientDataComponent } from './Patient/update-patient-data/update-patient-data.component';
+
 import { LoadingComponent } from './loading/loading.component';
 import { EspaceFamilleComponent } from './Family/espace-famille/espace-famille.component';
 import { FamilyRegistrationComponent } from './Family/family-registration/family-registration.component';
@@ -65,6 +63,8 @@ import { AppointmentComponent } from './appointment/appointment.component';
 
 @NgModule({
   declarations: [
+
+    // Main Component
     AppComponent,
 
     // dashboard
@@ -97,22 +97,31 @@ import { AppointmentComponent } from './appointment/appointment.component';
     SnippetComponent,
     ContentComponent,
     FolderIconComponent,
+
+    // Doctor Component
     EspaceDoctorComponent,
-    EspacePatientComponent,
     DoctorRegistrationComponent,
     UpdatedoctorpasswordComponent,
     DoctorAreaComponent,
+
+    // Patient Component
     PatientAreaComponent,
     PatientRegistrationComponent,
     UpdatepatientpasswordComponent,
+    UpdatePatientDataComponent,
+    EspacePatientComponent,
 
+    // Loading Component
     LoadingComponent,
 
+    // Family Component
     EspaceFamilleComponent,
     FamilyRegistrationComponent,
     MedicalAssitantQComponent,
     FamilyAreaComponent,
-    AppointmentComponent
+
+    // Appointment Component
+    AppointmentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgOptimizedImage],
   providers: [DoctorService,FamilyService],
