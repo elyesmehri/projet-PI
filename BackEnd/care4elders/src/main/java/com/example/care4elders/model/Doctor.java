@@ -15,6 +15,7 @@ public class Doctor {
     private Long id;
 
     private String doctorname;
+    private String medicalID;
     private String speciality;
     private String address;
     private int score;
@@ -30,6 +31,7 @@ public class Doctor {
 
     public Doctor(Long id,
                   String doctorname,
+                  String medicalID,
                   String speciality,
                   String address,
                   int score,
@@ -42,6 +44,7 @@ public class Doctor {
 
         this.id = id;
         this.doctorname = doctorname;
+        this.medicalID = medicalID;
         this.speciality = speciality;
         this.address = address;
         this.score = score;
@@ -139,6 +142,14 @@ public class Doctor {
 
     public void setGender(Boolean gender) {
         this.gender = gender;
+    }
+
+    public String getMedicalID() {
+        return medicalID;
+    }
+
+    public void setMedicalID(String medicalID) {
+        this.medicalID = medicalID;
     }
 }
 
