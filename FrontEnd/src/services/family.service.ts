@@ -26,7 +26,9 @@ export class FamilyService {
 
 
   setFamilyName(familyName: string): void {
+
     this.currentFamilyNameSubject.next(familyName);
+
   }
 
   getFamilyName(): Observable<string> {

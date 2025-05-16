@@ -20,6 +20,17 @@
           </div>
 
           <div class="mb-4">
+            <label class="block text-sm font-bold mb-1">Doctor Name *</label>
+            <input type="text" [(ngModel)]="patient_Fill.doctorname" name="doctorname"
+                   required minlength="3" class="form-input w-full"
+                   #name="ngModel" />
+            <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
+              Name is required (min 3 characters).
+            </p>
+          </div>
+
+
+          <div class="mb-4">
             <label class="block text-sm font-bold mb-1">Gender *</label>
             <div class="flex gap-4 items-center">
               <label class="flex items-center gap-2">

@@ -11,6 +11,7 @@ import {DoctorService} from "../../../services/doctor.service";
 })
 export class PatientAreaComponent {
 
+
   patientName: string = '';
   patientGender : String = '';
 
@@ -39,10 +40,5 @@ export class PatientAreaComponent {
 
       }
     );
-
-    this.patientService.getPatientGenderByName(this.patientName).subscribe(gender => {
-      console.log('Gender:', gender);
-      this.patientGender = gender;
-    });
   }
 }

@@ -1,0 +1,76 @@
+/* Styling for the welcome message */
+.welcome-container {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.welcome-message {
+  font-size: 40px; /* Bigger text */
+  color: white; /* White text */
+  font-weight: bold; /* Make the text bold */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for better readability */
+}
+
+/* Styling for the table */
+.patients-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+}
+
+.patients-table th, .patients-table td {
+  text-align: left;
+  padding: 10px;
+}
+
+.patients-table th {
+  background-color: #333; /* Dark background for table header */
+  color: white;
+}
+
+.patients-table td {
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.patients-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
+}
+
+.placeholder-white::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.bg-transparent input.form-input { /* Targeting input elements with both classes */
+  background-color: transparent !important;
+}
+
+.bg-transparent input[type="text"].form-input { /* Specifically targeting text inputs */
+  background-color: transparent !important;
+}
+
+.bg-transparent input[type="password"].form-input { /* Specifically targeting password inputs */
+  background-color: transparent !important;
+}
+
+/* For older WebKit browsers (Chrome, Safari) */
+.placeholder-white::-webkit-input-placeholder {
+  color: white;
+}
+
+/* For older Firefox */
+.placeholder-white:-moz-placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
+/* For older Internet Explorer 10+ */
+.placeholder-white:-ms-input-placeholder {
+  color: white;
+}

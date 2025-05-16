@@ -1,211 +1,137 @@
-<div class="min-h-screen bg-gray-100 bg-transparent">
-  <div class="container mx-auto py-8">
-    <h1 class="text-4xl font-bold text-center text-white mb-8">Welcome Member of Family <span style="color: yellow;">{{ familyname }}</span> </h1>
-    <h1 class="text-4xl font-bold text-center text-white mb-8"> To Patient Resigstration Menu ! </h1>
-    <br>
+  <div class="min-h-screen bg-gray-100 bg-transparent">
+    <h1 class="text-4xl font-bold text-center text-white mb-8">Welcome to update patient data area !</h1>
+<br>
+     <h1 class="text-base font-bold text-start text-white mb-8">
+      Welcome to update your info. See current data on the left, make changes on the right. Note all changes carefully. Your new data helps us give you the best care. Please be accurate. Click "Update Patient Data" when done. Contact us at [Insert Phone Number] or [Insert Email Address] if you need help. Thank you.
+     </h1>
 
-    <div class="flex justify-center items-start">
-      <div class="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800"> Register New Patient </h2>
+  <table class="min-w-full table-auto bg-transparent text-white border-collapse ">
+  <thead>
+  <tr class="bg-transparent font-semibold text-left border-b border-white ">
+    <th class="px-4 py-2">Value Name</th>
+    <th class="px-4 py-2">Actual Data</th>
+    <th class="px-4 py-2">New Data</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Patient Name:</th>
+    <td class="px-4 py-2">{{ foundPatient.patientName }}</td>
+    <td class="px-4 py-2">
+      <input
+        type="text"
+        [value]="foundPatient.patientName"
+        class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+        placeholder="Change your name but strongly recommended to keep the same name"
+        disabled
+      />
+    </td>
+  </tr>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Gender:</th>
+    <td class="px-4 py-2">{{ foundPatient.gender ? 'Male' : 'Female' }}</td>
+    <td class="px-4 py-2">
+      <div class="flex gap-4 items-center">
+        <label class="flex items-center gap-2">
+          <input type="radio" name="gender" value="female" [(ngModel)]="foundPatient.gender">
+          <span>Female</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="gender" value="male" [(ngModel)]="updatePatient.gender">
+          <span>Male</span>
+        </label>
+      </div>
+    </td>
+  </tr>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Age:</th>
+    <td class="px-4 py-2">{{ foundPatient.age }}</td>
+    <td class="px-4 py-2">
+      <input type="number" [(ngModel)]="updatePatient.age" class="form-input w-full bg-transparent v rounded-md">
+    </td>
+  </tr>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Address:</th>
+    <td class="px-4 py-2"> {{ foundPatient.address }}</td>
+    <td class="px-4 py-2">
+      <input
+        type="text"
+        [(ngModel)]="updatePatient.address"
+        class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+        placeholder="Please put your new address here"
+      />
+  </tr>
 
-        <form (ngSubmit)="onSubmit()" #patientForm="ngForm" novalidate>
-
-          <div class="mt-8 bg-transparent text-white">
-            <div class="container mx-auto p-4 flex items-center justify-center">
-            </div>
-          </div>
-          <form (ngSubmit)="onSubmit()" #patientForm="ngForm" novalidate>
-            <!-- patient Name -->
-            <div class="mb-4">
-              <label class="block text-sm font-bold mb-1">patient Name *</label>
-              <input type="text" [(ngModel)]="patient_Fill.patientName" name="patientName"
-                     required minlength="3" class="form-input w-full"
-                     #name="ngModel" />
-              <p *ngIf="name.invalid && name.touched" class="text-red-500 text-sm">
-                Name is required (min 3 characters).
-              </p>
-            </div>
-
-            <!-- Gender Switch -->
-            <div class="mb-4">
-              <label class="block text-sm font-bold mb-1">Gender *</label>
-              <div class="flex gap-4 items-center">
-                <label class="flex items-center gap-2">
-                  <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="false" required />
-                  <span>👩 Female</span>
-                </label>
-                <label class="flex items-center gap-2">
-                  <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="true" required />
-                  <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="'female'" required />
-                  <span>👩 Female</span>
-                </label>
-                <label class="flex items-center gap-2">
-                  <input type="radio" name="gender" [(ngModel)]="patient_Fill.gender" [value]="'male'" required />
-                  <span>👨 Male</span>
-                </label>
-              </div>
-            </div>
-
-            <input type="number" [(ngModel)]="patient_Fill.age" name="age"
-                   required min="60" max="100" class="form-input w-full text-center"
-                   #age="ngModel" />
-            <p *ngIf="age.invalid && age.touched" class="text-red-500 text-sm">
-              Age must be between 60 and 100.
-            </p>
-
-            <!-- Address -->
-            <div class="mb-4">
-              <label class="block text-sm font-bold mb-1">Address</label>
-              <input type="text" [(ngModel)]="patient_Fill.address" name="Address"
-                     class="form-input w-full" />
-            </div>
-
-            <div class="mb-4">
-              <label class="block text-sm font-bold mb-1">Phone Number *</label>
-              <input
-                type="text"
-                [(ngModel)]="patient_Fill.phoneNumber"
-                name="phoneNumber"
-                required
-                pattern="^[0-9]{8}$"
-                class="form-input w-full"
-                #phone="ngModel"
-              />
-              <p *ngIf="phone.invalid && phone.touched && phone.errors?.['required']" class="text-red-500 text-sm">
-                Phone number is required.
-              </p>
-              <p *ngIf="phone.invalid && phone.touched && phone.errors?.['pattern']" class="text-red-500 text-sm">
-                <input type="number" [(ngModel)]="patient_Fill.age" name="age"
-                       required min="1" max="120" class="form-input w-full text-center"
-                       #age="ngModel" />
-              <p *ngIf="age.invalid && age.touched" class="text-red-500 text-sm">
-                Age must be between 1 and 120.
-              </p>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Phone Number:</th>
+    <td class="px-4 py-2">{{ foundPatient.phoneNumber }}</td>
+    <td class="px-4 py-2">
+      <input
+        type="text"
+        [(ngModel)]="updatePatient.phoneNumber"
+        class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+        placeholder="Change your phone number in here 8 digit number"
+      />
+    </td>
+  </tr>
 
 
-              <!-- Address -->
-              <div class="mb-4">
-                <label class="block text-sm font-bold mb-1">Address</label>
-                <input type="text" [(ngModel)]="patient_Fill.address" name="address"
-                       class="form-input w-full" />
-              </div>
 
-              <!-- Phone Number -->
-              <div class="mb-4">
-                <label class="block text-sm font-bold mb-1">Phone Number *</label>
-                <input
-                  type="number"
-                  [(ngModel)]="patient_Fill.phoneNumber"
-                  name="phoneNumber"
-                  required
-                  min="10000000"
-                  max="99999999"
-                  class="form-input w-full"
-                  #phone="ngModel"
-                />
-                <p *ngIf="phone.invalid && phone.touched" class="text-red-500 text-sm">
-                  Phone number must be exactly 8 digits.
-                </p>
-              </div>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Password:</th>
+    <td class="px-4 py-2 text-white">********</td>
+    <td class="px-4 py-2">
+      <input
+        type="password"
+        [(ngModel)]="updatePatient.password"
+        class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+        placeholder="Use pattern, special character, Upcase and lowercase Min length 6"
+      />
+    </td>
+  </tr>
 
-              <!-- Medical State -->
-              <div class="mb-4">
-                <label class="block text-sm font-bold mb-1">Patient Medical State</label>
-                <select [(ngModel)]="patient_Fill.medical_state" name="medical_state"
-                        required class="form-select w-full border rounded px-3 py-2"
-                        #medical_state="ngModel">
-                  <option value="" disabled selected>Setteling at home alone</option>
-                  <option value="At Hospital">At Hospital</option>
-                  <option value="Nursed at home">Nursed at home</option>
-                  <option value="At home with someone">At home with someone...</option>
-                </select>
-                <p *ngIf="medical_state.invalid && medical_state.touched" class="text-red-500 text-sm">
-                </p>
-              </div>
+   <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">Medical State:</th>
+    <td class="px-4 py-2">{{ foundPatient.medical_state }}</td>
+    <td class="px-4 py-2">
+      <select [(ngModel)]="updatePatient.medical_state" class="form-select w-full bg-transparent text-yellow rounded-md">
+        <option value="" disabled selected>Select State</option>
+        <option value="stable">stable</option>
+        <option value="recovering">recovering</option>
+        <option value="critical">critical</option>
+      </select>
+    </td>
+  </tr>
+  <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
+    <th class="px-4 py-2 text-left font-semibold">About Me:</th>
+    <td class="px-4 py-2">
+      <textarea [(ngModel)]="foundPatient.about_me"
+                class="w-96 h-24 p-2 bg-red-200 text-gray-800 rounded-md"></textarea>
 
-              <!-- Password -->
-              <div class="mb-6">
-                <label class="block text-sm font-bold mb-1">Password *</label>
-                <input
-                  type="password"
-                  [(ngModel)]="patient_Fill.password"
-                  (input)="checkPasswordStrength()"
-                  name="password"
-                  required
-                  minlength="8"
-                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                  class="form-input w-full"
-                  #password="ngModel"
-                />
-                <p class="text-sm text-blue-500 font-semibold">
-                  Please inform your patient about their password and copy it somewhere else  !
-                </p>
-                <p *ngIf="password.invalid && password.touched && password.errors?.['required']" class="text-red-500 text-sm">
-                  Password is required.
-                </p>
-                <p *ngIf="password.invalid && password.touched && password.errors?.['minlength']" class="text-red-500 text-sm">
-                  Password must be at least 8 characters.
-                </p>
-                <p *ngIf="password.invalid && password.touched && password.errors?.['pattern']" class="text-red-500 text-sm">
-                  Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-                </p>
-                <p *ngIf="passwordStrength" class="text-sm mt-1">
-                  Strength: <span [ngClass]="getPasswordStrengthClass()">{{ passwordStrength }}</span>
-                </p>
-              </div>
+    </td>
+    <td class="px-4 py-2">
+    <textarea [(ngModel)]="updatePatient.about_me"
+              class="w-96 h-24 p-2 bg-green-200 text-gray-800 rounded-md"></textarea>
+    </td>
+  </tr>
 
-              <!--- Confirm Password --->
-              <input type="password" [(ngModel)]="patient_Fill.password" name="password"
-                     required minlength="6" class="form-input w-full"
-                     #password="ngModel" />
-              <p class = "text-sm text-blue"> Please inform your patient about his password and copy it somewhere else</p>
-              <p *ngIf="password.invalid && password.touched" class="text-red-500 text-sm">
-                Password must be at least 6 characters.
-              </p>
-            </div>
+  <tr class="bg-transparent">
+    <td class="px-4 py-4" colspan="3">
+      <div class="flex justify-center gap-4">
+        <button (click)="goHome()" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Home
+        </button>
+        <button (click)="onSubmit()" [disabled]="!foundPatient"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+          Submit
+        </button>
+      </div>
+    </td>
+  </tr>
 
-            <div class="mb-6">
-              <label class="block text-sm font-bold mb-1">Repeat Password *</label>
-              <input
-                type="password"
-                [(ngModel)]="patient_Fill.confirmPassword"
-                name="confirmPassword"
-                required
-                class="form-input w-full"
-                #confirmPassword="ngModel"
-              />
-              <p *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.['required']" class="text-red-500 text-sm">
-                Please confirm your password.
-              </p>
-              <p *ngIf="patient_Fill.password !== patient_Fill.confirmPassword && confirmPassword.touched" class="text-red-500 text-sm">
-                Passwords do not match.
-              </p>
-            </div>
-
-            <!-- Submit -->
-            <button type="submit" (click)="onSubmit()" class="bg-red-500 text-white px-4 py-2">
-              Test Submit
-            </button>
-
-            <button type="submit"
-                    [disabled]="!patientForm.valid"
-                    [ngClass]="patientForm.valid ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'"
-                    class="w-full text-white py-2 rounded transition">
-              Register
-            </button>
-
-            <!-- Hint message -->
-            <div *ngIf="patientForm.valid" class="mt-2 text-green-700 text-sm text-center">
-              ✅ All fields are valid. You can submit the form.
-            </div>
-
-            <div *ngIf="registrationSuccess" class="mt-4 text-green-600 font-semibold">
-              ✅ Patient added successfully!
-            </div>
-            <div *ngIf="registrationError" class="mt-4 text-red-600 font-semibold">
-              ❌ Registration failed. Please try again.
-            </div>
-
-          </form>
-
-
+  <tr *ngIf="!foundPatient">
+    <td colspan="3" class="px-4 py-2 text-white text-center">Loading patient data...</td>
+  </tr>
+  </tbody>
+  </table>
+</div>

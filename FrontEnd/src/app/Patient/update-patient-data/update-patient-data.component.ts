@@ -3,7 +3,7 @@ import { FamilyService } from "../../../services/family.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Component } from '@angular/core';
-
+import { Patient } from "../patient.model";
 
 @Component({
   selector: 'app-update-patient-data',
@@ -13,12 +13,13 @@ import { Component } from '@angular/core';
 
 export class UpdatePatientDataComponent {
 
-  registrationSuccess: boolean = false;
-  registrationError: boolean = false;
 
-  familyname : string | undefined;
+  foundPatient: Patient | undefined;
+  errorMessage: string | undefined;
 
-  patient_Fill = {
+  updatePatient = {
+
+    doctorname: '',
     patientName: '',
     age: 0,
     gender: false,
@@ -27,130 +28,58 @@ export class UpdatePatientDataComponent {
     medical_state: '',
     password: '',
     confirmPassword: '',
+    about_me: ''
   };
 
-  public passwordStrength: string | undefined; // Explicitly typed
-
   constructor(private patientService: PatientService,
-              private router : Router,
-              private location : Location,
-              private familyService : FamilyService) {
+              private router: Router,
+              private location : Location) {
   }
 
   ngOnInit(): void {
-    this.retrieveFamilyName();
+    this.findPatient();
   }
 
-  retrieveFamilyName(): void {
-    this.familyService.getFamilyName().subscribe(
-      (familyname) => {
-        this.familyname = familyname;
-        console.log('Family Name retrieved:', this.familyname);
-        // You can now use this.familyName in your component's logic or template
+  findPatient(): void {
+    this.patientService.getPatientByName('Lucas White').subscribe(
+      (patient) => {
+        this.foundPatient = patient;
+        console.log("This patient data : ", this.foundPatient);
       },
       (error) => {
-        console.error('Error retrieving family name:', error);
-        this.familyname = 'Error fetching name'; // Handle the error in the UI
+        console.error('Error finding patient:', error);
+        this.errorMessage = 'Could not find patient.';
       }
     );
   }
 
-  checkPasswordStrength(): void {
-
-    const password = this.patient_Fill.password;
-    if (password.length < 6) {
-      this.passwordStrength = 'Weak';
-    } else {
-      const hasLower = /[a-z]/.test(password);
-      const hasUpper = /[A-Z]/.test(password);
-      const hasNumber = /[0-9]/.test(password);
-      const hasSpecial = /[^\w\s]/.test(password);
-
-      let strength = 0;
-      if (hasLower) strength++;
-      if (hasUpper) strength++;
-      if (hasNumber) strength++;
-      if (hasSpecial) strength++;
-
-      if (strength === 4) {
-        this.passwordStrength = 'Strong';
-      } else if (strength === 3) {
-        this.passwordStrength = 'Medium';
-      } else {
-        this.passwordStrength = 'Weak';
-      }
-    }
-    console.log('Password Strength:', this.passwordStrength);
+  goHome(): void {
+    this.location.back(); // Navigate to the home route
   }
 
-  getPasswordStrengthClass(): string {
-    switch (this.passwordStrength) {
-      case 'Strong':
-        return 'text-green-500 font-bold';
-      case 'Medium':
-        return 'text-yellow-500 font-bold';
-      case 'Weak':
-        return 'text-red-500 font-bold';
-      default:
-        return '';
+  onSubmit(): void {
+    if (!this.foundPatient) {
+      this.errorMessage = "No patient data to update.";
+      return;
+    }
+
+    // Basic validation
+    if (!this.updatePatient.age || this.updatePatient.age < 60 || this.updatePatient.age > 120) {
+      this.errorMessage = "Age must be between 60 and 120.";
+      return;
+    }
+
+    if (!this.updatePatient.phoneNumber || this.updatePatient.phoneNumber.length !== 8 || !/^\d+$/.test(this.updatePatient.phoneNumber)) {
+      this.errorMessage = "Phone number must be an 8-digit number.";
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    if (!this.updatePatient.password || !passwordRegex.test(this.updatePatient.password)) {
+      this.errorMessage = "Password must be at least 6 characters and contain at least one lowercase letter, one uppercase letter, one number, and one special character.";
+      return;
     }
   }
 
-  patient_data = {
-    patientName : this.patient_Fill.patientName,
-    age : this.patient_Fill.age,
-    gender : this.patient_Fill.gender,
-    address : this.patient_Fill.address,
-    phoneNumber : this.patient_Fill.phoneNumber,
-    password : this.patient_Fill.password,
-    medical_state : this.patient_Fill.medical_state,
-  };
-
-  private patientFormIsValid(): boolean {
-
-    return !!this.patient_data.patientName &&
-      !!this.patient_data.password &&
-      !!this.patient_data.age;
-  }
-
-  onSubmit (patient_data = {
-    id: 0,
-    patientName: this.patient_Fill.patientName,
-    age: this.patient_Fill.age,
-    gender: this.patient_Fill.gender,
-    address: this.patient_Fill.address,
-    phoneNumber: this.patient_Fill.phoneNumber,
-    password: this.patient_Fill.password,
-    medical_state: this.patient_Fill.medical_state,
-  }) {
-
-    console.log("Patient submitted: ", patient_data);
-
-    this.patientService.addOne(patient_data).subscribe({
-
-      next: (newPatient) => {
-
-        console.log('Patient registered:', newPatient);
-
-        this.registrationSuccess = true;
-        this.registrationError = false;
-
-
-        setTimeout(() => {
-
-//          this.location.back ();
-
-        }, 3000);
-
-      },
-      error: (err) => {
-
-        console.error('Registration failed:', err);
-
-        this.registrationSuccess = false;
-        this.registrationError = true;
-      }
-    });
-  }
 
 }

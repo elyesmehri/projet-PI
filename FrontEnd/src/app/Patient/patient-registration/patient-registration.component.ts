@@ -18,6 +18,7 @@ export class PatientRegistrationComponent {
   familyname : string | undefined;
 
   patient_Fill = {
+    doctorname : '',
     patientName: '',
     age: 0,
     gender: false,
@@ -29,6 +30,7 @@ export class PatientRegistrationComponent {
   };
 
   public passwordStrength: string | undefined; // Explicitly typed
+  private familyNameInput: string | undefined;
 
   constructor(private patientService: PatientService,
               private router : Router,
@@ -38,6 +40,7 @@ export class PatientRegistrationComponent {
 
   ngOnInit(): void {
     this.retrieveFamilyName();
+
   }
 
   retrieveFamilyName(): void {
@@ -97,6 +100,7 @@ export class PatientRegistrationComponent {
 
   patient_data = {
     patientName : this.patient_Fill.patientName,
+    doctorname: this.patient_Fill.doctorname,
     age : this.patient_Fill.age,
     gender : this.patient_Fill.gender,
     address : this.patient_Fill.address,
@@ -115,6 +119,7 @@ export class PatientRegistrationComponent {
   onSubmit (patient_data = {
     id: 0,
     patientName: this.patient_Fill.patientName,
+    doctorname: this.patient_Fill.doctorname,
     age: this.patient_Fill.age,
     gender: this.patient_Fill.gender,
     address: this.patient_Fill.address,
@@ -137,7 +142,7 @@ export class PatientRegistrationComponent {
 
         setTimeout(() => {
 
-//          this.location.back ();
+          this.router.navigate(['/family']);
 
         }, 3000);
 

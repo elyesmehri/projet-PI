@@ -23,6 +23,7 @@ export class PatientService {
   private baseUrl = 'http://localhost:8085/patient';
   private currentPatientNameSubject = new BehaviorSubject<string>(''); // BehaviorSubject
   public currentPatientName$ = this.currentPatientNameSubject.asObservable(); // Observable
+  private patientName: string | undefined;
 
 
   constructor(private http: HttpClient) { }
@@ -76,10 +77,18 @@ export class PatientService {
     return this.http.put(`${this.baseUrl}/patient/updatePassword`, payload, { headers });
   }
 
-  getPatientByName(name: string): Observable<Patient> {
-    const params = new HttpParams().set('name', name);
-    return this.http.get<Patient>(`${this.baseUrl}/by-name`, { params });
+  getPatientByName(name: string | undefined): Observable<Patient> {
+    if (!name) {
+      return new Observable(observer => {
+        observer.error('Patient name cannot be undefined.');
+        observer.complete();
+      });
+      // Or: return of(null);
+    }
+    const encodedName = encodeURIComponent(name);
+    return this.http.get<Patient>(`${this.baseUrl}/name/${encodedName}`);
   }
+
 
   getPatientGenderByName(name: string): Observable<string> {
     return this.http.get(`${this.baseUrl}/gender` + `/gender?name=${encodeURIComponent(name)}`, { responseType: 'text' });
