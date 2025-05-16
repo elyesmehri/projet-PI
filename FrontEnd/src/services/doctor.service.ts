@@ -85,6 +85,14 @@ export class DoctorService {
 
     return this.http.get<Patient[]>(`${this.baseUrl}/patients`, { params: params }); // Pass params in the request
   }
+/*
+  getnbPatientsForDoctor(doctorName: string): Observable<Patient[]> {
+    let params = new HttpParams(); // Create HttpParams object
+    params = params.append('doctorName', doctorName); // Add the parameter
+
+    return this.http.get<Patient[]>(`${this.baseUrl}/patients`, { params: params }); // Pass params in the request
+  }
+*/
 
   getDoctorById(id: number): Observable<Doctor> {
     return this.http.get<Doctor>(`${this.baseUrl}/${id}`);
