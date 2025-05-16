@@ -89,9 +89,16 @@ export class PatientService {
     return this.http.get<Patient>(`${this.baseUrl}/name/${encodedName}`);
   }
 
-
   getPatientGenderByName(name: string): Observable<string> {
     return this.http.get(`${this.baseUrl}/gender` + `/gender?name=${encodeURIComponent(name)}`, { responseType: 'text' });
+  }
+
+  patchPatient(id: number, updates: Partial<Patient>): Observable<Patient> {
+    const url = `${this.baseUrl}/${id}`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Explicitly set content type for PATCH
+
+    //  Send only the updates object.
+    return this.http.patch<Patient>(url, updates, { headers: headers });
   }
 
 }
