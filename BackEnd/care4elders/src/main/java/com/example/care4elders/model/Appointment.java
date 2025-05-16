@@ -1,5 +1,6 @@
 package com.example.care4elders.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Setter;
 import jakarta.persistence.*;
 
@@ -70,8 +71,8 @@ public class Appointment {
     public Doctor getDoctor() { return doctor; }
     public void setDoctor(Doctor doctor) { this.doctor = doctor; }
 
-    public Family getfamily() { return family; }
-    public void setfamily(Family family) { this.family = family; }
+    public Family getFamily() { return family; }
+    public void setFamily(Family family) { this.family = family; }
 
     public LocalDateTime getDate() { return date; }
     public void setDate(LocalDateTime date) { this.date = date; }
@@ -84,14 +85,6 @@ public class Appointment {
 
     public Integer getPeriod() { return period; }
     public void setPeriod(Integer period) { this.period = period; }
-
-    public Family getFamily() {
-        return family;
-    }
-
-    public void setFamily(Family family) {
-        this.family = family;
-    }
 
     public void setTariff(Double tariff) {
         this.tariff = tariff;

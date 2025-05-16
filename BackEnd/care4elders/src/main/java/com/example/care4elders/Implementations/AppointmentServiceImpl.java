@@ -6,6 +6,7 @@ import com.example.care4elders.services.AppointmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,13 +39,14 @@ public class AppointmentServiceImpl implements AppointmentService {
             existing.setNature(updated.getNature());
             existing.setPeriod(updated.getPeriod());
             existing.setDoctor(updated.getDoctor());
-            existing.setfamily(updated.getfamily());
+            existing.setFamily(updated.getFamily());
             existing.setEmergency(updated.getEmergency());
             existing.setQuoted(updated.isQuoted());
             existing.setDescription(updated.getDescription());
             existing.setSkipped(updated.isSkipped());
 
             appointmentRepository.save(existing);
+
             return true;
         }
         return false;
@@ -58,5 +60,10 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public void deleteAllAppointments() {
         appointmentRepository.deleteAll();
+    }
+
+    @Override
+    public List<Appointment> getAppointmentsByDoctorId(Long doctorId) {
+        return appointmentRepository.findByDoctorId(doctorId);
     }
 }

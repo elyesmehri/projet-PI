@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.care4elders.controllers.AppointmentRequest;
-
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -33,7 +31,7 @@ public class AppointmentController {
 
         Appointment appointment = new Appointment();
         appointment.setDoctor(doctor);
-        appointment.setfamily(family);
+        appointment.setFamily(family);
         appointment.setDate(request.date);
         appointment.setTarif(request.tariff);
         appointment.setNature(request.nature);
@@ -88,7 +86,4 @@ public class AppointmentController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
-
 }

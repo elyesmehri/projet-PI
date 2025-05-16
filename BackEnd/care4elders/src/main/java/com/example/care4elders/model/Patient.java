@@ -17,7 +17,11 @@ public class Patient {
     private int age;
     private boolean gender; // true = Male, false = Female
     private String medicalCondition;
-    private String doctor;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor; // The property name is 'doctor'
+
     private String address;
     private String phoneNumber;
     private String insurance;
@@ -29,7 +33,7 @@ public class Patient {
     public Patient() {}
 
     // Constructor
-    public Patient(String patientName, int age, boolean gender, String medicalCondition, String doctor,
+    public Patient(String patientName, int age, boolean gender, String medicalCondition, Doctor doctor,
                    String address, String phoneNumber, String insurance, String password,
                    String medical_state, String about_me) {
 
@@ -88,11 +92,11 @@ public class Patient {
         this.medicalCondition = medicalCondition;
     }
 
-    public String getDoctor() {
+    public Doctor getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(String doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
 

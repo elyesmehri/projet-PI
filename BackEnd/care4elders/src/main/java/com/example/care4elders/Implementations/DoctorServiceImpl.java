@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +37,28 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public List<Doctor> addDoctorsBulk(List<Doctor> doctors) {
         return doctorRepository.saveAll(doctors);
+    }
+
+    @Override
+    public void deletePatientsBulk(List<Long> ids) {
+        patientRepository.deleteAllById(ids);
+    }
+
+    @Override
+    public List<Long> getAllDoctorIds() {
+        return doctorRepository.findAll().stream()
+                .map(Doctor::getId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Doctor> getDoctorDataIfIdExists(Long doctorId) {
+        List<Long> allDoctorIds = getAllDoctorIds();
+        if (allDoctorIds.contains(doctorId)) {
+            return getDoctorById(doctorId);
+        } else {
+            return Optional.empty(); // Or throw an exception if you prefer
+        }
     }
 
     @Override
@@ -114,12 +137,7 @@ public class DoctorServiceImpl implements DoctorService {
 
         return false;
     }
-/*
-    @Override
-    public Doctor findByName(String name) {
-        return doctorRepository.findByDoctorname(name);
-    }
-*/
+
     @Override
     public Doctor findByName(String name) {
         return doctorRepository.findByDoctorname(name);

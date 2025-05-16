@@ -10,15 +10,27 @@ import java.util.Optional;
 public interface DoctorService {
 
     List<Doctor> getAllDoctors();
+
+    void deletePatientsBulk(List<Long> ids);
+
     Optional<Doctor> getDoctorById(Long id);
+
     Doctor addDoctor(Doctor doctor);
+
     List<Doctor> addDoctorsBulk(List<Doctor> doctors);
+
+    List<Long> getAllDoctorIds();
+
+    Optional<Doctor> getDoctorDataIfIdExists(Long doctorId);
+
     Doctor updateDoctor(Long id, Doctor updatedDoctor);
 
     boolean validateDoctorLogin(String doctorname, String password);
 
     void deleteDoctor(Long id);
+
     void deleteDoctorsBulk(List<Long> ids);
+
     Boolean checkDoctorCredentials(Map<String, String> credentials);
 
     boolean authenticateDoctor(String doctorname, String password);
@@ -28,7 +40,6 @@ public interface DoctorService {
     boolean updatePassword(String doctorname, String password);
 
     void deleteAllDoctors();
-
 
     boolean updateScoreByName(String doctorname, int score);
 

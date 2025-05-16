@@ -1,6 +1,12 @@
 package com.example.care4elders.controllers;
 
+import com.example.care4elders.model.Appointment;
+import com.example.care4elders.model.Doctor;
+import com.example.care4elders.model.Family;
 import com.example.care4elders.model.Patient;
+
+import com.example.care4elders.services.*;
+
 import com.example.care4elders.services.PatientService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.NonUniqueResultException;
@@ -8,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.care4elders.controllers.patientRequest;
 
 
 import java.util.List;
@@ -20,15 +28,12 @@ import java.util.Map;
 public class PatientController {
 
     private final PatientService patientService;
+    private final DoctorService doctorService;
 
     @PostMapping("/bulk")
-    public ResponseEntity<List<Patient>> createBulkPatient(@RequestBody List<Patient> patients) {
-        try {
-            List<Patient> saved = patientService.addPatientsBulk(patients);
-            return ResponseEntity.status(HttpStatus.CREATED).body(saved);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<List<Patient>> createBulkPatients(@RequestBody List<patientRequest> patientRequests) {
+        List<Patient> createdPatients = patientService.createBulkPatients(patientRequests);
+        return new ResponseEntity<>(createdPatients, HttpStatus.CREATED);
     }
 
     @GetMapping("/name/{patientName}")
@@ -56,16 +61,11 @@ public class PatientController {
     }
 
     @PostMapping("/add")
-    public Patient addPatient(@RequestBody Patient patient) {
-        return patientService.addPatient(patient);
+    public ResponseEntity<Patient> createPatient(@RequestBody patientRequest request) {
+        Patient newPatient = patientService.createPatient(request);
+        return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public Patient updatePatient(@PathVariable Long id, @RequestBody Patient updatedPatient) {
-        return patientService.updatePatient(id, updatedPatient);
-    }
-
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/updatePassword")
     public ResponseEntity<?> updatePassword(@RequestBody PatientPasswordUpdateRequest request) {
         boolean updated = patientService.updatePatientPassword(request.getPatientName(), request.getPassword());
@@ -90,6 +90,15 @@ public class PatientController {
         return ResponseEntity.ok(result);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateAppointment(@PathVariable Long id, @RequestBody Patient updated) {
+        boolean result = patientService.updatePatient(id, updated);
+        if (result) {
+            return ResponseEntity.ok("Patient Data updated successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Patient not found.");
+        }
+    }
 
     @DeleteMapping("/bulk")
     public ResponseEntity<Void> deleteBulkPatient(@RequestBody List<Long> ids) {

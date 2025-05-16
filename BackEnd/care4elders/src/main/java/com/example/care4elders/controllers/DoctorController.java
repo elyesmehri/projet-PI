@@ -1,9 +1,13 @@
 package com.example.care4elders.controllers;
 
+import com.example.care4elders.model.Appointment;
 import com.example.care4elders.model.Doctor;
 import com.example.care4elders.model.Patient;
+
 import com.example.care4elders.services.DoctorService;
 import com.example.care4elders.services.PatientService;
+import com.example.care4elders.services.AppointmentService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +17,7 @@ import com.example.care4elders.controllers.DoctorPasswordUpdateRequest;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -22,23 +27,26 @@ public class DoctorController {
 
     private final DoctorService  doctorService;
     private final PatientService patientService;
-
-
-    @PostMapping("/bulk")
-    public ResponseEntity<List<Doctor>> createBulkDoctor(@RequestBody List<Doctor> doctors) {
-        try {
-            List<Doctor> saved = doctorService.addDoctorsBulk(doctors);
-            return ResponseEntity.status(HttpStatus.CREATED).body(saved);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
+    private final AppointmentService appointmentService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Doctor> getDoctorById(@PathVariable Long id) {
         return doctorService.getDoctorById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/ids")
+    public ResponseEntity<List<Long>> getAllDoctorIds() {
+        List<Long> ids = doctorService.getAllDoctorIds();
+        return new ResponseEntity<>(ids, HttpStatus.OK);
+    }
+
+    @GetMapping("/check-and-get/{id}")
+    public ResponseEntity<Doctor> getDoctorDataIfIdExists(@PathVariable Long id) {
+        Optional<Doctor> doctor = doctorService.getDoctorDataIfIdExists(id);
+        return doctor.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/auth")
@@ -102,8 +110,8 @@ public class DoctorController {
 
     @GetMapping("/patients")  // Changed the URL
     public ResponseEntity<List<Patient>> getPatientsByDoctor(
-            @RequestParam("doctorName") String doctorName) { // Using @RequestParam
-        List<Patient> patients = patientService.getPatientsByDoctor(doctorName);
+            @RequestParam("doctorname") String doctorname) { // Using @RequestParam
+        List<Patient> patients = patientService.getPatientsByDoctor(doctorname);
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
@@ -128,6 +136,17 @@ public class DoctorController {
         return ResponseEntity.ok(doctor);
     }
 
+    @GetMapping("/{id}/appointments")
+    public ResponseEntity<List<Appointment>> getDoctorAppointments(@PathVariable Long id) {
+        List<Appointment> appointments = appointmentService.getAppointmentsByDoctorId(id);
+        return new ResponseEntity<>(appointments, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/count")
+    public ResponseEntity<Long> getDoctorPatientCount(@PathVariable Long id) {
+        Long count = patientService.getPatientCountForDoctor(id);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
 }
 
 
