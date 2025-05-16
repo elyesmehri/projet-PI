@@ -1,5 +1,6 @@
 package com.example.care4elders.controllers;
 
+import com.example.care4elders.Implementations.DoctorServiceImpl;
 import com.example.care4elders.model.Appointment;
 import com.example.care4elders.model.Doctor;
 import com.example.care4elders.model.Family;
@@ -20,6 +21,7 @@ import com.example.care4elders.controllers.patientRequest;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -147,5 +149,62 @@ public class PatientController {
         }
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody patientRequest request) {
+        try {
+            Optional<Patient> existingPatient = patientService.getPatientById(id);
+            if (existingPatient.isPresent()) {
+                Patient patientToUpdate = existingPatient.get();
+
+                // Update only the fields that are not null in the request
+                if (request.getPatientName() != null) {
+                    patientToUpdate.setPatientName(request.getPatientName());
+                }
+                if (request.getAge() != 0) {
+                    patientToUpdate.setAge(request.getAge());
+                }
+
+                patientToUpdate.setGender(request.getGender());
+
+                if (request.getMedicalCondition() != null) {
+                    patientToUpdate.setMedicalCondition(request.getMedicalCondition());
+                }
+                //Doctor
+                if(request.getDoctorname() != null){
+
+                    Doctor doctor = doctorService.findByName(request.getDoctorname()); //  You need to implement this method.
+                    patientToUpdate.setDoctor(doctor);
+                }
+
+                if (request.getAddress() != null) {
+                    patientToUpdate.setAddress(request.getAddress());
+                }
+                if (request.getPhoneNumber() != null) {
+                    patientToUpdate.setPhoneNumber(request.getPhoneNumber());
+                }
+                if (request.getInsurance() != null) {
+                    patientToUpdate.setInsurance(request.getInsurance());
+                }
+                if (request.getPassword() != null) {
+                    patientToUpdate.setPassword(request.getPassword());
+                }
+                if (request.getMedical_state() != null) {
+                    patientToUpdate.setMedical_state(request.getMedical_state());
+                }
+                if (request.getAbout_me() != null) {
+                    patientToUpdate.setAbout_me(request.getAbout_me());
+                }
+
+                Patient updatedPatient = patientService.updatePatient(patientToUpdate);
+                return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }

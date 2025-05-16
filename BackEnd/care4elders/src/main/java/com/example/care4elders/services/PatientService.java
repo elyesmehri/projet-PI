@@ -34,6 +34,8 @@ public interface PatientService {
 
     void deleteAllPatients();
 
+    Patient updatePatient(Patient patient);
+
     public String getPatientGenderByName(String name);
 
     boolean updatePatientPassword(String patientName, String newPassword);
@@ -43,4 +45,5 @@ public interface PatientService {
     boolean updateMedicalStateByName(String patientName, String medical_state);
 
     Long getPatientCountForDoctor(Long doctorId);
+
 }

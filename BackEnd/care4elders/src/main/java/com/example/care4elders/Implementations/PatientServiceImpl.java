@@ -4,8 +4,6 @@ import com.example.care4elders.controllers.patientRequest;
 import com.example.care4elders.model.Doctor;
 import com.example.care4elders.model.Patient;
 
-import com.example.care4elders.controllers.patientRequest;
-
 import com.example.care4elders.repository.DoctorRepository;
 import com.example.care4elders.repository.PatientRepository;
 import com.example.care4elders.services.PatientService;
@@ -173,6 +171,11 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient updatePatient(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @Override
     public String getPatientGenderByName(String name) {
         List<Patient> patients = patientRepository.findByPatientName(name);
 
@@ -216,4 +219,6 @@ public class PatientServiceImpl implements PatientService {
     public Long getPatientCountForDoctor(Long doctorId) {
         return patientRepository.countByDoctorId(doctorId);
     }
+
+
 }

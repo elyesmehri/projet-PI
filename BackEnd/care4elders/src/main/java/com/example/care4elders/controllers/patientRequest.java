@@ -18,4 +18,12 @@ public class patientRequest {
     private String password;
     private String medical_state;
     private String about_me;
+
+    public boolean getGender() {
+        return gender;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
 }
