@@ -18,12 +18,19 @@ public class Insurance {
     private String medical_coding_system ;
     private String description;
     private int nb_subscriber;
+    private String contact_phone;
 
     @ElementCollection
     private Map<String, Integer> supported_drugs;
 
     @ElementCollection
     private Map<String, Integer> supported_operations;
+
+    @ElementCollection
+    @CollectionTable(name = "insurance_available_doctors", joinColumns = @JoinColumn(name = "insurance_id"))
+    @MapKeyColumn(name = "doctor_speciality") // Use a single string as the key for the composite value
+    @Column(name = "doctor_id")
+    private Map<String, Integer> available_doctors;
 
     public Insurance (Long id,
                       String insurance_title,
@@ -32,7 +39,9 @@ public class Insurance {
                       String description,
                       int nb_subscriber,
                       Map<String, Integer> supported_drugs,
-                      Map<String, Integer> supported_operations) {
+                      Map<String, Integer> supported_operations,
+                      Map<String, Integer> available_doctors
+                      ) {
 
         this.id = id;
         this.insurance_title = insurance_title;
@@ -42,6 +51,8 @@ public class Insurance {
         this.medical_coding_system = medical_coding_system;
         this.description = description;
         this.nb_subscriber = nb_subscriber;
+        this.available_doctors = available_doctors;
+        this.contact_phone = contact_phone;
     }
 
     public Insurance() {
@@ -110,6 +121,22 @@ public class Insurance {
 
     public void setSupported_operations(Map<String, Integer> supported_operations) {
         this.supported_operations = supported_operations;
+    }
+
+    public String getContact_phone() {
+        return contact_phone;
+    }
+
+    public void setContact_phone(String contact_phone) {
+        this.contact_phone = contact_phone;
+    }
+
+    public Map<String, Integer> getAvailable_doctors() {
+        return available_doctors;
+    }
+
+    public void setAvailable_doctors(Map<String, Integer> available_doctors) {
+        this.available_doctors = available_doctors;
     }
 }
 
