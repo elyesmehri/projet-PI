@@ -1,6 +1,6 @@
 package com.example.care4elders.Implementations;
 
-import com.example.care4elders.controllers.patientRequest;
+import com.example.care4elders.controllers.PatientRequest;
 import com.example.care4elders.model.Doctor;
 import com.example.care4elders.model.Patient;
 
@@ -22,9 +22,9 @@ public class PatientServiceImpl implements PatientService {
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
 
-    public List<Patient> createBulkPatients(List<patientRequest> requests) {
+    public List<Patient> createBulkPatients(List<PatientRequest> requests) {
         List<Patient> createdPatients = new ArrayList<>();
-        for (patientRequest request : requests) {
+        for (PatientRequest request : requests) {
             Patient patient = new Patient();
             patient.setPatientName(request.getPatientName());
             patient.setAge(request.getAge());
@@ -49,7 +49,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient createPatient(patientRequest request) {
+    public Patient createPatient(PatientRequest request) {
 
         Patient patient = new Patient();
         patient.setPatientName(request.getPatientName());

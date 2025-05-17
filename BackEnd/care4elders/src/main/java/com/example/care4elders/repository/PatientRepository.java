@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
+
     List<Patient> findByPatientName(String patientName);
 
     List<Patient> findByDoctor_Doctorname(String doctorname); // Corrected method name

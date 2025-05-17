@@ -92,7 +92,7 @@ public class FamilyController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-   }
+    }
 
     @PutMapping("/updatePassword")
     public ResponseEntity<?> updatePassword(@RequestParam String familyname, @RequestParam String password) {

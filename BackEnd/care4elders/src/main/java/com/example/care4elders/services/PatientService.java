@@ -1,19 +1,16 @@
 package com.example.care4elders.services;
 
-import com.example.care4elders.controllers.patientRequest;
-import com.example.care4elders.controllers.patientRequest;
-import com.example.care4elders.model.Appointment;
+import com.example.care4elders.controllers.PatientRequest;
 import com.example.care4elders.model.Patient;
-import io.micrometer.observation.ObservationFilter;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface PatientService {
 
-    List<Patient> createBulkPatients(List<patientRequest> requests);
+    List<Patient> createBulkPatients(List<PatientRequest> requests);
 
-    Patient createPatient(patientRequest request);
+    Patient createPatient(PatientRequest request);
 
     List<Patient> getAllPatients();
 

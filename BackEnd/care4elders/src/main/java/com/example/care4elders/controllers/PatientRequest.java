@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class patientRequest {
+public class PatientRequest {
 
     private String patientName;
     private int age;

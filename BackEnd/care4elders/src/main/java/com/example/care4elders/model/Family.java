@@ -39,19 +39,19 @@ public class Family {
                   String advice,
                   float invest,
                   int login ) {
-                                    this.id = id;
-                                    this.familyname = familyname;
-                                    this.patientname = patientname;
-                                    this.relative = relative;
-                                    this.relationship = relationship;
-                                    this.address = address;
-                                    this.phonenumber = phonenumber;
-                                    this.insurance = insurance;
-                                    this.doctors = doctors;
-                                    this.password = password;
-                                    this.advice = advice;
-                                    this.invest = invest;
-                                    this.login =  login;
+        this.id = id;
+        this.familyname = familyname;
+        this.patientname = patientname;
+        this.relative = relative;
+        this.relationship = relationship;
+        this.address = address;
+        this.phonenumber = phonenumber;
+        this.insurance = insurance;
+        this.doctors = doctors;
+        this.password = password;
+        this.advice = advice;
+        this.invest = invest;
+        this.login =  login;
     }
 
     public Family() {
@@ -178,4 +178,3 @@ public class Family {
         this.login = login;
     }
 }
-

@@ -1,9 +1,6 @@
 package com.example.care4elders.controllers;
 
-import com.example.care4elders.Implementations.DoctorServiceImpl;
-import com.example.care4elders.model.Appointment;
 import com.example.care4elders.model.Doctor;
-import com.example.care4elders.model.Family;
 import com.example.care4elders.model.Patient;
 
 import com.example.care4elders.services.*;
@@ -15,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import com.example.care4elders.controllers.patientRequest;
 
 
 import java.util.List;
@@ -33,7 +28,7 @@ public class PatientController {
     private final DoctorService doctorService;
 
     @PostMapping("/bulk")
-    public ResponseEntity<List<Patient>> createBulkPatients(@RequestBody List<patientRequest> patientRequests) {
+    public ResponseEntity<List<Patient>> createBulkPatients(@RequestBody List<PatientRequest> patientRequests) {
         List<Patient> createdPatients = patientService.createBulkPatients(patientRequests);
         return new ResponseEntity<>(createdPatients, HttpStatus.CREATED);
     }
@@ -63,7 +58,7 @@ public class PatientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Patient> createPatient(@RequestBody patientRequest request) {
+    public ResponseEntity<Patient> createPatient(@RequestBody PatientRequest request) {
         Patient newPatient = patientService.createPatient(request);
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
@@ -150,7 +145,7 @@ public class PatientController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody patientRequest request) {
+    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody PatientRequest request) {
         try {
             Optional<Patient> existingPatient = patientService.getPatientById(id);
             if (existingPatient.isPresent()) {
@@ -208,3 +203,4 @@ public class PatientController {
     }
 
 }
+
