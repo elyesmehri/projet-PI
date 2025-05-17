@@ -1,7 +1,3 @@
-<app-loading *ngIf="isLoading"></app-loading>
-
-<div *ngIf="!isLoading">
-
   <div class="container mx-auto p-4 bg-transparent text-white">
     <!-- Doctor's Name Section -->
     <p class="text-4xl font-bold text-center mb-6">Welcome, {{ doctorName }}!</p>
@@ -76,9 +72,3 @@
               (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
     </div>
   </div>
-<!---
-  <div>
-    <span class = "text-lg text-yellow"> {{nb_patients}}</span>
-  </div>
---->
-</div>

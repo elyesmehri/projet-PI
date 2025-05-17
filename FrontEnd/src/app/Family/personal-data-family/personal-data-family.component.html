@@ -1,0 +1,200 @@
+  <div class="w-4/5 mx-auto">
+    <nav class="bg-gray-800 text-white p-4 relative">
+      <div class="container mx-auto flex items-center justify-between">
+
+        <ul class="flex space-x-8">
+
+          <li>
+            <a routerLink="/familyarea" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-user fa-lg mr-2"></i> <span class="text-lg">Family Space</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/registerpatient" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-hospital-user fa-lg mr-2"></i> <span class="text-lg">Add Family Data</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/updatepatient" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Update Family Data</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/personaldatafamily" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Personal Data</span>
+            </a>
+          </li>
+        </ul>
+
+        <a href="/family" class="absolute top-2 right-4">
+          <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <i class="fas fa-sign-out-alt fa-lg mr-2"></i> Logout
+          </button>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+<br>
+
+  <div class="min-h-screen bg-gray-100 bg-transparent">
+    <h1 class="text-4xl font-bold text-center text-white mb-8">Welcome to update Family data area !</h1>
+    <br>
+    <h1 class="text-base font-bold text-start text-white mb-8">
+   put a good text here ..
+    </h1>
+
+    <table class="min-w-full table-auto bg-transparent text-white border-collapse ">
+      <thead>
+      <tr class="bg-transparent font-semibold text-left border-b border-white ">
+        <th class="px-4 py-2">Value Name</th>
+        <th class="px-4 py-2">Actual Data</th>
+        <th class="px-4 py-2">New Data</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Family Name:</th>
+        <td class="px-4 py-2">{{ foundFamily.familyname }}</td>
+        <td class="px-4 py-2">
+          <input
+            type="text"
+            [value]="foundFamily.familyname"
+            class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+            placeholder="Change your name but strongly recommended to keep the same name"
+            disabled
+          />
+        </td>
+      </tr>
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Patient Name:</th>
+        <td class="px-4 py-2">{{ foundFamily.patientname }}</td>
+        <td class="px-4 py-2">
+          <input
+            type="text"
+            [value]="foundFamily.patientname"
+            class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+            placeholder="Change your name but strongly recommended to keep the same name"
+            disabled
+          />
+        </td>
+      </tr>
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Relative Name:</th>
+        <td class="px-4 py-2">{{ foundFamily.relative }}</td>
+        <td class="px-4 py-2">
+          <input
+            type="text"
+            [value]="updateFamily.relative"
+            class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+            placeholder="Change your name but strongly recommended to keep the same name"
+            disabled
+          />
+        </td>
+      </tr>
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Relative's Name </th>
+        <td class="px-4 py-2">{{ foundFamily.relationship }}</td>
+        <td class="px-4 py-2">
+          <select [(ngModel)]="updateFamily.relationship" class="form-select w-full bg-transparent text-white rounded-md">
+            <option value="" disabled selected> How are you related to ..</option>
+            <option value="child">child</option>
+            <option value="daughter">daughter</option>
+            <option value="grandson">grandson</option>
+            <option value="granddaughter">granddaughter</option>
+            <option value="spouse">spouse</option>
+            <option value="nurse">nurse</option>
+            <option value="friend">friend</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Address:</th>
+        <td class="px-4 py-2"> {{ foundFamily.address }}</td>
+        <td class="px-4 py-2">
+          <input
+            type="text"
+            [(ngModel)]="updateFamily.address"
+            class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+            placeholder="Please put your new address here"
+          />
+      </tr>
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Phone Number:</th>
+        <td class="px-4 py-2">{{ foundFamily.phonenumber }}</td>
+        <td class="px-4 py-2">
+          <input
+            type="text"
+            [(ngModel)]="updateFamily.phonenumber"
+            class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+            placeholder="Change your phone number in here 8 digit number"
+          />
+        </td>
+      </tr>
+
+
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Password:</th>
+        <td class="px-4 py-2 text-white">********</td>
+        <td class="px-4 py-2">
+          <input
+            type="password"
+            [(ngModel)]="updateFamily.password"
+            class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
+            placeholder="Use pattern, special character, Upcase and lowercase Min length 6"
+          />
+        </td>
+      </tr>
+
+      <tr class="bg-transparent border-b border-white" *ngIf="foundFamily">
+        <th class="px-4 py-2 text-left font-semibold">Give a litte quote about yourself :</th>
+        <td class="px-4 py-2">
+        <textarea [(ngModel)]="foundFamily.advice"
+                  class="w-96 h-24 p-2 bg-white text-gray-800 rounded-md"></textarea>
+
+        </td>
+        <td class="px-4 py-2">
+      <textarea [(ngModel)]="updateFamily.advice"
+                class="w-96 h-24 p-2 bg-white text-gray-800 rounded-md"></textarea>
+        </td>
+      </tr>
+
+      <tr class="bg-transparent">
+        <td colspan="3" class="px-4 py-4">
+          <div class="flex justify-between items-center">
+            <button (click)="goHome()"
+                    class="bottom-8 right-8 bg-white text-black px-8 py-4 rounded-lg shadow-lg font-bold text-lg hover:bg-gray-500 transition duration-200">
+              Go Back 🏠
+            </button>
+
+            <button (click)="onSubmit()" [disabled]="!foundFamily"
+                    class="bottom-8 right-8 bg-white text-black px-8 py-4 rounded-lg shadow-lg font-bold text-lg hover:bg-green-500 transition duration-200">
+              Submit 🚀
+            </button>
+          </div>
+          <br>
+          <div class="mt-4">
+            <button (click)="onSubmit()" [disabled]="!foundFamily"
+                    class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              Unsubscribe From App
+            </button>
+          </div>
+        </td>
+      </tr>
+
+      <tr *ngIf="!foundFamily">
+        <td colspan="3" class="px-4 py-2 text-white text-center">Loading Family data...</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+

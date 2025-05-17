@@ -11,10 +11,6 @@ export class AppComponent  {
   showLoading = true;
 
   ngOnInit() {
-    // Simulate loading screen for 5 seconds
-    setTimeout(() => {
-      this.showLoading = false;
-    }, 5000);
   }
 
 

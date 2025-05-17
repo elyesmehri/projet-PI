@@ -19,15 +19,17 @@ import { CreditComponent } from './pages/credit/credit.component';
 import { StatusComponent } from './pages/status/status.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { DocIconComponent } from './dashboard/icons/doc-icon/doc-icon.component';
 import { DocumentationComponent } from './pages/documentation/documentation.component';
 
+/*
 // icons
 import { HomeIconComponent } from './dashboard/icons/home-icon/home-icon.component';
 import { CreditIconComponent } from './dashboard/icons/credit-icon/credit-icon.component';
 import { StatusIconComponent } from './dashboard/icons/status-icon/status-icon.component';
 import { ArchiveIconComponent } from './dashboard/icons/archive-icon/archive-icon.component';
 import { SettingsIconComponent } from './dashboard/icons/settings-icon/settings-icon.component';
+import { DocIconComponent } from './dashboard/icons/doc-icon/doc-icon.component';
+*/
 
 // others
 import { DocComponent } from './components/docs/doc/doc.component';
@@ -54,12 +56,12 @@ import { PatientRegistrationComponent } from './Patient/patient-registration/pat
 import { UpdatepatientpasswordComponent } from './Patient/updatepatientpassword/updatepatientpassword.component';
 import { UpdatePatientDataComponent } from './Patient/update-patient-data/update-patient-data.component';
 
-import { LoadingComponent } from './loading/loading.component';
 import { EspaceFamilleComponent } from './Family/espace-famille/espace-famille.component';
 import { FamilyRegistrationComponent } from './Family/family-registration/family-registration.component';
 import { MedicalAssitantQComponent } from './Family/medical-assitant-q/medical-assitant-q.component';
 import { FamilyAreaComponent } from './Family/family-area/family-area.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { PersonalDataFamilyComponent } from './Family/personal-data-family/personal-data-family.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
     SettingsComponent,
     DocumentationComponent,
 
+/*
     // icons
     DocIconComponent,
     HomeIconComponent,
@@ -91,6 +94,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
     CreditIconComponent,
     StatusIconComponent,
     SettingsIconComponent,
+*/
 
     // others
     DocComponent,
@@ -111,9 +115,6 @@ import { AppointmentComponent } from './appointment/appointment.component';
     UpdatePatientDataComponent,
     EspacePatientComponent,
 
-    // Loading Component
-    LoadingComponent,
-
     // Family Component
     EspaceFamilleComponent,
     FamilyRegistrationComponent,
@@ -122,6 +123,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
 
     // Appointment Component
     AppointmentComponent,
+      PersonalDataFamilyComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgOptimizedImage],
   providers: [DoctorService,FamilyService],

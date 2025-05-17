@@ -8,6 +8,7 @@ import { DashboardService } from '../../dashboard.service';
 export class SidebarItemComponent {
   @Input() title: string;
   @Input() routerLink: string;
+  @Input() icon: string = '';
 
   constructor(private dashboard: DashboardService) {
     this.title = '';

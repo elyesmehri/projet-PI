@@ -20,8 +20,6 @@ import { PatientRegistrationComponent } from './Patient/patient-registration/pat
 import { UpdatepatientpasswordComponent } from './Patient/updatepatientpassword/updatepatientpassword.component';
 import { UpdatePatientDataComponent } from './Patient/update-patient-data/update-patient-data.component';
 
-import { LoadingComponent } from './loading/loading.component';
-
 import { EspaceFamilleComponent } from './Family/espace-famille/espace-famille.component';
 import { FamilyRegistrationComponent } from './Family/family-registration/family-registration.component';
 import { MedicalAssitantQComponent } from './Family/medical-assitant-q/medical-assitant-q.component';
@@ -29,6 +27,7 @@ import { FamilyAreaComponent } from './Family/family-area/family-area.component'
 
 import { AppointmentComponent } from './appointment/appointment.component';
 
+import { PersonalDataFamilyComponent } from './Family/personal-data-family/personal-data-family.component';
 
 const routes: Routes = [
 
@@ -36,6 +35,7 @@ const routes: Routes = [
   { path: 'admin/status', component: StatusComponent },
   { path: 'menu_insurances', component: ArchiveComponent },
   { path: 'admin/credits', component: CreditComponent },
+
   { path: 'admin/documentation', component: DocumentationComponent },
   { path: 'menu_doctors', component: SettingsComponent },
 
@@ -49,16 +49,15 @@ const routes: Routes = [
   { path: 'passwordpatient', component: UpdatepatientpasswordComponent },
   { path: 'familyarea', component: FamilyAreaComponent },
 
-  { path: 'loading', component: LoadingComponent },
-
   { path: 'family', component: EspaceFamilleComponent },
   { path: 'regiterfamily', component: FamilyRegistrationComponent },
   { path: 'medicalassitantq', component: MedicalAssitantQComponent },
 
   { path: 'rdv/:id', component: AppointmentComponent },
 
-  { path: 'updatepatient', component: UpdatePatientDataComponent }
+  { path: 'updatepatient', component: UpdatePatientDataComponent },
 
+  { path: 'personaldatafamily', component: PersonalDataFamilyComponent }
 
 ];
 
