@@ -1,0 +1,98 @@
+[
+  {"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+  {"type":"database","name":"care4elders2"},
+  {"type":"table","name":"appointment","database":"care4elders2","data":
+  [
+    {"id":"1","date":"2025-06-15 10:00:00.000000","description":"Routine checkup for Doe family with Dr. Smith.","emergency":"LOW","nature":"1","period":"30","state":"1","tariff":"50","doctor_id":"1","family_id":"1"},
+    {"id":"3","date":"2025-07-01 12:00:00.000000","description":"Needed a vaccine cause grandma's night convulsion didn't stops and waked everybody ","emergency":"URGENT","nature":"1","period":"30","state":"0","tariff":"150","doctor_id":"10","family_id":"1"},
+    {"id":"4","date":"2025-07-01 12:00:00.000000","description":"We must change the posology of the recent medecine as we asked last time...","emergency":"Medium","nature":"1","period":"30","state":"0","tariff":"150","doctor_id":"10","family_id":"3"}
+  ]
+  }
+,{"type":"table","name":"doctor","database":"care4elders2","data":
+[
+  {"id":"1","address":"Dinosaur Park","doctorname":"Dr. Alan Grant","gender":"1","hospital":"Island Clinic","insurance":"JurassicCare","medicalid":"AG-001","numberofpatients":"0","password":"pass123PASS","phonenumber":"555-DINO","score":"100","speciality":"Paleontology"},
+  {"id":"2","address":"Street of Medical cares ","doctorname":"Dr. Jennifer Winston","gender":"1","hospital":"Island Clinic","insurance":"MediCare +","medicalid":"AG-002","numberofpatients":"0","password":"roar","phonenumber":"555-DINO","score":"0","speciality":"Psychiatry"},
+  {"id":"4","address":"400 Heartbeat Lane, Medical City","doctorname":"Dr. Emily Chen","gender":"0","hospital":"City General Hospital","insurance":"Allianz","medicalid":"EC-CARD-001","numberofpatients":"0","password":"CardiacPass!","phonenumber":"555-4001","score":"95","speciality":"Cardiology"},
+  {"id":"5","address":"22 Baby Steps Blvd, Suburbia","doctorname":"Dr. Robert Garcia","gender":"1","hospital":"Children's Health Center","insurance":"FamilyCare","medicalid":"RG-PED-002","numberofpatients":"0","password":"KidsHealth@2","phonenumber":"555-4002","score":"92","speciality":"Pediatrics"},
+  {"id":"6","address":"33 Clear Skin Rd, Beautyville","doctorname":"Dr. Sarah Lee","gender":"0","hospital":"Aesthetic Clinic","insurance":"SkinSure","medicalid":"SL-DERM-003","numberofpatients":"0","password":"ClearSkin#3","phonenumber":"555-4003","score":"88","speciality":"Dermatology"},
+  {"id":"7","address":"10 Bone Lane, Sports City","doctorname":"Dr. Alex Johnson","gender":"1","hospital":"Orthopedic Institute","insurance":"ActiveLife","medicalid":"AJ-ORTHO-004","numberofpatients":"0","password":"BoneDoc$4","phonenumber":"555-4004","score":"98","speciality":"Orthopedic Surgery"},
+  {"id":"8","address":"55 Main Street, Town Center","doctorname":"Dr. Maria Sanchez","gender":"0","hospital":"Local Clinic","insurance":"MediCover","medicalid":"MS-GP-005","numberofpatients":"0","password":"GPTrust%5","phonenumber":"555-4005","score":"90","speciality":"General Practice"},
+  {"id":"9","address":"66 Brainy Blvd, Mind City","doctorname":"Dr. Ben Carter","gender":"1","hospital":"Neuroscience Hospital","insurance":"NeuroHealth","medicalid":"BC-NEURO-006","numberofpatients":"0","password":"BrainDoc^6","phonenumber":"555-4006","score":"94","speciality":"Neurology"},
+  {"id":"10","address":"77 Vision St, Eye Care Plaza","doctorname":"Dr. Chloe Davis","gender":"0","hospital":"Vision Clinic","insurance":"EyeSight","medicalid":"CD-OPTH-007","numberofpatients":"0","password":"SeeClearly&7","phonenumber":"555-4007","score":"91","speciality":"Ophthalmology"},
+  {"id":"11","address":"88 Gut Health Lane, Wellness Center","doctorname":"Dr. David Kim","gender":"1","hospital":"Digestive Health Institute","insurance":"DigestiveCare","medicalid":"DK-GASTRO-008","numberofpatients":"0","password":"GutCheck*8","phonenumber":"555-4008","score":"89","speciality":"Gastroenterology"},
+  {"id":"12","address":"99 Serene St, Harmony Heights","doctorname":"Dr. Jessica Brown","gender":"0","hospital":"Mental Wellness Clinic","insurance":"MindBalance","medicalid":"JB-PSYCH-009","numberofpatients":"0","password":"MindPeace(9","phonenumber":"555-4009","score":"93","speciality":"Psychiatry"},
+  {"id":"13","address":"11 First Aid Ave, Trauma Unit","doctorname":"Dr. Kevin White","gender":"1","hospital":"Emergency Hospital","insurance":"RapidResponse","medicalid":"KW-EMERG-010","numberofpatients":"0","password":"ERHero)0","phonenumber":"555-4010","score":"97","speciality":"Emergency Medicine"}
+]
+}
+,{"type":"table","name":"doctor_s_family_s","database":"care4elders2","data":
+[
+  {"doctor_id":"1","family_id":"3"},
+  {"doctor_id":"1","family_id":"2"}
+]
+}
+,{"type":"table","name":"doctor_s_patient_s","database":"care4elders2","data":
+[
+  {"doctor_id":"5","patient_id":"3"},
+  {"doctor_id":"5","patient_id":"5"},
+  {"doctor_id":"5","patient_id":"7"},
+  {"doctor_id":"5","patient_id":"12"},
+  {"doctor_id":"7","patient_id":"1"},
+  {"doctor_id":"7","patient_id":"2"},
+  {"doctor_id":"7","patient_id":"11"},
+  {"doctor_id":"8","patient_id":"4"}
+]
+}
+,{"type":"table","name":"family","database":"care4elders2","data":
+[
+  {"id":"1","address":"Lockwood Estate","advice":"We just know about this app and it could change our life for better cause we don't know too much about medical stuff and we really need some help for our grandma..","familyname":"Lockwood Family","insurance":"DinoInsurance","invest":"1250.75","login":"0","password":"WeAreFamilyWithId1","phone_number":"555-MAISIE","relationship":"Granddaughter","relative":"Maisie Lockwood"},
+  {"id":"2","address":"NYC,  Street of Freedom","advice":"We needed some help over here ...","familyname":"Black","insurance":"MediCare +","invest":"5000","login":"1","password":"chaos","phone_number":"52-256-265","relationship":"Daughter","relative":"Louis Black Jr."},
+  {"id":"3","address":"USA, New Mexico, Albukerque","advice":"Wee just knew about this app ! and it ssems to be cool !","familyname":"Smith","insurance":"Plan A","invest":"5000","login":"1","password":"chaos","phone_number":"00-123-478","relationship":"GrandDaughter","relative":"Garcia Smith"}
+]
+}
+,{"type":"table","name":"insurance","database":"care4elders2","data":
+[
+
+]
+}
+,{"type":"table","name":"insurance_available_doctors","database":"care4elders2","data":
+[
+
+]
+}
+,{"type":"table","name":"insurance_supported_drugs","database":"care4elders2","data":
+[
+
+]
+}
+,{"type":"table","name":"insurance_supported_operations","database":"care4elders2","data":
+[
+
+]
+}
+,{"type":"table","name":"patient","database":"care4elders2","data":
+[
+  {"id":"1","about_me":"Loves hiking","address":"123 Main St","age":"87","gender":"1","insurance":"Acme Insurance","medical_condition":"Healthy","medical_state":"Stable","password":"hashed_password","patient_name":"John Doe","phone_number":"555-1111","family_id":null},
+  {"id":"2","about_me":"Used to be a singer, felt a little bit tired, canoot sing anymore ... ","address":"123 Main St","age":"86","gender":"0","insurance":"Medi Care +","medical_condition":"Diabets Type II","medical_state":"Stable","password":"hashed_pass123","patient_name":"Christina ALiguerra","phone_number":"555-1111","family_id":null},
+  {"id":"3","about_me":"Enjoys outdoor activities, no known major health issues.","address":"123 Oak St, Anytown","age":"32","gender":"0","insurance":"Blue Cross Blue Shield","medical_condition":"Seasonal Allergies","medical_state":"Stable","password":"SecurePass!1","patient_name":"Jane Doe","phone_number":"555-1001","family_id":null},
+  {"id":"4","about_me":"Seeking new treatment options for frequent headaches.","address":"456 Pine Ave, Cityville","age":"45","gender":"1","insurance":"UnitedHealthcare","medical_condition":"Chronic Migraines","medical_state":"Managed","password":"StrongPass#2","patient_name":"Michael Smith","phone_number":"555-2002","family_id":null},
+  {"id":"5","about_me":"Active child, requires inhaler during strenuous activity.","address":"789 Maple Rd, Townsville","age":"8","gender":"0","insurance":"Aetna","medical_condition":"Asthma (mild)","medical_state":"Controlled","password":"KidPass@3","patient_name":"Emily White","phone_number":"555-3003","family_id":"1"},
+  {"id":"6","about_me":"Plays soccer, sustained injury during a game.","address":"101 Birch Ln, Villageton","age":"24","gender":"1","insurance":"Cigna","medical_condition":"Ankle Sprain","medical_state":"Recovering","password":"AthletePass$4","patient_name":"David Jones","phone_number":"555-4004","family_id":null},
+  {"id":"7","about_me":"Manages diet and medication well, regular check-ups needed.","address":"202 Cedar Pl, Metropolis","age":"60","gender":"0","insurance":"Kaiser Permanente","medical_condition":"Type 2 Diabetes","medical_state":"Stable","password":"SeniorSecure%5","patient_name":"Sarah Miller","phone_number":"555-5005","family_id":null},
+  {"id":"8","about_me":"Focuses on preventative care, no current concerns.","address":"303 Elm Dr, Suburbia","age":"29","gender":"1","insurance":"Molina Healthcare","medical_condition":"Healthy","medical_state":"Excellent","password":"Pass@6","patient_name":"Chris Davis","phone_number":"555-6006","family_id":null},
+  {"id":"9","about_me":"First pregnancy, seeking regular prenatal care.","address":"404 Poplar Ct, Downtown","age":"28","gender":"0","insurance":"Humana","medical_condition":"Pregnancy (28 weeks)","medical_state":"Good","password":"MommyPass!7","patient_name":"Olivia Garcia","phone_number":"555-7007","family_id":null},
+  {"id":"10","about_me":"Monitors blood pressure regularly, takes prescribed medication.","address":"505 Willow Way, Upland","age":"55","gender":"1","insurance":"Aetna","medical_condition":"Hypertension","medical_state":"Controlled","password":"OldPassword#8","patient_name":"Daniel Wilson","phone_number":"555-8008","family_id":null},
+  {"id":"11","about_me":"Routine dental cleaning and check-up.","address":"606 Oakwood St, Hillside","age":"19","gender":"0","insurance":"Delta Dental","medical_condition":"Healthy Teeth","medical_state":"Excellent","password":"SmilePass!9","patient_name":"Sophia Brown","phone_number":"555-9009","family_id":null},
+  {"id":"12","about_me":"Follow-up after recent appendix removal surgery.","address":"707 River Rd, Valleyview","age":"40","gender":"1","insurance":"Anthem","medical_condition":"Post-Appendectomy","medical_state":"Improving","password":"RecoveryPass$0","patient_name":"Alex Johnson","phone_number":"555-0101","family_id":null}
+]
+}
+,{"type":"table","name":"visit","database":"care4elders2","data":
+[
+  {"id":"1","is_assisted":"0","visit_date":"2024-08-24 01:30:00.000000","doctor_id":"2","patient_id":"4"},
+  {"id":"2","is_assisted":"0","visit_date":"2025-06-02 12:30:00.000000","doctor_id":"1","patient_id":"5"},
+  {"id":"3","is_assisted":"0","visit_date":"2025-07-27 12:30:00.000000","doctor_id":"2","patient_id":"5"},
+  {"id":"4","is_assisted":"0","visit_date":"2025-07-27 12:30:00.000000","doctor_id":"2","patient_id":"1"},
+  {"id":"6","is_assisted":"0","visit_date":"2024-08-24 01:30:00.000000","doctor_id":"2","patient_id":"1"},
+  {"id":"7","is_assisted":"0","visit_date":"2025-03-01 15:30:00.000000","doctor_id":"5","patient_id":"1"}
+]
+}
+]
