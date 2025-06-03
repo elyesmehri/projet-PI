@@ -5,6 +5,12 @@
   transition: transform 0.2s ease-in-out;
 }
 
+::ng-deep select option {
+  background-color: white;
+  color: black;
+}
+
+
 .hover-bubble::before {
   content: '';
   position: absolute;

@@ -32,7 +32,7 @@
 
     <!-- Login Form -->
     <div class="px-8 pb-10">
-      <form (ngSubmit)="login()" #loginForm="ngForm">
+      <form (ngSubmit)="onlogin()" #loginForm="ngForm">
         <!-- Professional ID Field -->
         <div class="mb-5">
           <label class="block text-white text-sm font-semibold mb-2" for="username">
@@ -42,12 +42,28 @@
             type="text"
             id="username"
             name="username"
-            [(ngModel)]="doctorname"
+            [(ngModel)]="formData.doctorName"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             placeholder="MD-XXXXXX"
           />
         </div>
+
+        <div class="mb-5">
+          <label class="block text-white text-sm font-semibold mb-2" for="medical_id">
+            MEDICAL ID
+          </label>
+          <input
+            type="text"
+            id="medical_id"
+            name="medical_id"
+            [(ngModel)]="formData.medicalID"
+            required
+            class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+            placeholder="MD-XXXXXX"
+          />
+        </div>
+
 
         <!-- Password Field -->
         <div class="mb-6">
@@ -58,7 +74,7 @@
             type="password"
             id="password"
             name="password"
-            [(ngModel)]="password"
+            [(ngModel)]="formData.password"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
             placeholder="••••••••"

@@ -25,9 +25,10 @@ import { FamilyRegistrationComponent } from './Family/family-registration/family
 import { MedicalAssitantQComponent } from './Family/medical-assitant-q/medical-assitant-q.component';
 import { FamilyAreaComponent } from './Family/family-area/family-area.component';
 
-import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentComponent } from './Appointment/appointment.component';
 
 import { PersonalDataFamilyComponent } from './Family/personal-data-family/personal-data-family.component';
+import { UpdatefamilypasswordComponent } from './Family/updatefamilypassword/updatefamilypassword.component';
 
 const routes: Routes = [
 
@@ -49,6 +50,10 @@ const routes: Routes = [
   { path: 'passwordpatient', component: UpdatepatientpasswordComponent },
   { path: 'familyarea', component: FamilyAreaComponent },
 
+  { path: 'patientarea', component: PatientAreaComponent },
+
+
+
   { path: 'family', component: EspaceFamilleComponent },
   { path: 'regiterfamily', component: FamilyRegistrationComponent },
   { path: 'medicalassitantq', component: MedicalAssitantQComponent },
@@ -57,7 +62,10 @@ const routes: Routes = [
 
   { path: 'updatepatient', component: UpdatePatientDataComponent },
 
-  { path: 'personaldatafamily', component: PersonalDataFamilyComponent }
+  { path: 'personaldatafamily', component: PersonalDataFamilyComponent },
+
+  { path: 'passwordfamily', component: UpdatefamilypasswordComponent }
+
 
 ];
 

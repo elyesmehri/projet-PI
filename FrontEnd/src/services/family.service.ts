@@ -1,108 +1,118 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, catchError, map, Observable, of, tap, throwError} from 'rxjs';
-import { Family } from "../app/Family/family.model";
+import {CheckFamilyRequest, Family, FamilyRequest} from "../app/Family/family.model";
+import {AppointmentResponse} from "../app/Appointment/appointment.model";
+import {UpdatePasswordRequest} from "../app/Family/family.model";
+import {Patient} from "../app/Patient/patient.model";
 
-interface AuthResponse {
-  success?: boolean;
-  error?: string;
-  //  You might get a token or user info here on success
-  //  token?: string;
-  //  userId?: number;
-  familyname?: string;
+class FamilyUpdateRequest {
 }
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FamilyService {
 
-  private apiUrl = 'http://localhost:8085/family';  // Update if needed
+  private baseUrl = 'http://localhost:8082/family';  // Update if needed
   private currentFamilyNameSubject = new BehaviorSubject<string>(''); // BehaviorSubject
   public currentFamilyName$ = this.currentFamilyNameSubject.asObservable(); // Observable
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) {}
 
+  // Create Family
+  createFamily(family: {
 
-  setFamilyName(familyName: string): void {
-
-    this.currentFamilyNameSubject.next(familyName);
-
-  }
-
-  getFamilyName(): Observable<string> {
-    return this.currentFamilyName$;
-  }
-
-  updateInvest(familyname: string, invest: number): Observable<Family> {
-    const params = new HttpParams()
-      .set('familyname', familyname)
-      .set('invest', invest.toString());
-
-    return this.http.put<Family>(`${this.apiUrl}/updateinvest`, null, { params });
-  }
-
-  checkFamilyExists (familyname: string, relative: string, password: string): Observable<boolean> {
-    const params = new HttpParams()
-      .set('familyname', familyname)
-      .set('relative', relative)
-      .set('password', password);
-
-    return this.http.get<boolean>(`${this.apiUrl}/checkFieldsExist`, { params }).pipe(
-
-      tap(response => console.log('Auth Response (boolean):', response)),
-      map(response => {
-        if (response === true) {
-          this.setFamilyName(familyname);
-          return true;
-        } else {
-          return false;
-        }
-      }),
-      catchError(error => {
-        console.error('Auth Error:', error);
-        return of(false);
-      })
-    );
-  }
-
-  // Register Family
-  registerFamily(family: Family): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, family);
-  }
-
-  incrementLogin(familyName: string): Observable<Family> {
-    const url = `${this.apiUrl}/login/${familyName}`;
-    return this.http.post<Family>(url, {}); // POST request avec un corps vide
-  }
-
-  resetLogin(familyName: string): Observable<Family> {
-    const url = `${this.apiUrl}/resetlogin/${familyName}`;
-    return this.http.post<Family>(url, {}); // POST request avec un corps vide
-  }
-
-  getFamily(familyName: string): Observable<Family> {
-    const url = `${this.apiUrl}/${familyName}`; // Construction de l'URL avec le familyName
-    return this.http.get<Family>(url);
-  }
-
-  addNewFamily(family: {
     familyname: string;
-    patientname: string;
-    relative: string;
-    relationship: string;
-    address: string;
-    phonenumber: string;
-    insurance: string;
     password: string;
-    invest: string;
+    relative : string;
+    relationship : string;
+    address: string;
+    phoneNumber: string;
+    advice : string;
+    invest : number;
+
   }): Observable<Family> {
-    return this.http.post<Family>(`${this.apiUrl}/add`, family).pipe(
-      catchError(error => {
-        console.error('Error adding new family:', error);
-        return throwError(() => error);
-      })
-    );
+    return this.http.post<Family>(`${this.baseUrl}/create`, family, this.httpOptions);
+  }
+
+  getCurrentFamilyName(): string {
+    return this.currentFamilyNameSubject.value;
+  }
+
+  setFamilyName(familyname: string): void {
+    this.currentFamilyNameSubject.next(familyname);
+    console.log(`Family name set in service: ${familyname}`);
+  }
+
+  // Get All Families (assuming this endpoint exists)
+  getAllFamilies(): Observable<Family[]> {
+    return this.http.get<Family[]>(`${this.baseUrl}/all`);
+  }
+
+  // Get Family by ID (assuming this endpoint exists)
+  getFamilyById(id: number): Observable<Family> {
+    return this.http.get<Family>(`${this.baseUrl}/${id}`);
+  }
+
+  // Update Family Investissement
+  updateFamilyInvestissement(id: number, investissement: string): Observable<Family> {
+    return this.http.put<Family>(`${this.baseUrl}/${id}/invest`, { investissement }, this.httpOptions);
+  }
+
+  // Update Family Advice
+  updateFamilyAdvice(id: number, advice: string): Observable<Family> {
+    return this.http.put<Family>(`${this.baseUrl}/families/${id}/advice`, { advice }, this.httpOptions);
+  }
+
+  // Get all Appointments for a specific Family
+  getFamilyAppointments(familyId: number): Observable<AppointmentResponse[]> {
+    return this.http.get<AppointmentResponse[]>(`${this.baseUrl}/families/${familyId}/appointments`);
+  }
+
+  incrementLogin(familyId: number): Observable<Family> {
+    const url = `${this.baseUrl}/login/${familyId}`;
+    return this.http.post<Family>(url, {}); // POST request avec un corps vide
+  }
+
+  resetLogin(familyId: number): Observable<Family> {
+    const url = `${this.baseUrl}/resetlogin/${familyId}`;
+    return this.http.post<Family>(url, {}); // POST request avec un corps vide
+  }
+
+  // Get Family id by his name
+  getFamilyIdByName(familyname: string): Observable<number> {
+    // Note: Use encodeURIComponent if the name might contain special characters or spaces
+    return this.http.get<number>(`${this.baseUrl}/id-by-name?name=${encodeURIComponent(familyname)}`);
+  }
+
+  // Check Family Exists (login-like functionality)
+  checkFamilyExists(credentials: CheckFamilyRequest): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/auth`, credentials, this.httpOptions);
+  }
+
+  // Update Family Password
+  updateFamilyPassword(familyId: number, newPassword: string): Observable<string> {
+    // 1. Create the request body object
+    const requestBody: UpdatePasswordRequest = { newPassword: newPassword };
+
+    // 2. Construct the URL to match the secure backend endpoint: /api/doctors/{id}/password
+    const url = `${this.baseUrl}/password/update/${familyId}?password=${encodeURIComponent(newPassword)}`;
+
+    // 3. Send the PATCH request with the body
+    return this.http.patch<string>(url, requestBody, this.httpOptions);
+  }
+
+  updateFamily(id: number, updateData: FamilyUpdateRequest): Observable<Family> {
+    const url = `${this.baseUrl}/${id}`; // Constructs the URL like http://localhost:8082/patient/123
+    console.log(`Sending PUT request to: ${url} with data:`, updateData);
+    return this.http.put<Family>(url, updateData, this.httpOptions);
   }
 }

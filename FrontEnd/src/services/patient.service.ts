@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {BehaviorSubject, catchError, map, Observable, of, tap} from "rxjs";
-import { Patient } from "../app/Patient/patient.model";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { BehaviorSubject, catchError, map, Observable, of, tap } from "rxjs";
+import { Patient, PatientRequest } from "../app/Patient/patient.model";
+import { UpdatePasswordRequest } from "../app/Doctor/doctor.model";
+import { CheckPatientRequest } from "../app/Patient/patient.model";
 
 interface AuthResponse {
   success?: boolean;
@@ -15,25 +17,39 @@ interface AuthResponse {
 class UpdatePasswordPayload {
 }
 
+
+class PatientUpdateRequest {
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
 
-  private baseUrl = 'http://localhost:8085/patient';
+  private baseUrl = 'http://localhost:8082/patient';
   private currentPatientNameSubject = new BehaviorSubject<string>(''); // BehaviorSubject
   public currentPatientName$ = this.currentPatientNameSubject.asObservable(); // Observable
   private patientName: string | undefined;
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(`${this.baseUrl}/all`);
+  constructor(private http: HttpClient) {
   }
 
-  addOne(patient: {
-    id : number;
+  getCurrentPatientName(): string {
+    return this.currentPatientNameSubject.value;
+  }
+
+  setPatientName(patientName: string): void {
+    this.currentPatientNameSubject.next(patientName);
+    console.log(`Family name set in service: ${patientName}`);
+  }
+
+  createPatient(patient: {
     patientName: string;
     age: number;
     gender: boolean;
@@ -42,63 +58,61 @@ export class PatientService {
     password: string;
     medical_state: string
   }): Observable<Patient> {
-    return this.http.post<Patient>(`${this.baseUrl}/add`, patient);
+    return this.http.post<Patient>(`${this.baseUrl}/create`, patient, this.httpOptions);
   }
 
-  Login(patientName: string, password: string): Observable<boolean> {
-    const authData = { patientName, password }; // Crée le body
-
-    return this.http.post<boolean>(`${this.baseUrl}/auth`, authData).pipe(
-      tap(response => console.log('Auth Response (boolean):', response)),
-      map(response => {
-        if (response === true) {
-          this.currentPatientNameSubject.next(patientName);
-          return true;
-        } else {
-          return false;
-        }
-      }),
-      catchError(error => {
-        console.error('Auth Error:', error);
-        return of(false);
-      })
-    );
+  // Get All Patients (assuming this endpoint exists)
+  getAllPatients(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(`${this.baseUrl}/all`);
   }
 
-  getCurrentPatientName(): string {
-    return this.currentPatientNameSubject.value;
+  // Get Patient by ID (assuming this endpoint exists)
+  getPatientById(id: number): Observable<Patient> {
+    return this.http.get<Patient>(`${this.baseUrl}/${id}`);
   }
 
-
-  updatePassword(newPatientName: string, newPassword: string): Observable<any> {
-    const payload = { patientName: newPatientName, password: newPassword };
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.put(`${this.baseUrl}/patient/updatePassword`, payload, { headers });
+  // Delete Patient (assuming this endpoint exists)
+  deletePatient(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-  getPatientByName(name: string | undefined): Observable<Patient> {
-    if (!name) {
-      return new Observable(observer => {
-        observer.error('Patient name cannot be undefined.');
-        observer.complete();
-      });
-      // Or: return of(null);
-    }
-    const encodedName = encodeURIComponent(name);
-    return this.http.get<Patient>(`${this.baseUrl}/name/${encodedName}`);
+  // Assign Family to Patient (One-to-Many, Patient owns FK)
+  assignFamilyToPatient(patientId: number, familyId: number): Observable<Patient> {
+    return this.http.patch<Patient>(`${this.baseUrl}/${patientId}/assignFamily/${familyId}`, null);
   }
 
-  getPatientGenderByName(name: string): Observable<string> {
-    return this.http.get(`${this.baseUrl}/gender` + `/gender?name=${encodeURIComponent(name)}`, { responseType: 'text' });
+  // Remove Family from Patient (One-to-Many, sets Patient's family_id to NULL)
+  removeFamilyFromPatient(patientId: number): Observable<Patient> {
+    return this.http.patch<Patient>(`${this.baseUrl}/${patientId}/removeFamily`, null);
   }
 
-  patchPatient(id: number, updates: Partial<Patient>): Observable<Patient> {
-    const url = `${this.baseUrl}/${id}`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Explicitly set content type for PATCH
+  // Update Patient Password
+  updatePatientPassword(patientId: number, newPassword: string): Observable<string> {
+    // 1. Create the request body object
+    const requestBody: UpdatePasswordRequest = {newPassword: newPassword};
 
-    //  Send only the updates object.
-    return this.http.patch<Patient>(url, updates, { headers: headers });
+    // 2. Construct the URL to match the secure backend endpoint: /api/doctors/{id}/password
+    const url = `${this.baseUrl}/password/update/${patientId}?password=${encodeURIComponent(newPassword)}`;
+
+    // 3. Send the PATCH request with the body
+    return this.http.patch<string>(url, requestBody, this.httpOptions);
+  }
+
+  // Get Family id by his name
+  getPatientIdByName(patientName: string): Observable<number> {
+    // Note: Use encodeURIComponent if the name might contain special characters or spaces
+    return this.http.get<number>(`${this.baseUrl}/id-by-name?name=${encodeURIComponent(patientName)}`);
+  }
+
+  updatePatient(id: number, updateData: PatientUpdateRequest): Observable<Patient> {
+    const url = `${this.baseUrl}/${id}`; // Constructs the URL like http://localhost:8082/patient/123
+    console.log(`Sending PUT request to: ${url} with data:`, updateData);
+    return this.http.patch<Patient>(url, updateData, this.httpOptions);
+  }
+
+  // Check Patient Exists (login-like functionality)
+  checkPatientExists(credentials: CheckPatientRequest): Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}/auth`, credentials, this.httpOptions);
   }
 
 }

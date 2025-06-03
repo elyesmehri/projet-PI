@@ -1,54 +1,54 @@
-  <div class="w-4/5 mx-auto">
-    <nav class="bg-gray-800 text-white p-4 relative">
-      <div class="container mx-auto flex items-center justify-between">
+<div class="w-4/5 mx-auto">
+  <nav class="bg-gray-800 text-white p-4 relative">
+    <div class="container mx-auto flex items-center justify-between">
 
-        <ul class="flex space-x-8">
+      <ul class="flex space-x-8">
 
-          <li>
-            <a routerLink="/familyarea" routerLinkActive="text-white" class="hover-bubble">
-              <i class="fas fa-user fa-lg mr-2"></i> <span class="text-lg">Family Space</span>
-            </a>
-          </li>
+        <li>
+          <a routerLink="/familyarea" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-user fa-lg mr-2"></i> <span class="text-lg">Family Space</span>
+          </a>
+        </li>
 
-          <li>
-            <a routerLink="/registerpatient" routerLinkActive="text-white" class="hover-bubble">
-              <i class="fas fa-hospital-user fa-lg mr-2"></i> <span class="text-lg">Add Patient Data</span>
-            </a>
-          </li>
+        <li>
+          <a routerLink="/registerpatient" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-hospital-user fa-lg mr-2"></i> <span class="text-lg">Add Patient Data</span>
+          </a>
+        </li>
 
-          <li>
-            <a routerLink="/updatepatient" routerLinkActive="text-white" class="hover-bubble">
-              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Update Patient Data</span>
-            </a>
-          </li>
+        <li>
+          <a routerLink="/updatepatient" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Update Patient Data</span>
+          </a>
+        </li>
 
-          <li>
-            <a routerLink="/personaldatafamily" routerLinkActive="text-white" class="hover-bubble">
-              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Personal Data</span>
-            </a>
-          </li>
-        </ul>
+        <li>
+          <a routerLink="/personaldatafamily" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Personal Data</span>
+          </a>
+        </li>
+      </ul>
 
-        <a href="/family" class="absolute top-2 right-4">
-          <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            <i class="fas fa-sign-out-alt fa-lg mr-2"></i> Logout
-          </button>
-        </a>
+      <a href="/family" class="absolute top-2 right-4">
+        <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <i class="fas fa-sign-out-alt fa-lg mr-2"></i> Logout
+        </button>
+      </a>
 
-      </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
+</div>
 
 <br>
 
-  <div class="min-h-screen bg-gray-100 bg-transparent">
-      <h1 class="text-4xl font-bold text-center text-white mb-8">Welcome to update patient data area !</h1>
+<div class="min-h-screen bg-gray-100 bg-transparent">
+  <h1 class="text-4xl font-bold text-center text-white mb-8">Welcome to update patient data area !</h1>
   <br>
-       <h1 class="text-base font-bold text-start text-white mb-8">
-        Welcome to update your info. See current data on the left, make changes on the right. Note all changes carefully. Your new data helps us give you the best care. Please be accurate. Click "Update Patient Data" when done. Contact us at [Insert Phone Number] or [Insert Email Address] if you need help. Thank you.
-       </h1>
+  <h1 class="text-base font-bold text-start text-white mb-8">
+    Welcome to update your info. See current data on the left, make changes on the right. Note all changes carefully. Your new data helps us give you the best care. Please be accurate. Click "Update Patient Data" when done. Contact us at [Insert Phone Number] or [Insert Email Address] if you need help. Thank you.
+  </h1>
 
-    <table class="min-w-full table-auto bg-transparent text-white border-collapse ">
+  <table class="min-w-full table-auto bg-transparent text-white border-collapse ">
     <thead>
     <tr class="bg-transparent font-semibold text-left border-b border-white ">
       <th class="px-4 py-2">Value Name</th>
@@ -76,16 +76,17 @@
       <td class="px-4 py-2">
         <div class="flex gap-4 items-center">
           <label class="flex items-center gap-2">
-            <input type="radio" name="gender" value="female" [(ngModel)]="foundPatient.gender">
+            <input type="radio" name="gender" value='false' [(ngModel)]="foundPatient.gender">
             <span>Female</span>
           </label>
           <label class="flex items-center gap-2">
-            <input type="radio" name="gender" value="male" [(ngModel)]="updatePatient.gender">
+            <input type="radio" name="gender" value='true' [(ngModel)]="updatePatient.gender">
             <span>Male</span>
           </label>
         </div>
       </td>
     </tr>
+
     <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
       <th class="px-4 py-2 text-left font-semibold">Age:</th>
       <td class="px-4 py-2">{{ foundPatient.age }}</td>
@@ -93,6 +94,7 @@
         <input type="number" [(ngModel)]="updatePatient.age" class="form-input w-full bg-transparent v rounded-md">
       </td>
     </tr>
+
     <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
       <th class="px-4 py-2 text-left font-semibold">Address:</th>
       <td class="px-4 py-2"> {{ foundPatient.address }}</td>
@@ -119,19 +121,6 @@
     </tr>
 
     <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
-      <th class="px-4 py-2 text-left font-semibold">Password:</th>
-      <td class="px-4 py-2 text-white">********</td>
-      <td class="px-4 py-2">
-        <input
-          type="password"
-          [(ngModel)]="updatePatient.password"
-          class="form-input w-full bg-transparent text-white rounded-md placeholder-white"
-          placeholder="Use pattern, special character, Upcase and lowercase Min length 6"
-        />
-      </td>
-    </tr>
-
-     <tr class="bg-transparent border-b border-white" *ngIf="foundPatient">
       <th class="px-4 py-2 text-left font-semibold">Medical State:</th>
       <td class="px-4 py-2">{{ foundPatient.medical_state }}</td>
       <td class="px-4 py-2">
@@ -164,17 +153,42 @@
             Go Back 🏠
           </button>
 
+          <button (click)="onDelete()" [disabled]="!foundPatient"
+                  class="bottom-8 right-8 bg-white text-black px-8 py-4 rounded-lg shadow-lg font-bold text-lg hover:bg-red-500 transition duration-200">
+            Unsubscribe !
+          </button>
+
           <button (click)="onSubmit()" [disabled]="!foundPatient"
                   class="bottom-8 right-8 bg-white text-black px-8 py-4 rounded-lg shadow-lg font-bold text-lg hover:bg-green-500 transition duration-200">
-            Submit Him !
+            Submit Data !
           </button>
         </div>
       </td>
     </tr>
 
+    <div class="flex justify-center my-4 space-x-4 text-white">
+      <button
+        (click)="prevPatient()"
+        [disabled]="currentPatientIndex === 0"
+        class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">
+        ⬅️ Précédent
+      </button>
+
+      <span class="text-lg font-semibold">
+    Patient {{ currentPatientIndex + 1 }} / {{ patients.length }}
+  </span>
+
+      <button
+        (click)="nextPatient()"
+        [disabled]="currentPatientIndex === patients.length - 1"
+        class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">
+        Suivant ➡️
+      </button>
+    </div>
+
     <tr *ngIf="!foundPatient">
       <td colspan="3" class="px-4 py-2 text-white text-center">Loading patient data...</td>
     </tr>
     </tbody>
-    </table>
-  </div>
+  </table>
+</div>

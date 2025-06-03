@@ -42,7 +42,7 @@
             type="text"
             id="fullname"
             name="fullname"
-            [(ngModel)]="patientName"
+            [(ngModel)]="formData.patientName"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
             placeholder="John Doe"
@@ -58,7 +58,7 @@
             type="password"
             id="password"
             name="password"
-            [(ngModel)]="password"
+            [(ngModel)]="formData.password"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
             placeholder="••••••••"

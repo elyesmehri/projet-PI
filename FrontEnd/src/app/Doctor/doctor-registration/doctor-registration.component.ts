@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {DoctorService} from "../../../services/doctor.service";
 import {Doctor} from "../doctor.model";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-doctor-registration',
@@ -11,39 +12,42 @@ import {Doctor} from "../doctor.model";
 
 export class DoctorRegistrationComponent {
 
-  doctorFill = {
+  @ViewChild('doctorForm') doctorForm!: NgForm;
+
+
+  formData = {
 
     doctorname: '',
-    gender: true,
+    medicalID: '',
+    password: '' ,
+    confirmPassword : '',
     speciality: '',
     address: '',
-    phonenumber: 0,
-    insurance: '',
+    phonenumber: '',
     hospital: '',
-    numberofpatients: 0,
-    password: '',
-    confirmPassword: ''
+    gender: false
   };
 
-  doctor_data = {
+  message : string = '';
 
-    doctorname: '',
-    gender: true,
-    speciality: '',
-    address: '',
-    phonenumber: 0,
-    insurance: '',
-    hospital: '',
-    password: '',
-  };
-
-  doctorForm: any; // You might want to type this as NgForm if you import it
   passwordStrength: string = '';
+  private id: number | undefined;
 
-  constructor(private doctorservice: DoctorService) {}
+  constructor(private doctorService: DoctorService) {}
+
+  ngOnInit(): void {
+    // You can also log here to see the initial state of formData
+    console.log('ngOnInit - initial formData:', this.formData);
+  }
+
+  onInputChange(): void {
+    console.log('formData updated:', this.formData);
+    console.log('Doctor Data ', this.doctorForm);
+
+  }
 
   checkPasswordStrength(): void {
-    const password = this.doctorFill.password;
+    const password = this.formData.password;
     if (password.length < 6) {
       this.passwordStrength = 'Weak';
     } else {
@@ -81,26 +85,53 @@ export class DoctorRegistrationComponent {
     }
   }
 
-  onSubmit() {
-    if (this.doctorFormIsValid()) {
-      console.log("Doctor submitted: ", this.doctor_data);
+  private doctorFormIsValid(): boolean {
+    return !!this.formData.doctorname &&
+      !!this.formData.password &&
+      !!this.formData.speciality;
+  }
 
-      this.doctorservice.addOne(this.doctor_data).subscribe({
-        next: (newDoctor) => {
-          console.log('Doctor registered:', newDoctor);
-          // Redirect, show success, etc.
+  onSubmit(): void {
+
+    this.message = '';
+    console.log('--- onSubmit initiated ---');
+
+    // Always validate the form and check password match first
+    if (this.doctorForm.valid && this.formData.password === this.formData.confirmPassword) {
+      console.log('Form is valid and passwords match.');
+
+      // --- THIS IS HOW YOU PUT ALL THE DATA IN THE METHOD CALL ---
+      this.doctorService.createDoctor({
+
+        doctorname: this.formData.doctorname,
+        medicalID: this.formData.medicalID,
+        password: this.formData.password,
+        speciality: this.formData.speciality,
+        address: this.formData.address,
+        phonenumber: this.formData.phonenumber,
+        hospital: this.formData.hospital,
+        gender: this.formData.gender
+
+      }).subscribe({
+        next: (response) => {
+          this.message = `Doctor ${response.doctorname || 'unknown'} added successfully!`;
+          console.log('Doctor added successfully:', response);
+          this.doctorForm.resetForm();
+          // Reset formData's properties manually after resetting the form
+          this.formData = {
+            doctorname: '', medicalID: '', password: '', confirmPassword: '',
+            speciality: '', address: '', phonenumber: '', hospital: '', gender: false
+          };
         },
         error: (err) => {
-          console.error('Registration failed:', err);
+          console.error('Error adding doctor:', err);
+          this.message = err.error?.message || 'Failed to add doctor. Please try again.';
         }
       });
+    } else {
+      this.message = 'Please correct the form errors and ensure passwords match.';
+      console.log('Form is invalid or passwords do not match.');
+      this.doctorForm.control.markAllAsTouched(); // Show validation messages
     }
   }
-
-  private doctorFormIsValid(): boolean {
-    return !!this.doctor_data.doctorname &&
-      !!this.doctor_data.password &&
-      !!this.doctor_data.speciality;
-  }
-
 }

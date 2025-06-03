@@ -1,20 +1,24 @@
-import {Component, ViewChild} from '@angular/core';
-import {DoctorService} from '../../../services/doctor.service';
+import { Component, ViewChild } from '@angular/core';
+import { FamilyService } from '../../../services/family.service';
+
 import { HttpClientModule } from '@angular/common/http';
 import {NgForm} from "@angular/forms";
+
 import {catchError, of, switchMap} from "rxjs";
+import {DoctorService} from "../../../services/doctor.service";
 
 @Component({
-  selector: 'app-updatedoctorpassword',
-  templateUrl: './updatedoctorpassword.component.html',
-  styleUrls: ['./updatedoctorpassword.component.css']
+  selector: 'app-updatefamilypassword',
+  templateUrl: './updatefamilypassword.component.html',
+  styleUrls: ['./updatefamilypassword.component.css']
 })
 
-export class UpdatedoctorpasswordComponent {
+export class UpdatefamilypasswordComponent {
+
 
   @ViewChild('passwordForm') passwordForm!: NgForm; // To access the form's state
 
-  doctorname: string = ''; // Bound to the "Doctor Name" input
+  familyname: string = ''; // Bound to the "Doctor Name" input
   newPassword_field: string = ''; // Bound to the "New Password" input
   confirmPassword_field: string = ''; // NEW: Bound to "Confirm New Password"
 
@@ -25,7 +29,7 @@ export class UpdatedoctorpasswordComponent {
 
   message: string = ''; // For success/error messages
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(private familyService: FamilyService) {}
 
   onUpdatePassword(): void {
 
@@ -36,18 +40,18 @@ export class UpdatedoctorpasswordComponent {
 
       console.log ("new password : " + this.confirmPassword_field);
 
-      // First, get the doctor's ID by name (if that's your backend's requirement)
-      this.doctorService.getDoctorIdByName(this.doctorname).pipe(
-        // If getDoctorIdByName succeeds, switch to the updatePassword observable
-        switchMap((doctorId: number) => {
-          console.log(`Doctor ID found: ${doctorId}`);
-          console.log(`Updating password for Doctor: ${this.doctorname} (ID: ${doctorId}) to: ${this.newPassword_field}`);
-          return this.doctorService.updateDoctorPassword(doctorId, this.newPassword_field);
+      // First, get the family's ID by name (if that's your backend's requirement)
+      this.familyService.getFamilyIdByName(this.familyname).pipe(
+        // If getFamilyIdByName succeeds, switch to the updatePassword observable
+        switchMap((familyId: number) => {
+          console.log(`Family ID found: ${familyId}`);
+          console.log(`Updating password for Family: ${this.familyname} (ID: ${familyId}) to: ${this.newPassword_field}`);
+          return this.familyService.updateFamilyPassword(familyId, this.newPassword_field);
         }),
-        // Catch errors from either getDoctorIdByName or updateDoctorPassword
+        // Catch errors from either getFamilyIdByName or updateFamilyPassword
         catchError(err => {
           if (err.status === 404) {
-            this.message = `Doctor "${this.doctorname}" not found. Cannot update password.`;
+            this.message = `Family "${this.familyname}" not found. Cannot update password.`;
           } else {
             this.message = 'An error occurred during password update. Please try again.';
             console.error('Error during password update process:', err);

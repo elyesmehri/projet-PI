@@ -33,7 +33,7 @@
 
     <!-- familly Data Form -->
     <div class="px-8 pb-10">
-      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <form (ngSubmit)="onlogin()" #loginForm="ngForm">
         <!-- Full Name Field -->
         <div class="mb-5">
           <label class="block text-white text-sm font-semibold mb-2" for="fullname">
@@ -43,26 +43,26 @@
             type="text"
             id="fullname"
             name="fullname"
-            [(ngModel)]="familyName"
+            [(ngModel)]="formData.familyName"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
             placeholder="John Doe"
           />
         </div>
 
-        <!-- Password Field -->
-        <div class="mb-6">
-          <label class="block text-white text-sm font-semibold mb-2" for="password">
-            PERSON IN CHARGE FULL NAME
+        <!--- Relative --->
+        <div class="mb-5">
+          <label class="block text-white text-sm font-semibold mb-2" for="relative">
+            MEMBER FAMILY NAME
           </label>
           <input
             type="text"
             id="relative"
-            name="relative"
-            [(ngModel)]="relative"
+            name="fullname"
+            [(ngModel)]="formData.relative"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
-            placeholder="••••••••"
+            placeholder="John Doe"
           />
         </div>
 
@@ -75,7 +75,7 @@
             type="password"
             id="password"
             name="password"
-            [(ngModel)]="password"
+            [(ngModel)]="formData.password"
             required
             class="w-full px-4 py-3 bg-white bg-opacity-10 border border-white border-opacity-30 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
             placeholder="••••••••"
@@ -102,12 +102,10 @@
 
         <!-- Footer Links -->
         <div class="mt-8 pt-6 border-t border-white border-opacity-10 flex justify-between text-sm">
-          <a href="/regiterfamily
-" class="text-yellow-200 hover:text-white underline hover:no-underline">
+          <a href="/passwordfamily" class="text-yellow-200 hover:text-white underline hover:no-underline">
             Forgot Password?
           </a>
-          <a href="/regiterfamily
-" class="text-yellow-200 hover:text-white underline hover:no-underline">
+          <a href="/regiterfamily" class="text-yellow-200 hover:text-white underline hover:no-underline">
             New familly
             Registration
           </a>

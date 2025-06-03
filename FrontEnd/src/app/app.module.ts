@@ -60,8 +60,9 @@ import { EspaceFamilleComponent } from './Family/espace-famille/espace-famille.c
 import { FamilyRegistrationComponent } from './Family/family-registration/family-registration.component';
 import { MedicalAssitantQComponent } from './Family/medical-assitant-q/medical-assitant-q.component';
 import { FamilyAreaComponent } from './Family/family-area/family-area.component';
-import { AppointmentComponent } from './appointment/appointment.component';
+import { AppointmentComponent } from './Appointment/appointment.component';
 import { PersonalDataFamilyComponent } from './Family/personal-data-family/personal-data-family.component';
+import { UpdatefamilypasswordComponent } from './Family/updatefamilypassword/updatefamilypassword.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { PersonalDataFamilyComponent } from './Family/personal-data-family/perso
     // Appointment Component
     AppointmentComponent,
       PersonalDataFamilyComponent,
+      UpdatefamilypasswordComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgOptimizedImage],
   providers: [DoctorService,FamilyService],

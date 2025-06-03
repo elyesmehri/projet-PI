@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { FamilyService } from '../../../services/family.service';
-import { Family } from "../family.model";
-import {DoctorService} from "../../../services/doctor.service";
-
+import { Component, ViewChild } from '@angular/core';
+import { FamilyService } from "../../../services/family.service";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-family-registration',
@@ -10,33 +8,43 @@ import {DoctorService} from "../../../services/doctor.service";
   styleUrls: ['./family-registration.component.css']
 })
 
-
 export class FamilyRegistrationComponent {
 
-  passwordStrength: string = '';
+  @ViewChild('familyForm') familyForm!: NgForm;
 
-  family = {
+  formData = {
 
-    id: '',
     familyname: '',
-    patientname: '',
-    relative: '',
+    password: '',
+    confirmedPassword : '',
+    relative : '',
     relationship : '',
     address: '',
-    phonenumber: '',
-    insurance: '',
-    password: '',
-    invest: '',
-    confirmPassword : ''
+    phoneNumber: '',
+    advice : '',
+    invest : 0
   };
 
-  investControl: any;
+  message : string = '';
 
-  constructor(private familyservice: FamilyService) {
+  passwordStrength: string = '';
+  private id: number | undefined;
+
+  constructor(private familyService: FamilyService) {}
+
+  ngOnInit(): void {
+    // You can also log here to see the initial state of formData
+    console.log('ngOnInit - initial formData:', this.formData);
+  }
+
+  onInputChange(): void {
+    console.log('formData updated:', this.formData);
+    console.log('Family Data ', this.familyForm);
+
   }
 
   checkPasswordStrength(): void {
-    const password = this.family.password;
+    const password = this.formData.password;
     if (password.length < 6) {
       this.passwordStrength = 'Weak';
     } else {
@@ -74,31 +82,54 @@ export class FamilyRegistrationComponent {
     }
   }
 
-  onSubmit() {
+  private familyFormIsValid(): boolean {
+    return !!this.formData.familyname &&
+      !!this.formData.password &&
+      !!this.formData.relative;
+  }
 
+  onSubmit(): void {
 
-    const partialFamily = {
-      familyname: this.family.familyname,
-      patientname: this.family.patientname,
-      relative: this.family.relative,
-      relationship: this.family.relationship,
-      address: this.family.address,
-      phonenumber: this.family.phonenumber,
-      insurance: this.family.insurance,
-      password: this.family.password,
-      invest: this.family.invest
-    };
+    this.message = '';
 
-    this.familyservice.addNewFamily(partialFamily).subscribe({
+    console.log('--- onSubmit initiated ---');
 
-      next: (response: any) => {
-        console.log('✅ Family added successfully', response);
-        // Redirect or show success message
-      },
-      error: (err: any) => {
-        console.error('❌ Failed to add family', err);
-        // Show error message to the user
-      }
-    });
+    // Always validate the form and check password match first
+    if (this.familyForm.valid && this.formData.password === this.formData.confirmedPassword) {
+      console.log('Form is valid and passwords match.');
+
+      // --- THIS IS HOW YOU PUT ALL THE DATA IN THE METHOD CALL ---
+      this.familyService.createFamily({
+
+        familyname: this.formData.familyname,
+        password: this.formData.password,
+        relative: this.formData.relative,
+        relationship: this.formData.relationship,
+        phoneNumber: this.formData.phoneNumber,
+        address: this.formData.address,
+        invest: this.formData.invest,
+        advice: this.formData.advice,
+
+      }).subscribe({
+        next: (response) => {
+          this.message = `Family ${response.familyname || 'unknown'} added successfully!`;
+          console.log('Family added successfully:', response);
+          this.familyForm.resetForm();
+          // Reset formData's properties manually after resetting the form
+          this.formData = {
+            familyname: '', password: '', invest: 0, confirmedPassword: '',
+            advice: '', address: '', phoneNumber: '', relative : '', relationship: ''
+          };
+        },
+        error: (err) => {
+          console.error('Error adding family:', err);
+          this.message = err.error?.message || 'Failed to add family. Please try again.';
+        }
+      });
+    } else {
+      this.message = 'Please correct the form errors and ensure passwords match.';
+      console.log('Form is invalid or passwords do not match.');
+      this.familyForm.control.markAllAsTouched(); // Show validation messages
+    }
   }
 }

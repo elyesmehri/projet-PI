@@ -16,9 +16,11 @@ export class SettingsComponent {
 
 
   ngOnInit() {
-    this.doctorService.getAll().subscribe(data => {
+
+    this.doctorService.getAllDoctors().subscribe(data => {
       this.doctors = data;
     });
+
   }
 
   getStars(score: number): boolean[] {
