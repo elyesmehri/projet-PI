@@ -30,6 +30,14 @@ import { AppointmentComponent } from './Appointment/appointment.component';
 import { PersonalDataFamilyComponent } from './Family/personal-data-family/personal-data-family.component';
 import { UpdatefamilypasswordComponent } from './Family/updatefamilypassword/updatefamilypassword.component';
 
+import { FamilyAppointmentComponent } from './Family/family-appointment/family-appointment.component';
+
+import { PersonalDataDoctorComponent } from './Doctor/personal-data-doctor/personal-data-doctor.component';
+import { DoctorApppointmentComponent } from './Doctor/doctor-apppointment/doctor-apppointment.component';
+import { UpdatePatientComponent } from './Doctor/update-patient/update-patient.component';
+
+import { BrowsingHistoryComponent } from './Doctor/browsing-history/browsing-history.component';
+
 const routes: Routes = [
 
   { path: '', component: HomeComponent },
@@ -52,8 +60,6 @@ const routes: Routes = [
 
   { path: 'patientarea', component: PatientAreaComponent },
 
-
-
   { path: 'family', component: EspaceFamilleComponent },
   { path: 'regiterfamily', component: FamilyRegistrationComponent },
   { path: 'medicalassitantq', component: MedicalAssitantQComponent },
@@ -64,8 +70,14 @@ const routes: Routes = [
 
   { path: 'personaldatafamily', component: PersonalDataFamilyComponent },
 
-  { path: 'passwordfamily', component: UpdatefamilypasswordComponent }
+  { path: 'passwordfamily', component: UpdatefamilypasswordComponent },
+  { path: 'familyrdv', component: FamilyAppointmentComponent },
 
+  { path: 'personaldatadoctor', component: PersonalDataDoctorComponent },
+  { path: 'doctorrdv', component: DoctorApppointmentComponent },
+  { path: 'update_doctors_patient', component: UpdatePatientComponent },
+
+  { path: 'historydoctor', component: BrowsingHistoryComponent }
 
 ];
 

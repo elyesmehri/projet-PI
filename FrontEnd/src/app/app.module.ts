@@ -63,6 +63,11 @@ import { FamilyAreaComponent } from './Family/family-area/family-area.component'
 import { AppointmentComponent } from './Appointment/appointment.component';
 import { PersonalDataFamilyComponent } from './Family/personal-data-family/personal-data-family.component';
 import { UpdatefamilypasswordComponent } from './Family/updatefamilypassword/updatefamilypassword.component';
+import { FamilyAppointmentComponent } from './Family/family-appointment/family-appointment.component';
+import { PersonalDataDoctorComponent } from './Doctor/personal-data-doctor/personal-data-doctor.component';
+import { DoctorApppointmentComponent } from './Doctor/doctor-apppointment/doctor-apppointment.component';
+import { UpdatePatientComponent } from './Doctor/update-patient/update-patient.component';
+import { BrowsingHistoryComponent } from './Doctor/browsing-history/browsing-history.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +131,11 @@ import { UpdatefamilypasswordComponent } from './Family/updatefamilypassword/upd
     AppointmentComponent,
       PersonalDataFamilyComponent,
       UpdatefamilypasswordComponent,
+      FamilyAppointmentComponent,
+      PersonalDataDoctorComponent,
+      DoctorApppointmentComponent,
+      UpdatePatientComponent,
+      BrowsingHistoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgOptimizedImage],
   providers: [DoctorService,FamilyService],

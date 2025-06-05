@@ -74,7 +74,7 @@ export class FamilyService {
 
   // Get all Appointments for a specific Family
   getFamilyAppointments(familyId: number): Observable<AppointmentResponse[]> {
-    return this.http.get<AppointmentResponse[]>(`${this.baseUrl}/families/${familyId}/appointments`);
+    return this.http.get<AppointmentResponse[]>(`${this.baseUrl}/${familyId}/appointments`);
   }
 
   incrementLogin(familyId: number): Observable<Family> {

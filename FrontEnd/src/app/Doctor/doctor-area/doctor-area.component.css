@@ -1,40 +1,28 @@
-/* Styling for the welcome message */
-.welcome-container {
-  text-align: center;
-  margin-top: 50px;
-  padding: 20px;
+.hover-bubble {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: transform 0.2s ease-in-out;
 }
 
-.welcome-message {
-  font-size: 40px; /* Bigger text */
-  color: white; /* White text */
-  font-weight: bold; /* Make the text bold */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for better readability */
+.hover-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 182, 0, 0.8); /* Tailwind's gray-700 with opacity */
+  border-radius: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: -1;
 }
 
-/* Styling for the table */
-.patients-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+.hover-bubble:hover {
+  transform: translateY(-2px);
 }
 
-.patients-table th, .patients-table td {
-  text-align: left;
-  padding: 10px;
-}
-
-.patients-table th {
-  background-color: #333; /* Dark background for table header */
-  color: white;
-}
-
-.patients-table td {
-  color: white;
-  border-bottom: 1px solid #ddd;
-}
-
-.patients-table tr:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
+.hover-bubble:hover::before {
+  opacity: 1;
 }
