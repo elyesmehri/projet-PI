@@ -1,0 +1,68 @@
+<div class="form-container">
+  <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div class="form-group">
+      <label for="investmentAmount">Investment as Number:</label>
+      <input
+        type="number"
+        id="investmentAmount"
+        name="investmentAmount"
+        [(ngModel)]="formData.investmentAmount"
+        required
+        class="transparent-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="insuranceTitle">Insurance Title:</label>
+      <select
+        id="insuranceTitle"
+        name="insuranceTitle"
+        [(ngModel)]="formData.insuranceTitle"
+        required
+        class="transparent-select"
+      >
+        <option value="" disabled selected>Select an insurance title</option>
+        <option value="Health">Health Insurance</option>
+        <option value="Life">Life Insurance</option>
+        <option value="Auto">Auto Insurance</option>
+        <option value="Home">Home Insurance</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="formData.description"
+        rows="4"
+        class="transparent-textarea"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="expirationDate">Expiration Date:</label>
+      <input
+        type="date"
+        id="expirationDate"
+        name="expirationDate"
+        [(ngModel)]="formData.expirationDate"
+        class="transparent-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="medicalCoverage">Medical Coverage:</label>
+      <input
+        type="checkbox"
+        id="medicalCoverage"
+        name="medicalCoverage"
+        [(ngModel)]="formData.medicalCoverage"
+        class="transparent-checkbox"
+      />
+      <span class="checkbox-label">Yes, include medical coverage</span>
+    </div>
+
+    <button type="submit" [disabled]="!myForm.valid" class="submit-button">Submit</button>
+  </form>
+</div>

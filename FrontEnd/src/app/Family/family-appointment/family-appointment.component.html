@@ -1,0 +1,112 @@
+<ng-container *ngIf="familyName && familyName.trim() !== ''">
+
+  <div class="w-4/5 mx-auto">
+    <nav class="bg-gray-800 text-white p-4 relative">
+      <div class="container mx-auto flex items-center justify-between">
+
+        <ul class="flex space-x-8">
+
+          <li>
+            <a routerLink="/familyarea" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-user fa-lg mr-2"></i> <span class="text-lg">Family Space</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/registerpatient" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-hospital-user fa-lg mr-2"></i> <span class="text-lg">Add Patient Data</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/updatepatient" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Update Patient Data</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/personaldatafamily" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Personal Data</span>
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/familyrdv" routerLinkActive="text-white" class="hover-bubble">
+              <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> RDV</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <a href="/family" class="absolute top-2 right-4">
+          <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <i class="fas fa-sign-out-alt fa-lg mr-2"></i> Logout
+          </button>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="mt-8 bg-transparent text-white">
+    <div class="container mx-auto p-4 flex items-center justify-center">
+      <p class="text-4xl font-bold mb-2">Welcome, Member of Family {{ familyName }}!&ensp;</p>
+    </div>
+  </div>
+
+</ng-container>
+
+<ng-container *ngIf="!familyName || familyName.trim() === ''">
+  <div class="bg-transparent text-red-500">
+    <div class="container mx-auto p-4 flex items-center">
+      <p class="text-6xl font-bold mb-2">Please proceed to fill data in registration section to check your space... </p>
+      <img src="assets/icons/error-404.png" alt="Login" style="width: 500px; height: 500px;" class="mb-2">
+    </div>
+  </div>
+</ng-container>
+
+<br>
+
+<table>
+  <thead class="bg-transparent text-white items-center">
+  <tr>
+    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+      Doctor
+    </th>
+    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+      Family
+    </th>
+    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+      Date & Time
+    </th>
+    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+      Emergency
+    </th>
+    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
+      Description
+    </th>
+  </tr>
+  </thead>
+
+  <tbody class="divide-y divide-gray-700 text-white">
+  <tr *ngFor="let appointment of familyAppointments" class="hover:bg-white hover:bg-opacity-10 transition duration-150 ease-in-out">
+    <td class="px-3 py-4 whitespace-nowrap">
+      {{ appointment.doctorName || 'N/A' }}
+    </td>
+    <td class="px-3 py-4 whitespace-nowrap">
+      {{ appointment.familyName || 'N/A' }}
+    </td>
+    <td class="px-3 py-4 whitespace-nowrap">
+      {{ appointment.date | date:'medium' }}
+    </td>
+
+    <td class="px-3 py-4 whitespace-nowrap">
+      {{ appointment.emergency || 'N/A' }}
+    </td>
+
+    <td class="px-3 py-4">
+      {{ appointment.description || 'No description' }}
+    </td>
+  </tr>
+  </tbody>
+</table>
+

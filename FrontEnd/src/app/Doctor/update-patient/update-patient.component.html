@@ -1,0 +1,94 @@
+<div class="w-4/5 mx-auto">
+  <nav class="bg-gray-800 text-white p-4 relative">
+    <div class="container mx-auto flex items-center justify-between">
+
+      <ul class="flex space-x-8">
+
+        <li>
+          <a routerLink="/doctorarea" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-user fa-lg mr-2"></i> <span class="text-lg">Your Space</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/personaldatadoctor" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-hospital-user fa-lg mr-2"></i> <span class="text-lg">Personal Data</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/update_doctors_patient" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> Check Patients ?</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/doctorrdv" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> RDV </span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/historydoctor" routerLinkActive="text-white" class="hover-bubble">
+            <i class="fas fa-home fa-lg mr-2"></i> <span class="text-lg"> History </span>
+          </a>
+        </li>
+
+      </ul>
+
+      <a href="/doctor" class="absolute top-2 right-4">
+        <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <i class="fas fa-sign-out-alt fa-lg mr-2"></i> Logout
+        </button>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<br>
+
+
+<!-- Additional Text Section -->
+<p class="text-xl text-center text-white mb-12">Here is the list of patients under your care. Below, you can find detailed information about each patient, including their medications and visit history.</p>
+
+<!-- Expanded Table for patients -->
+<div class="overflow-x-auto bg-transparent">
+  <table class="min-w-full table-auto text-white">
+    <thead>
+    <tr class="text-lg font-semibold text-left">
+      <th class="px-4 py-2 w-1/12">Patient Name</th>
+      <th class="px-4 py-2 w-1/12">Age</th>
+      <th class="px-4 py-2 w-1/12">Gender</th>
+      <th class="px-4 py-2 w-1/12">Medical Condition</th>
+      <th class="px-4 py-2 w-1/12">Address</th>
+      <th class="px-4 py-2 w-1/12">Phone Number</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let patient of paginatedPatients()" class="border-t border-white hover:bg-white hover:bg-opacity-10 transition">
+
+      <td class="px-4 py-2">{{ patient.patientName }}</td>
+      <td class="px-4 py-2">{{ patient.age }}</td>
+      <td class="px-4 py-2">{{ patient.gender ? 'Male' : 'Female' }}</td>
+      <td class="px-4 py-2">{{ patient.medicalCondition }}</td>
+      <td class="px-4 py-2">{{ patient.address }}</td>
+      <td class="px-4 py-2">{{ patient.phoneNumber }}</td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Pagination Controls -->
+<div class="flex justify-center items-center space-x-4 mt-6">
+  <button class="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+          (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+
+  <button class="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+          (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+
+

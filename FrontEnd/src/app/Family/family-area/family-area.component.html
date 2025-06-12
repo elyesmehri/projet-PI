@@ -67,16 +67,19 @@
         <span class="font-semibold text-white">{{ Our_family?.login }} Time(s)</span>
       </div>
 
+
       <div class="p-4 border-x-green-600 bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
-        <img src="assets/icons/Insurance.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+        <a [routerLink]="Our_family ?.id ? ['/update-insurance-family', Our_family ?.id ] : ['/update-insurance-family']"> <img src="assets/icons/Insurance.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+        </a>
         <span class="font-semibold">Insurance</span>
         <span class="font-semibold text-white">{{ Our_family?.insurance }}</span>
       </div>
 
-      <div class="p-4 border-gray-600 bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
-        <img src="assets/icons/funds.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+      <div class="p-4 border-x-green-600 bg-opacity-75 backdrop-blur-md rounded-lg shadow-md text-gray-50 flex flex-col items-center">
+        <a [routerLink]="Our_family ?.id ? ['/update-insurance-family', Our_family ?.id ] : ['/update-insurance-family']"> <img src="assets/icons/Insurance.png" alt="Login" style="width: 100px; height: 100px;" class="mb-2">
+        </a>
         <span class="font-semibold">Current Funds</span>
-        <span class="font-semibold text-white">{{ Our_family?.invest }} $</span>
+        <span class="font-semibold text-white">{{ Our_family?.invest }}</span>
       </div>
     </div>
 

@@ -1,0 +1,87 @@
+.form-container {
+  background-color: rgba(0, 0, 0, 0.4); /* Transparent black background */
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 50px auto; /* Center the form */
+  color: white; /* Text color for labels */
+  backdrop-filter: blur(5px); /* Optional: adds a blur effect to content behind */
+  -webkit-backdrop-filter: blur(5px); /* For Safari support */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Style for transparent inputs */
+.transparent-input,
+.transparent-select,
+.transparent-textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly visible white background */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Light border */
+  border-radius: 5px;
+  color: white; /* Text color inside input fields */
+  font-size: 16px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.transparent-input:focus,
+.transparent-select:focus,
+.transparent-textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.8); /* Stronger border on focus */
+  background-color: rgba(255, 255, 255, 0.3); /* Slightly brighter on focus */
+}
+
+/* Specific styling for select dropdown arrow (browser default usually not transparent) */
+.transparent-select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom white arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  padding-right: 30px; /* Make space for the arrow */
+}
+
+.transparent-textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.transparent-checkbox {
+  margin-right: 10px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.submit-button {
+  background-color: #007bff; /* Blue submit button */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

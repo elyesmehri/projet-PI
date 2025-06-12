@@ -5,18 +5,17 @@ import {Patient} from '../../Patient/patient.model'
 import {Doctor} from "../doctor.model";
 
 @Component({
-  selector: 'app-doctor-area',
-  templateUrl: './doctor-area.component.html',
-  styleUrls: ['./doctor-area.component.css']
+  selector: 'app-update-patient',
+  templateUrl: './update-patient.component.html',
+  styleUrls: ['./update-patient.component.css']
 })
 
-export class DoctorAreaComponent implements OnInit, OnDestroy {
+export class UpdatePatientComponent implements OnInit, OnDestroy {
+
 
   doctorname: string = '';
   patients: Patient[] = [];
   doctorData: Doctor | null = null; // New property to hold the full doctor object
-
-  currentTime: string = '';
 
   patientsPerPage: number = 10; // Or whatever number of patients you want per page
   currentPage: number = 1;
@@ -169,12 +168,4 @@ export class DoctorAreaComponent implements OnInit, OnDestroy {
       this.currentPage--;
     }
   }
-
-  updateTime(): void {
-
-    const now = new Date();
-    this.currentTime = now.toLocaleString(); // Or use toLocaleTimeString() / toISOString() as needed
-  }
-
 }
-
