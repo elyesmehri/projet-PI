@@ -87,18 +87,6 @@
 
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>nexus</id> <!-- This ID must match the ID in settings.xml -->
-            <name>Nexus Releases</name>
-            <url>http://your-nexus-url/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus</id> <!-- This ID must match the ID in settings.xml -->
-            <name>Nexus Snapshots</name>
-            <url>http://your-nexus-url/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <build>
         <plugins>
