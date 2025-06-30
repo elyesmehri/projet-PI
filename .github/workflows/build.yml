@@ -1,0 +1,50 @@
+name: CI - Spring Boot + SonarCloud + Docker
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: 🔧 Build, Test, Sonar & Docker
+    runs-on: windows-latest
+
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v3
+
+      - name: ☕ Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17.0.15'
+          distribution: 'temurin'
+
+      - name: 📦 Build Maven (skip tests for speed)
+        run: mvn clean install -DskipTests
+
+      - name: ✅ Lancer les tests
+        run: mvn test
+
+      - name: 🔍 Analyse SonarCloud
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.projectKey=elyesmehri_projet-PI \
+            -Dsonar.organization=elyesmehri \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN
+
+      - name: 🐳 Connexion à DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: 🐳 Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/projet-pi .
+
+      - name: 📤 Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/projet-pi
