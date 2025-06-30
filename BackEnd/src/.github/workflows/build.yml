@@ -1,0 +1,59 @@
+name: Java CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch
+  pull_request:
+    branches:
+      - main # Trigger on pull requests targeting the main branch
+
+jobs:
+  build-test-analyze-deploy:
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4 # Action to check out your repository code
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4 # Action to set up Java Development Kit
+        with:
+          java-version: '17' # Specify Java 17
+          distribution: 'temurin' # Use Eclipse Temurin distribution
+          cache: 'maven' # Cache Maven dependencies for faster builds
+
+      - name: Run Unit Tests with Maven
+        run: mvn -B test # Execute Maven tests in batch mode (non-interactive)
+
+      - name: Build Project with Maven
+        run: mvn -B package -DskipTests # Build the project, skipping tests as they were already run
+
+      - name: Sonatype Cloud Analysis
+        # This step performs static code analysis using SonarCloud.
+        # Ensure you have the Sonar Maven plugin configured in your pom.xml (e.g., org.sonarsource.scanner.maven:sonar-maven-plugin).
+        # You need to set up SONAR_TOKEN and SONAR_ORGANIZATION as GitHub Secrets.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required for SonarCloud analysis of pull requests
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # Your SonarCloud token
+        run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+          -Dsonar.projectKey=your_project_key \ # Replace with your SonarCloud project key
+          -Dsonar.organization=your_organization_key # Replace with your SonarCloud organization key
+
+      - name: Deploy to Nexus Repository
+        # This step deploys your built artifact to a Nexus repository.
+        # It assumes your pom.xml has the <distributionManagement> section configured.
+        # You need to set up NEXUS_USERNAME and NEXUS_PASSWORD as GitHub Secrets.
+        # The -s .m2/settings.xml argument tells Maven to use a custom settings file.
+        # We create a settings.xml on the fly to inject Nexus credentials securely.
+        env:
+          NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+          NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+        run: |
+          # Create a temporary settings.xml for Nexus authentication
+          mkdir -p ~/.m2
+          echo "<settings><servers><server><id>nexus</id><username>${NEXUS_USERNAME}</username><password>${NEXUS_PASSWORD}</password></server></servers></settings>" > ~/.m2/settings.xml
+          
+          # Deploy the artifact to Nexus
+          # The 'nexus' ID here must match the <id> in your pom.xml's <distributionManagement> section.
+          mvn -B deploy -s ~/.m2/settings.xml
