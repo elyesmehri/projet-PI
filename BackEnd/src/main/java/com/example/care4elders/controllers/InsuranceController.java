@@ -22,7 +22,6 @@ public class InsuranceController {
     private final InsuranceService insuranceService;
     private final PillularService pillularService;
 
-
     // CREATE Insurance
     @PostMapping("/create")
     public ResponseEntity<InsuranceResponse> createInsurance(@RequestBody InsuranceRequest request) {
