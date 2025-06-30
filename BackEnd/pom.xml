@@ -15,12 +15,25 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Releases (via ngrok)</name>
+            <url>https://xxxx-xx-xxx-xx-xxx.ngrok-free.app/repository/maven-releases/</url> <!-- PASTE YOUR NGROK HTTPS URL HERE -->
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshots (via ngrok)</name>
+            <url>https://xxxx-xx-xxx-xx-xxx.ngrok-free.app/repository/maven-snapshots/</url> <!-- PASTE YOUR NGROK HTTPS URL HERE -->
+        </snapshotRepository>
+    </distributionManagement>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.1</version>
     </parent>
+
 
     <dependencies>
         <!-- Spring Boot Web -->
@@ -86,7 +99,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>
