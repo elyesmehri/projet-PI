@@ -20,6 +20,7 @@ import java.util.List;
 public class AppointmentController {
 
     private final AppointmentService appointmentService;
+    private final OperationService operationService;
 
     // CREATE Appointment
     @PostMapping("create")
